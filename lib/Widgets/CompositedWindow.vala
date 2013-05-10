@@ -39,7 +39,7 @@ namespace Shelf.Widgets
 		{			
 			app_paintable = true;
 			decorated = false;
-			resizable = false;
+			// resizable = false;
 			double_buffered = false;
 			
 			unowned Screen screen = get_screen ();

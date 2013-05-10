@@ -21,6 +21,7 @@ using Gee;
 using Gtk;
 
 using Shelf.Factories;
+using Shelf.Drawing;
 using Shelf.System;
 
 namespace Shelf.Widgets
@@ -30,19 +31,13 @@ namespace Shelf.Widgets
 	 */
 	public class DockWindow : CompositedWindow
 	{
+
+		bool firstDraw = true;
+
 		/**
 		 * The controller for this dock.
 		 */
 		public DockController controller { private get; construct; }
-		
-		
-		
-		uint reposition_timer = 0;
-		uint hover_reposition_timer = 0;
-		
-		bool dock_is_starting = true;
-		
-		Cairo.RectangleInt input_rect;
 		
 		/**
 		 * Creates a new dock window.
@@ -56,8 +51,8 @@ namespace Shelf.Widgets
 		{
 			accept_focus = false;
 			can_focus = false;
-			// skip_pager_hint = true;
-			// skip_taskbar_hint = true;
+			skip_pager_hint = true;
+			skip_taskbar_hint = true;
 			
 			stick ();
 			
@@ -76,16 +71,68 @@ namespace Shelf.Widgets
 		/**
 		 * {@inheritDoc}
 		 */
+		public override bool button_press_event (EventButton event)
+		{
+			return true;
+		}
+		
+		/**
+		 * {@inheritDoc}
+		 */
+		public override bool button_release_event (EventButton event)
+		{
+
+			return true;
+		}
+		
+		/**
+		 * {@inheritDoc}
+		 */
+		public override bool enter_notify_event (EventCrossing event)
+		{
+			
+			return true;
+		}
+		
+		/**
+		 * {@inheritDoc}
+		 */
+		public override bool leave_notify_event (EventCrossing event)
+		{
+			
+			return true;
+		}
+		
+		/**
+		 * {@inheritDoc}
+		 */
+		public override bool motion_notify_event (EventMotion event)
+		{
+
+			return true;
+		}
+		
+		/**
+		 * {@inheritDoc}
+		 */
+		public override bool scroll_event (EventScroll event)
+		{
+			
+			return true;
+		}
+
+		/**
+		 * {@inheritDoc}
+		 */
 		public override bool draw (Context cr)
 		{
-			if (dock_is_starting) {
-				debug ("dock window loaded");
-				dock_is_starting = false;
+			if(firstDraw)
+			{
+				firstDraw = false;
+				controller.positionManager.initialize();
 			}
-			
-			// set_input_mask ();
-			// controller.renderer.draw_dock (cr);
-			
+
+			controller.renderer.draw(cr);
 			return true;
 		}
 	}

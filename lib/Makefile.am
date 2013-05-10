@@ -65,7 +65,9 @@ libshelf_la_VALASOURCES = \
 	Factories/Factory.vala \
 	Factories/ItemFactory.vala \
 	System/Logger.vala \
+	System/DockPositionManager.vala \
 	DockController.vala \
+	Drawing/DockRenderer.vala \
 	Widgets/DockWindow.vala \
 	Widgets/CompositedWindow.vala \
 	$(NULL)
