@@ -1,0 +1,3 @@
+lib/Items/ApplicationDockItem.c
+lib/Items/FileDockItem.c
+lib/Items/PlankDockItem.c
