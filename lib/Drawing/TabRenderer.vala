@@ -40,7 +40,7 @@ namespace Shelf.Drawing
 
 		construct
 		{
-			surface_icon = new ImageSurface.from_png("/usr/share/icons/Faenza/apps/48/facebook.png");
+			surface_icon = new ImageSurface.from_png("data/icons/facebook.png");
 		}
 		
 		~TabRenderer ()
