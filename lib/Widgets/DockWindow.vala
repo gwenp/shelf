@@ -129,8 +129,9 @@ namespace Shelf.Widgets
 			if(firstDraw)
 			{
 				firstDraw = false;
-				controller.positionManager.initialize();
+				controller.position_manager.initialize();
 			}
+			stdout.printf("draw DockWindow\n");
 
 			controller.renderer.draw(cr);
 			return true;

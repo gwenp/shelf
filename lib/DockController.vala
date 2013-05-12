@@ -19,6 +19,7 @@ using Shelf.Factories;
 using Shelf.Widgets;
 using Shelf.Drawing;
 using Shelf.System;
+using Shelf.Items;
 
 namespace Shelf
 {
@@ -31,19 +32,21 @@ namespace Shelf
 		// public DockRenderer renderer;
 		public DockWindow window;
 		public DockRenderer renderer;
-		public DockPositionManager positionManager;
+		public DockPositionManager position_manager;
+		public TabManager tab_manager;
 		
 		public DockController ()
 		{
 	
-			positionManager = new DockPositionManager (this);
+			position_manager = new DockPositionManager (this);
 			window = new DockWindow (this);
 			renderer = new DockRenderer (this);
+			tab_manager = new TabManager(this);
 			
 			// renderer.initialize ();
 			// drag_manager.initialize ();
 			// hide_manager.initialize ();
-			
+
 			window.show_all ();
 		}
 	}
