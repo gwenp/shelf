@@ -16,6 +16,7 @@
 //
 
 using Gee;
+using Gdk;
 using Cairo;
 
 namespace Shelf.Items
@@ -25,8 +26,12 @@ namespace Shelf.Items
 	 */
 	public class TabManager : GLib.Object
 	{
-		ArrayList<Tab> tabs;
+		private ArrayList<Tab> tabs;
+		private Gee.Map<Tab, int> saved_tabs_positions;
 
+
+		public int tab_icon_size = 48;
+		public int tab_margin = 8;
 		/**
 		 * The controller for this dock.
 		 */
@@ -43,6 +48,7 @@ namespace Shelf.Items
 		construct
 		{
 			tabs = new ArrayList<Tab> ();
+			saved_tabs_positions = new HashMap<Tab, int> ();
 			populate ();
 		}
 		
@@ -50,11 +56,20 @@ namespace Shelf.Items
 		{
 		}
 
+		/**
+		 * Populate the tab list with some dummy tabs.
+		 */
 		public void populate()
 		{
-			tabs.add (new Tab(this));
-			tabs.add (new Tab(this));
-			tabs.add (new Tab(this));
+			add_tab (new Tab(this));
+			add_tab (new Tab(this));
+			add_tab (new Tab(this));
+		}
+
+		public void add_tab(Tab t)
+		{
+			tabs.add (t);
+			saved_tabs_positions[t] = tabs.size - 1;
 		}
 
 		/**
@@ -66,6 +81,18 @@ namespace Shelf.Items
 			foreach (Tab t in tabs) {
 				t.draw (cr, i);
 				i++;
+			}
+		}
+
+		public int get_tab_position (Tab t)
+		{
+			return saved_tabs_positions[t];
+		}
+
+		public void check_tab_mouse_collision(EventMotion event)
+		{
+			foreach (Tab t in tabs) {
+				t.hovered = t.is_mouse_inside_tab (event);
 			}
 		}
 	}

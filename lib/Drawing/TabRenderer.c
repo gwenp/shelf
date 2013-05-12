@@ -21,6 +21,8 @@
 #include <glib.h>
 #include <glib-object.h>
 #include <cairo.h>
+#include <gdk/gdk.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
 #include <float.h>
 #include <math.h>
 
@@ -36,6 +38,33 @@ typedef struct _ShelfDrawingTabRenderer ShelfDrawingTabRenderer;
 typedef struct _ShelfDrawingTabRendererClass ShelfDrawingTabRendererClass;
 typedef struct _ShelfDrawingTabRendererPrivate ShelfDrawingTabRendererPrivate;
 
+#define SHELF_ITEMS_TYPE_TAB (shelf_items_tab_get_type ())
+#define SHELF_ITEMS_TAB(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), SHELF_ITEMS_TYPE_TAB, ShelfItemsTab))
+#define SHELF_ITEMS_TAB_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), SHELF_ITEMS_TYPE_TAB, ShelfItemsTabClass))
+#define SHELF_ITEMS_IS_TAB(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), SHELF_ITEMS_TYPE_TAB))
+#define SHELF_ITEMS_IS_TAB_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), SHELF_ITEMS_TYPE_TAB))
+#define SHELF_ITEMS_TAB_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), SHELF_ITEMS_TYPE_TAB, ShelfItemsTabClass))
+
+typedef struct _ShelfItemsTab ShelfItemsTab;
+typedef struct _ShelfItemsTabClass ShelfItemsTabClass;
+#define _cairo_surface_destroy0(var) ((var == NULL) ? NULL : (var = (cairo_surface_destroy (var), NULL)))
+#define _g_object_unref0(var) ((var == NULL) ? NULL : (var = (g_object_unref (var), NULL)))
+
+#define SHELF_DRAWING_TYPE_COLOR (shelf_drawing_color_get_type ())
+typedef struct _ShelfDrawingColor ShelfDrawingColor;
+
+#define SHELF_ITEMS_TYPE_TAB_MANAGER (shelf_items_tab_manager_get_type ())
+#define SHELF_ITEMS_TAB_MANAGER(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), SHELF_ITEMS_TYPE_TAB_MANAGER, ShelfItemsTabManager))
+#define SHELF_ITEMS_TAB_MANAGER_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), SHELF_ITEMS_TYPE_TAB_MANAGER, ShelfItemsTabManagerClass))
+#define SHELF_ITEMS_IS_TAB_MANAGER(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), SHELF_ITEMS_TYPE_TAB_MANAGER))
+#define SHELF_ITEMS_IS_TAB_MANAGER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), SHELF_ITEMS_TYPE_TAB_MANAGER))
+#define SHELF_ITEMS_TAB_MANAGER_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), SHELF_ITEMS_TYPE_TAB_MANAGER, ShelfItemsTabManagerClass))
+
+typedef struct _ShelfItemsTabManager ShelfItemsTabManager;
+typedef struct _ShelfItemsTabManagerClass ShelfItemsTabManagerClass;
+typedef struct _ShelfItemsTabManagerPrivate ShelfItemsTabManagerPrivate;
+typedef struct _ShelfItemsTabPrivate ShelfItemsTabPrivate;
+
 struct _ShelfDrawingTabRenderer {
 	GObject parent_instance;
 	ShelfDrawingTabRendererPrivate * priv;
@@ -45,37 +74,89 @@ struct _ShelfDrawingTabRendererClass {
 	GObjectClass parent_class;
 };
 
+struct _ShelfDrawingTabRendererPrivate {
+	cairo_surface_t* surface_icon;
+	ShelfItemsTab* _tab;
+};
+
+struct _ShelfDrawingColor {
+	gdouble R;
+	gdouble G;
+	gdouble B;
+	gdouble A;
+};
+
+struct _ShelfItemsTabManager {
+	GObject parent_instance;
+	ShelfItemsTabManagerPrivate * priv;
+	gint tab_icon_size;
+	gint tab_margin;
+};
+
+struct _ShelfItemsTabManagerClass {
+	GObjectClass parent_class;
+};
+
+struct _ShelfItemsTab {
+	GObject parent_instance;
+	ShelfItemsTabPrivate * priv;
+	ShelfDrawingTabRenderer* tab_renderer;
+	gboolean hovered;
+};
+
+struct _ShelfItemsTabClass {
+	GObjectClass parent_class;
+};
+
 
 static gpointer shelf_drawing_tab_renderer_parent_class = NULL;
 
 GType shelf_drawing_tab_renderer_get_type (void) G_GNUC_CONST;
+GType shelf_items_tab_get_type (void) G_GNUC_CONST;
+#define SHELF_DRAWING_TAB_RENDERER_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), SHELF_DRAWING_TYPE_TAB_RENDERER, ShelfDrawingTabRendererPrivate))
 enum  {
-	SHELF_DRAWING_TAB_RENDERER_DUMMY_PROPERTY
+	SHELF_DRAWING_TAB_RENDERER_DUMMY_PROPERTY,
+	SHELF_DRAWING_TAB_RENDERER_TAB
 };
-ShelfDrawingTabRenderer* shelf_drawing_tab_renderer_new (void);
-ShelfDrawingTabRenderer* shelf_drawing_tab_renderer_construct (GType object_type);
+ShelfDrawingTabRenderer* shelf_drawing_tab_renderer_new (ShelfItemsTab* the_tab);
+ShelfDrawingTabRenderer* shelf_drawing_tab_renderer_construct (GType object_type, ShelfItemsTab* the_tab);
 void shelf_drawing_tab_renderer_draw (ShelfDrawingTabRenderer* self, cairo_t* cr, gint position);
+GType shelf_drawing_color_get_type (void) G_GNUC_CONST;
+ShelfDrawingColor* shelf_drawing_color_dup (const ShelfDrawingColor* self);
+void shelf_drawing_color_free (ShelfDrawingColor* self);
+void shelf_drawing_drawing_service_average_color (GdkPixbuf* source, ShelfDrawingColor* result);
+static ShelfItemsTab* shelf_drawing_tab_renderer_get_tab (ShelfDrawingTabRenderer* self);
+GType shelf_items_tab_manager_get_type (void) G_GNUC_CONST;
+ShelfItemsTabManager* shelf_items_tab_get_tab_manager (ShelfItemsTab* self);
+static void shelf_drawing_tab_renderer_set_tab (ShelfDrawingTabRenderer* self, ShelfItemsTab* value);
 static GObject * shelf_drawing_tab_renderer_constructor (GType type, guint n_construct_properties, GObjectConstructParam * construct_properties);
 static void shelf_drawing_tab_renderer_finalize (GObject* obj);
+static void _vala_shelf_drawing_tab_renderer_get_property (GObject * object, guint property_id, GValue * value, GParamSpec * pspec);
+static void _vala_shelf_drawing_tab_renderer_set_property (GObject * object, guint property_id, const GValue * value, GParamSpec * pspec);
 
 
 /**
  * Creates a new tab renderer.
  */
-ShelfDrawingTabRenderer* shelf_drawing_tab_renderer_construct (GType object_type) {
+ShelfDrawingTabRenderer* shelf_drawing_tab_renderer_construct (GType object_type, ShelfItemsTab* the_tab) {
 	ShelfDrawingTabRenderer * self = NULL;
-#line 31 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
-	self = (ShelfDrawingTabRenderer*) g_object_new (object_type, NULL);
-#line 29 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	ShelfItemsTab* _tmp0_;
+#line 36 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	g_return_val_if_fail (the_tab != NULL, NULL);
+#line 38 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp0_ = the_tab;
+#line 38 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	self = (ShelfDrawingTabRenderer*) g_object_new (object_type, "tab", _tmp0_, NULL);
+#line 36 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	return self;
-#line 72 "TabRenderer.c"
+#line 153 "TabRenderer.c"
 }
 
 
-ShelfDrawingTabRenderer* shelf_drawing_tab_renderer_new (void) {
-#line 29 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
-	return shelf_drawing_tab_renderer_construct (SHELF_DRAWING_TYPE_TAB_RENDERER);
-#line 79 "TabRenderer.c"
+ShelfDrawingTabRenderer* shelf_drawing_tab_renderer_new (ShelfItemsTab* the_tab) {
+#line 36 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	return shelf_drawing_tab_renderer_construct (SHELF_DRAWING_TYPE_TAB_RENDERER, the_tab);
+#line 160 "TabRenderer.c"
 }
 
 
@@ -83,65 +164,317 @@ ShelfDrawingTabRenderer* shelf_drawing_tab_renderer_new (void) {
  * Draws a tab.
  */
 void shelf_drawing_tab_renderer_draw (ShelfDrawingTabRenderer* self, cairo_t* cr, gint position) {
+	cairo_surface_t* _tmp0_;
+	GdkPixbuf* _tmp1_ = NULL;
+	GdkPixbuf* pixbuf;
+	GdkPixbuf* _tmp2_;
+	ShelfDrawingColor _tmp3_ = {0};
+	ShelfDrawingColor c;
+	ShelfItemsTab* _tmp4_;
+	ShelfItemsTabManager* _tmp5_;
+	ShelfItemsTabManager* _tmp6_;
+	gint _tmp7_;
 	gint icon_size;
-	gint _tmp0_;
+	ShelfItemsTab* _tmp8_;
+	ShelfItemsTabManager* _tmp9_;
+	ShelfItemsTabManager* _tmp10_;
+	gint _tmp11_;
+	gint margin;
+	gint _tmp12_;
+	gint _tmp13_;
+	gint _tmp14_;
 	gint vertical_offset;
-	cairo_t* _tmp1_;
-	cairo_t* _tmp2_;
-	cairo_t* _tmp3_;
-	cairo_t* _tmp4_;
-	cairo_t* _tmp5_;
-	cairo_t* _tmp6_;
-	cairo_t* _tmp7_;
-	cairo_t* _tmp8_;
-	cairo_t* _tmp9_;
-#line 45 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	ShelfItemsTab* _tmp15_;
+	gboolean _tmp16_;
+	cairo_t* _tmp31_;
+	gint _tmp32_;
+	cairo_t* _tmp33_;
+	gint _tmp34_;
+	cairo_t* _tmp35_;
+	gint _tmp36_;
+	gint _tmp37_;
+	gint _tmp38_;
+	gint _tmp39_;
+	gint _tmp40_;
+	cairo_t* _tmp41_;
+	gint _tmp42_;
+	cairo_t* _tmp43_;
+	gint _tmp44_;
+	gint _tmp45_;
+	gint _tmp46_;
+	cairo_t* _tmp47_;
+	cairo_t* _tmp48_;
+	gint _tmp49_;
+	gint _tmp50_;
+	gint _tmp51_;
+	cairo_t* _tmp52_;
+	cairo_surface_t* _tmp53_;
+	gint _tmp54_;
+	gint _tmp55_;
+	gint _tmp56_;
+	cairo_t* _tmp57_;
+	gint _tmp58_;
+	gint _tmp59_;
+	gint _tmp60_;
+	cairo_t* _tmp61_;
+	gint _tmp62_;
+	cairo_t* _tmp63_;
+	gint _tmp64_;
+	cairo_t* _tmp65_;
+	gint _tmp66_;
+	cairo_t* _tmp67_;
+	cairo_t* _tmp68_;
+#line 53 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	g_return_if_fail (self != NULL);
-#line 45 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 53 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	g_return_if_fail (cr != NULL);
-#line 47 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
-	icon_size = 48;
-#line 48 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
-	_tmp0_ = position;
-#line 48 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
-	vertical_offset = icon_size * _tmp0_;
-#line 49 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
-	_tmp1_ = cr;
-#line 49 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
-	cairo_save (_tmp1_);
-#line 51 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
-	_tmp2_ = cr;
-#line 51 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
-	cairo_move_to (_tmp2_, (gdouble) 0, (gdouble) vertical_offset);
-#line 52 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
-	_tmp3_ = cr;
-#line 52 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
-	cairo_rel_line_to (_tmp3_, (gdouble) icon_size, (gdouble) 0);
-#line 53 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
-	_tmp4_ = cr;
-#line 53 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
-	cairo_rel_line_to (_tmp4_, (gdouble) 0, (gdouble) icon_size);
-#line 54 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
-	_tmp5_ = cr;
-#line 54 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
-	cairo_rel_line_to (_tmp5_, (gdouble) (-icon_size), (gdouble) 0);
 #line 55 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
-	_tmp6_ = cr;
+	_tmp0_ = self->priv->surface_icon;
 #line 55 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
-	cairo_close_path (_tmp6_);
-#line 57 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
-	_tmp7_ = cr;
-#line 57 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
-	cairo_stroke (_tmp7_);
+	_tmp1_ = gdk_pixbuf_get_from_surface (_tmp0_, 0, 0, 48, 48);
+#line 55 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	pixbuf = _tmp1_;
+#line 56 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp2_ = pixbuf;
+#line 56 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	shelf_drawing_drawing_service_average_color (_tmp2_, &_tmp3_);
+#line 56 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	c = _tmp3_;
 #line 58 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
-	_tmp8_ = cr;
+	_tmp4_ = self->priv->_tab;
 #line 58 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
-	cairo_fill (_tmp8_);
+	_tmp5_ = shelf_items_tab_get_tab_manager (_tmp4_);
+#line 58 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp6_ = _tmp5_;
+#line 58 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp7_ = _tmp6_->tab_icon_size;
+#line 58 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	icon_size = _tmp7_;
+#line 59 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp8_ = self->priv->_tab;
+#line 59 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp9_ = shelf_items_tab_get_tab_manager (_tmp8_);
+#line 59 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp10_ = _tmp9_;
+#line 59 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp11_ = _tmp10_->tab_margin;
+#line 59 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	margin = _tmp11_;
 #line 60 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
-	_tmp9_ = cr;
+	_tmp12_ = icon_size;
 #line 60 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
-	cairo_restore (_tmp9_);
-#line 145 "TabRenderer.c"
+	_tmp13_ = margin;
+#line 60 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp14_ = position;
+#line 60 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	vertical_offset = (_tmp12_ + (_tmp13_ * 3)) * _tmp14_;
+#line 62 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp15_ = self->priv->_tab;
+#line 62 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp16_ = _tmp15_->hovered;
+#line 62 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	if (_tmp16_) {
+#line 278 "TabRenderer.c"
+		cairo_t* _tmp17_;
+		ShelfDrawingColor _tmp18_;
+		gdouble _tmp19_;
+		ShelfDrawingColor _tmp20_;
+		gdouble _tmp21_;
+		ShelfDrawingColor _tmp22_;
+		gdouble _tmp23_;
+#line 63 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+		_tmp17_ = cr;
+#line 63 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+		_tmp18_ = c;
+#line 63 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+		_tmp19_ = _tmp18_.R;
+#line 63 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+		_tmp20_ = c;
+#line 63 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+		_tmp21_ = _tmp20_.G;
+#line 63 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+		_tmp22_ = c;
+#line 63 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+		_tmp23_ = _tmp22_.B;
+#line 63 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+		cairo_set_source_rgb (_tmp17_, _tmp19_ + 0.1, _tmp21_ + 0.1, _tmp23_ + 0.1);
+#line 302 "TabRenderer.c"
+	} else {
+		cairo_t* _tmp24_;
+		ShelfDrawingColor _tmp25_;
+		gdouble _tmp26_;
+		ShelfDrawingColor _tmp27_;
+		gdouble _tmp28_;
+		ShelfDrawingColor _tmp29_;
+		gdouble _tmp30_;
+#line 65 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+		_tmp24_ = cr;
+#line 65 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+		_tmp25_ = c;
+#line 65 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+		_tmp26_ = _tmp25_.R;
+#line 65 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+		_tmp27_ = c;
+#line 65 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+		_tmp28_ = _tmp27_.G;
+#line 65 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+		_tmp29_ = c;
+#line 65 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+		_tmp30_ = _tmp29_.B;
+#line 65 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+		cairo_set_source_rgb (_tmp24_, _tmp26_, _tmp28_, _tmp30_);
+#line 327 "TabRenderer.c"
+	}
+#line 67 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp31_ = cr;
+#line 67 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp32_ = vertical_offset;
+#line 67 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	cairo_move_to (_tmp31_, (gdouble) 0, (gdouble) _tmp32_);
+#line 68 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp33_ = cr;
+#line 68 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp34_ = icon_size;
+#line 68 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	cairo_rel_line_to (_tmp33_, (gdouble) _tmp34_, (gdouble) 0);
+#line 69 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp35_ = cr;
+#line 69 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp36_ = margin;
+#line 69 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp37_ = margin;
+#line 69 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp38_ = margin;
+#line 69 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp39_ = margin;
+#line 69 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp40_ = margin;
+#line 69 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	cairo_rel_curve_to (_tmp35_, (gdouble) _tmp36_, (gdouble) 0, (gdouble) _tmp37_, (gdouble) _tmp38_, (gdouble) _tmp39_, (gdouble) _tmp40_);
+#line 71 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp41_ = cr;
+#line 71 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp42_ = icon_size;
+#line 71 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	cairo_rel_line_to (_tmp41_, (gdouble) 0, (gdouble) _tmp42_);
+#line 73 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp43_ = cr;
+#line 73 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp44_ = icon_size;
+#line 73 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp45_ = margin;
+#line 73 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp46_ = margin;
+#line 73 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	cairo_rel_line_to (_tmp43_, (gdouble) ((-_tmp44_) - _tmp45_), (gdouble) (_tmp46_ * 8));
+#line 75 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp47_ = cr;
+#line 75 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	cairo_fill (_tmp47_);
+#line 76 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp48_ = cr;
+#line 76 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	cairo_stroke (_tmp48_);
+#line 78 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp49_ = icon_size;
+#line 78 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp50_ = margin;
+#line 78 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp51_ = position;
+#line 78 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	vertical_offset = (_tmp49_ + (_tmp50_ * 3)) * _tmp51_;
+#line 80 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp52_ = cr;
+#line 80 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp53_ = self->priv->surface_icon;
+#line 80 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp54_ = margin;
+#line 80 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp55_ = vertical_offset;
+#line 80 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp56_ = margin;
+#line 80 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	cairo_set_source_surface (_tmp52_, _tmp53_, (gdouble) (_tmp54_ / 4), (gdouble) (_tmp55_ + (_tmp56_ / 2)));
+#line 82 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp57_ = cr;
+#line 82 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp58_ = margin;
+#line 82 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp59_ = vertical_offset;
+#line 82 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp60_ = margin;
+#line 82 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	cairo_move_to (_tmp57_, (gdouble) (_tmp58_ / 4), (gdouble) (_tmp59_ + (_tmp60_ / 2)));
+#line 83 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp61_ = cr;
+#line 83 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp62_ = icon_size;
+#line 83 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	cairo_rel_line_to (_tmp61_, (gdouble) _tmp62_, (gdouble) 0);
+#line 84 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp63_ = cr;
+#line 84 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp64_ = icon_size;
+#line 84 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	cairo_rel_line_to (_tmp63_, (gdouble) 0, (gdouble) _tmp64_);
+#line 85 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp65_ = cr;
+#line 85 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp66_ = icon_size;
+#line 85 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	cairo_rel_line_to (_tmp65_, (gdouble) (-_tmp66_), (gdouble) 0);
+#line 86 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp67_ = cr;
+#line 86 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	cairo_close_path (_tmp67_);
+#line 88 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp68_ = cr;
+#line 88 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	cairo_fill (_tmp68_);
+#line 53 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_g_object_unref0 (pixbuf);
+#line 437 "TabRenderer.c"
+}
+
+
+static ShelfItemsTab* shelf_drawing_tab_renderer_get_tab (ShelfDrawingTabRenderer* self) {
+	ShelfItemsTab* result;
+	ShelfItemsTab* _tmp0_;
+#line 31 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	g_return_val_if_fail (self != NULL, NULL);
+#line 31 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp0_ = self->priv->_tab;
+#line 31 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	result = _tmp0_;
+#line 31 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	return result;
+#line 452 "TabRenderer.c"
+}
+
+
+static gpointer _g_object_ref0 (gpointer self) {
+#line 31 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	return self ? g_object_ref (self) : NULL;
+#line 459 "TabRenderer.c"
+}
+
+
+static void shelf_drawing_tab_renderer_set_tab (ShelfDrawingTabRenderer* self, ShelfItemsTab* value) {
+	ShelfItemsTab* _tmp0_;
+	ShelfItemsTab* _tmp1_;
+#line 31 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	g_return_if_fail (self != NULL);
+#line 31 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp0_ = value;
+#line 31 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp1_ = _g_object_ref0 (_tmp0_);
+#line 31 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_g_object_unref0 (self->priv->_tab);
+#line 31 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	self->priv->_tab = _tmp1_;
+#line 31 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	g_object_notify ((GObject *) self, "tab");
+#line 478 "TabRenderer.c"
 }
 
 
@@ -149,40 +482,62 @@ static GObject * shelf_drawing_tab_renderer_constructor (GType type, guint n_con
 	GObject * obj;
 	GObjectClass * parent_class;
 	ShelfDrawingTabRenderer * self;
-#line 34 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	cairo_surface_t* _tmp0_;
+#line 41 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	parent_class = G_OBJECT_CLASS (shelf_drawing_tab_renderer_parent_class);
-#line 34 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 41 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	obj = parent_class->constructor (type, n_construct_properties, construct_properties);
-#line 34 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 41 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	self = G_TYPE_CHECK_INSTANCE_CAST (obj, SHELF_DRAWING_TYPE_TAB_RENDERER, ShelfDrawingTabRenderer);
-#line 34 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 43 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_tmp0_ = cairo_image_surface_create_from_png ("/usr/share/icons/Faenza/apps/48/facebook.png");
+#line 43 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_cairo_surface_destroy0 (self->priv->surface_icon);
+#line 43 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	self->priv->surface_icon = _tmp0_;
+#line 41 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	return obj;
-#line 161 "TabRenderer.c"
+#line 501 "TabRenderer.c"
 }
 
 
 static void shelf_drawing_tab_renderer_class_init (ShelfDrawingTabRendererClass * klass) {
-#line 24 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	shelf_drawing_tab_renderer_parent_class = g_type_class_peek_parent (klass);
-#line 24 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	g_type_class_add_private (klass, sizeof (ShelfDrawingTabRendererPrivate));
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	G_OBJECT_CLASS (klass)->get_property = _vala_shelf_drawing_tab_renderer_get_property;
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	G_OBJECT_CLASS (klass)->set_property = _vala_shelf_drawing_tab_renderer_set_property;
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	G_OBJECT_CLASS (klass)->constructor = shelf_drawing_tab_renderer_constructor;
-#line 24 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	G_OBJECT_CLASS (klass)->finalize = shelf_drawing_tab_renderer_finalize;
-#line 172 "TabRenderer.c"
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	g_object_class_install_property (G_OBJECT_CLASS (klass), SHELF_DRAWING_TAB_RENDERER_TAB, g_param_spec_object ("tab", "tab", "tab", SHELF_ITEMS_TYPE_TAB, G_PARAM_STATIC_NAME | G_PARAM_STATIC_NICK | G_PARAM_STATIC_BLURB | G_PARAM_WRITABLE | G_PARAM_CONSTRUCT_ONLY));
+#line 520 "TabRenderer.c"
 }
 
 
 static void shelf_drawing_tab_renderer_instance_init (ShelfDrawingTabRenderer * self) {
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	self->priv = SHELF_DRAWING_TAB_RENDERER_GET_PRIVATE (self);
+#line 527 "TabRenderer.c"
 }
 
 
 static void shelf_drawing_tab_renderer_finalize (GObject* obj) {
 	ShelfDrawingTabRenderer * self;
-#line 24 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	self = G_TYPE_CHECK_INSTANCE_CAST (obj, SHELF_DRAWING_TYPE_TAB_RENDERER, ShelfDrawingTabRenderer);
-#line 24 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 29 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_cairo_surface_destroy0 (self->priv->surface_icon);
+#line 31 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	_g_object_unref0 (self->priv->_tab);
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	G_OBJECT_CLASS (shelf_drawing_tab_renderer_parent_class)->finalize (obj);
-#line 186 "TabRenderer.c"
+#line 541 "TabRenderer.c"
 }
 
 
@@ -198,6 +553,50 @@ GType shelf_drawing_tab_renderer_get_type (void) {
 		g_once_init_leave (&shelf_drawing_tab_renderer_type_id__volatile, shelf_drawing_tab_renderer_type_id);
 	}
 	return shelf_drawing_tab_renderer_type_id__volatile;
+}
+
+
+static void _vala_shelf_drawing_tab_renderer_get_property (GObject * object, guint property_id, GValue * value, GParamSpec * pspec) {
+	ShelfDrawingTabRenderer * self;
+	self = G_TYPE_CHECK_INSTANCE_CAST (object, SHELF_DRAWING_TYPE_TAB_RENDERER, ShelfDrawingTabRenderer);
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	switch (property_id) {
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+		case SHELF_DRAWING_TAB_RENDERER_TAB:
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+		g_value_set_object (value, shelf_drawing_tab_renderer_get_tab (self));
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+		break;
+#line 571 "TabRenderer.c"
+		default:
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+		break;
+#line 577 "TabRenderer.c"
+	}
+}
+
+
+static void _vala_shelf_drawing_tab_renderer_set_property (GObject * object, guint property_id, const GValue * value, GParamSpec * pspec) {
+	ShelfDrawingTabRenderer * self;
+	self = G_TYPE_CHECK_INSTANCE_CAST (object, SHELF_DRAWING_TYPE_TAB_RENDERER, ShelfDrawingTabRenderer);
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+	switch (property_id) {
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+		case SHELF_DRAWING_TAB_RENDERER_TAB:
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+		shelf_drawing_tab_renderer_set_tab (self, g_value_get_object (value));
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+		break;
+#line 593 "TabRenderer.c"
+		default:
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+		break;
+#line 599 "TabRenderer.c"
+	}
 }
 
 

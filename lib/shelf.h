@@ -10,6 +10,10 @@
 #include <string.h>
 #include <gtk/gtk.h>
 #include <cairo.h>
+#include <gdk/gdk.h>
+#include <float.h>
+#include <math.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
 
 G_BEGIN_DECLS
 
@@ -57,6 +61,16 @@ typedef struct _ShelfFactoriesItemFactoryPrivate ShelfFactoriesItemFactoryPrivat
 typedef struct _ShelfItemsTab ShelfItemsTab;
 typedef struct _ShelfItemsTabClass ShelfItemsTabClass;
 typedef struct _ShelfItemsTabPrivate ShelfItemsTabPrivate;
+
+#define SHELF_DRAWING_TYPE_TAB_RENDERER (shelf_drawing_tab_renderer_get_type ())
+#define SHELF_DRAWING_TAB_RENDERER(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), SHELF_DRAWING_TYPE_TAB_RENDERER, ShelfDrawingTabRenderer))
+#define SHELF_DRAWING_TAB_RENDERER_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), SHELF_DRAWING_TYPE_TAB_RENDERER, ShelfDrawingTabRendererClass))
+#define SHELF_DRAWING_IS_TAB_RENDERER(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), SHELF_DRAWING_TYPE_TAB_RENDERER))
+#define SHELF_DRAWING_IS_TAB_RENDERER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), SHELF_DRAWING_TYPE_TAB_RENDERER))
+#define SHELF_DRAWING_TAB_RENDERER_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), SHELF_DRAWING_TYPE_TAB_RENDERER, ShelfDrawingTabRendererClass))
+
+typedef struct _ShelfDrawingTabRenderer ShelfDrawingTabRenderer;
+typedef struct _ShelfDrawingTabRendererClass ShelfDrawingTabRendererClass;
 
 #define SHELF_ITEMS_TYPE_TAB_MANAGER (shelf_items_tab_manager_get_type ())
 #define SHELF_ITEMS_TAB_MANAGER(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), SHELF_ITEMS_TYPE_TAB_MANAGER, ShelfItemsTabManager))
@@ -133,18 +147,22 @@ typedef struct _ShelfWidgetsDockWindowClass ShelfWidgetsDockWindowClass;
 
 typedef struct _ShelfDrawingDockRenderer ShelfDrawingDockRenderer;
 typedef struct _ShelfDrawingDockRendererClass ShelfDrawingDockRendererClass;
+
+#define SHELF_DRAWING_TYPE_COLOR (shelf_drawing_color_get_type ())
+typedef struct _ShelfDrawingColor ShelfDrawingColor;
 typedef struct _ShelfDrawingDockRendererPrivate ShelfDrawingDockRendererPrivate;
-
-#define SHELF_DRAWING_TYPE_TAB_RENDERER (shelf_drawing_tab_renderer_get_type ())
-#define SHELF_DRAWING_TAB_RENDERER(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), SHELF_DRAWING_TYPE_TAB_RENDERER, ShelfDrawingTabRenderer))
-#define SHELF_DRAWING_TAB_RENDERER_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), SHELF_DRAWING_TYPE_TAB_RENDERER, ShelfDrawingTabRendererClass))
-#define SHELF_DRAWING_IS_TAB_RENDERER(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), SHELF_DRAWING_TYPE_TAB_RENDERER))
-#define SHELF_DRAWING_IS_TAB_RENDERER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), SHELF_DRAWING_TYPE_TAB_RENDERER))
-#define SHELF_DRAWING_TAB_RENDERER_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), SHELF_DRAWING_TYPE_TAB_RENDERER, ShelfDrawingTabRendererClass))
-
-typedef struct _ShelfDrawingTabRenderer ShelfDrawingTabRenderer;
-typedef struct _ShelfDrawingTabRendererClass ShelfDrawingTabRendererClass;
 typedef struct _ShelfDrawingTabRendererPrivate ShelfDrawingTabRendererPrivate;
+
+#define SHELF_DRAWING_TYPE_DRAWING_SERVICE (shelf_drawing_drawing_service_get_type ())
+#define SHELF_DRAWING_DRAWING_SERVICE(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), SHELF_DRAWING_TYPE_DRAWING_SERVICE, ShelfDrawingDrawingService))
+#define SHELF_DRAWING_DRAWING_SERVICE_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), SHELF_DRAWING_TYPE_DRAWING_SERVICE, ShelfDrawingDrawingServiceClass))
+#define SHELF_DRAWING_IS_DRAWING_SERVICE(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), SHELF_DRAWING_TYPE_DRAWING_SERVICE))
+#define SHELF_DRAWING_IS_DRAWING_SERVICE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), SHELF_DRAWING_TYPE_DRAWING_SERVICE))
+#define SHELF_DRAWING_DRAWING_SERVICE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), SHELF_DRAWING_TYPE_DRAWING_SERVICE, ShelfDrawingDrawingServiceClass))
+
+typedef struct _ShelfDrawingDrawingService ShelfDrawingDrawingService;
+typedef struct _ShelfDrawingDrawingServiceClass ShelfDrawingDrawingServiceClass;
+typedef struct _ShelfDrawingDrawingServicePrivate ShelfDrawingDrawingServicePrivate;
 typedef struct _ShelfWidgetsCompositedWindowPrivate ShelfWidgetsCompositedWindowPrivate;
 typedef struct _ShelfWidgetsDockWindowPrivate ShelfWidgetsDockWindowPrivate;
 
@@ -187,6 +205,8 @@ struct _ShelfFactoriesItemFactoryClass {
 struct _ShelfItemsTab {
 	GObject parent_instance;
 	ShelfItemsTabPrivate * priv;
+	ShelfDrawingTabRenderer* tab_renderer;
+	gboolean hovered;
 };
 
 struct _ShelfItemsTabClass {
@@ -196,6 +216,8 @@ struct _ShelfItemsTabClass {
 struct _ShelfItemsTabManager {
 	GObject parent_instance;
 	ShelfItemsTabManagerPrivate * priv;
+	gint tab_icon_size;
+	gint tab_margin;
 };
 
 struct _ShelfItemsTabManagerClass {
@@ -243,6 +265,13 @@ struct _ShelfDockControllerClass {
 	GObjectClass parent_class;
 };
 
+struct _ShelfDrawingColor {
+	gdouble R;
+	gdouble G;
+	gdouble B;
+	gdouble A;
+};
+
 struct _ShelfDrawingDockRenderer {
 	GObject parent_instance;
 	ShelfDrawingDockRendererPrivate * priv;
@@ -258,6 +287,15 @@ struct _ShelfDrawingTabRenderer {
 };
 
 struct _ShelfDrawingTabRendererClass {
+	GObjectClass parent_class;
+};
+
+struct _ShelfDrawingDrawingService {
+	GObject parent_instance;
+	ShelfDrawingDrawingServicePrivate * priv;
+};
+
+struct _ShelfDrawingDrawingServiceClass {
 	GObjectClass parent_class;
 };
 
@@ -300,15 +338,21 @@ ShelfFactoriesFactory* shelf_factories_factory_construct (GType object_type);
 ShelfFactoriesItemFactory* shelf_factories_item_factory_new (void);
 ShelfFactoriesItemFactory* shelf_factories_item_factory_construct (GType object_type);
 GType shelf_items_tab_get_type (void) G_GNUC_CONST;
+GType shelf_drawing_tab_renderer_get_type (void) G_GNUC_CONST;
 GType shelf_items_tab_manager_get_type (void) G_GNUC_CONST;
 ShelfItemsTab* shelf_items_tab_new (ShelfItemsTabManager* manager);
 ShelfItemsTab* shelf_items_tab_construct (GType object_type, ShelfItemsTabManager* manager);
 void shelf_items_tab_draw (ShelfItemsTab* self, cairo_t* cr, gint position);
+gboolean shelf_items_tab_is_mouse_inside_tab (ShelfItemsTab* self, GdkEventMotion* event);
+ShelfItemsTabManager* shelf_items_tab_get_tab_manager (ShelfItemsTab* self);
 GType shelf_dock_controller_get_type (void) G_GNUC_CONST;
 ShelfItemsTabManager* shelf_items_tab_manager_new (ShelfDockController* controller);
 ShelfItemsTabManager* shelf_items_tab_manager_construct (GType object_type, ShelfDockController* controller);
 void shelf_items_tab_manager_populate (ShelfItemsTabManager* self);
+void shelf_items_tab_manager_add_tab (ShelfItemsTabManager* self, ShelfItemsTab* t);
 void shelf_items_tab_manager_draw (ShelfItemsTabManager* self, cairo_t* cr);
+gint shelf_items_tab_manager_get_tab_position (ShelfItemsTabManager* self, ShelfItemsTab* t);
+void shelf_items_tab_manager_check_tab_mouse_collision (ShelfItemsTabManager* self, GdkEventMotion* event);
 GType shelf_system_log_level_get_type (void) G_GNUC_CONST;
 GType shelf_system_logger_get_type (void) G_GNUC_CONST;
 void shelf_system_logger_initialize (const gchar* app_name);
@@ -325,13 +369,44 @@ GType shelf_widgets_dock_window_get_type (void) G_GNUC_CONST;
 GType shelf_drawing_dock_renderer_get_type (void) G_GNUC_CONST;
 ShelfDockController* shelf_dock_controller_new (void);
 ShelfDockController* shelf_dock_controller_construct (GType object_type);
+GType shelf_drawing_color_get_type (void) G_GNUC_CONST;
+ShelfDrawingColor* shelf_drawing_color_dup (const ShelfDrawingColor* self);
+void shelf_drawing_color_free (ShelfDrawingColor* self);
+void shelf_drawing_color_from_gdk_color (GdkColor* color, ShelfDrawingColor* result);
+void shelf_drawing_color_to_gdk_color (ShelfDrawingColor *self, GdkColor* result);
+void shelf_drawing_color_from_gdk_rgba (GdkRGBA* color, ShelfDrawingColor* result);
+void shelf_drawing_color_to_gdk_rgba (ShelfDrawingColor *self, GdkRGBA* result);
+gboolean shelf_drawing_color_equal (ShelfDrawingColor *self, ShelfDrawingColor* color);
+void shelf_drawing_color_set_hsv (ShelfDrawingColor *self, gdouble h, gdouble s, gdouble v);
+void shelf_drawing_color_set_hue (ShelfDrawingColor *self, gdouble hue);
+void shelf_drawing_color_set_sat (ShelfDrawingColor *self, gdouble sat);
+void shelf_drawing_color_set_val (ShelfDrawingColor *self, gdouble val);
+void shelf_drawing_color_set_alpha (ShelfDrawingColor *self, gdouble alpha);
+void shelf_drawing_color_get_hsv (ShelfDrawingColor *self, gdouble* h, gdouble* s, gdouble* v);
+gdouble shelf_drawing_color_get_hue (ShelfDrawingColor *self);
+gdouble shelf_drawing_color_get_sat (ShelfDrawingColor *self);
+gdouble shelf_drawing_color_get_val (ShelfDrawingColor *self);
+void shelf_drawing_color_add_hue (ShelfDrawingColor *self, gdouble val);
+void shelf_drawing_color_set_min_sat (ShelfDrawingColor *self, gdouble sat);
+void shelf_drawing_color_set_min_value (ShelfDrawingColor *self, gdouble val);
+void shelf_drawing_color_set_max_sat (ShelfDrawingColor *self, gdouble sat);
+void shelf_drawing_color_set_max_val (ShelfDrawingColor *self, gdouble val);
+void shelf_drawing_color_multiply_sat (ShelfDrawingColor *self, gdouble amount);
+void shelf_drawing_color_brighten_val (ShelfDrawingColor *self, gdouble amount);
+void shelf_drawing_color_darken_val (ShelfDrawingColor *self, gdouble amount);
+void shelf_drawing_color_darken_by_sat (ShelfDrawingColor *self, gdouble amount);
+gchar* shelf_drawing_color_to_string (ShelfDrawingColor *self);
+void shelf_drawing_color_from_string (const gchar* s, ShelfDrawingColor* result);
 ShelfDrawingDockRenderer* shelf_drawing_dock_renderer_new (ShelfDockController* controller);
 ShelfDrawingDockRenderer* shelf_drawing_dock_renderer_construct (GType object_type, ShelfDockController* controller);
 gboolean shelf_drawing_dock_renderer_draw (ShelfDrawingDockRenderer* self, cairo_t* cr);
-GType shelf_drawing_tab_renderer_get_type (void) G_GNUC_CONST;
-ShelfDrawingTabRenderer* shelf_drawing_tab_renderer_new (void);
-ShelfDrawingTabRenderer* shelf_drawing_tab_renderer_construct (GType object_type);
+ShelfDrawingTabRenderer* shelf_drawing_tab_renderer_new (ShelfItemsTab* the_tab);
+ShelfDrawingTabRenderer* shelf_drawing_tab_renderer_construct (GType object_type, ShelfItemsTab* the_tab);
 void shelf_drawing_tab_renderer_draw (ShelfDrawingTabRenderer* self, cairo_t* cr, gint position);
+GType shelf_drawing_drawing_service_get_type (void) G_GNUC_CONST;
+void shelf_drawing_drawing_service_average_color (GdkPixbuf* source, ShelfDrawingColor* result);
+ShelfDrawingDrawingService* shelf_drawing_drawing_service_new (void);
+ShelfDrawingDrawingService* shelf_drawing_drawing_service_construct (GType object_type);
 ShelfWidgetsDockWindow* shelf_widgets_dock_window_new (ShelfDockController* controller);
 ShelfWidgetsDockWindow* shelf_widgets_dock_window_construct (GType object_type, ShelfDockController* controller);
 ShelfWidgetsCompositedWindow* shelf_widgets_composited_window_new (void);

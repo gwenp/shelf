@@ -21,6 +21,10 @@
 #include <glib.h>
 #include <glib-object.h>
 #include <cairo.h>
+#include <gdk/gdk.h>
+#include <stdio.h>
+#include <float.h>
+#include <math.h>
 
 
 #define SHELF_ITEMS_TYPE_TAB (shelf_items_tab_get_type ())
@@ -54,10 +58,13 @@ typedef struct _ShelfDrawingTabRendererClass ShelfDrawingTabRendererClass;
 typedef struct _ShelfItemsTabManager ShelfItemsTabManager;
 typedef struct _ShelfItemsTabManagerClass ShelfItemsTabManagerClass;
 #define _g_object_unref0(var) ((var == NULL) ? NULL : (var = (g_object_unref (var), NULL)))
+typedef struct _ShelfItemsTabManagerPrivate ShelfItemsTabManagerPrivate;
 
 struct _ShelfItemsTab {
 	GObject parent_instance;
 	ShelfItemsTabPrivate * priv;
+	ShelfDrawingTabRenderer* tab_renderer;
+	gboolean hovered;
 };
 
 struct _ShelfItemsTabClass {
@@ -65,8 +72,18 @@ struct _ShelfItemsTabClass {
 };
 
 struct _ShelfItemsTabPrivate {
-	ShelfDrawingTabRenderer* tab_renderer;
 	ShelfItemsTabManager* _tab_manager;
+};
+
+struct _ShelfItemsTabManager {
+	GObject parent_instance;
+	ShelfItemsTabManagerPrivate * priv;
+	gint tab_icon_size;
+	gint tab_margin;
+};
+
+struct _ShelfItemsTabManagerClass {
+	GObjectClass parent_class;
 };
 
 
@@ -84,11 +101,13 @@ ShelfItemsTab* shelf_items_tab_new (ShelfItemsTabManager* manager);
 ShelfItemsTab* shelf_items_tab_construct (GType object_type, ShelfItemsTabManager* manager);
 void shelf_items_tab_draw (ShelfItemsTab* self, cairo_t* cr, gint position);
 void shelf_drawing_tab_renderer_draw (ShelfDrawingTabRenderer* self, cairo_t* cr, gint position);
-static ShelfItemsTabManager* shelf_items_tab_get_tab_manager (ShelfItemsTab* self);
+gboolean shelf_items_tab_is_mouse_inside_tab (ShelfItemsTab* self, GdkEventMotion* event);
+ShelfItemsTabManager* shelf_items_tab_get_tab_manager (ShelfItemsTab* self);
+gint shelf_items_tab_manager_get_tab_position (ShelfItemsTabManager* self, ShelfItemsTab* t);
 static void shelf_items_tab_set_tab_manager (ShelfItemsTab* self, ShelfItemsTabManager* value);
 static GObject * shelf_items_tab_constructor (GType type, guint n_construct_properties, GObjectConstructParam * construct_properties);
-ShelfDrawingTabRenderer* shelf_drawing_tab_renderer_new (void);
-ShelfDrawingTabRenderer* shelf_drawing_tab_renderer_construct (GType object_type);
+ShelfDrawingTabRenderer* shelf_drawing_tab_renderer_new (ShelfItemsTab* the_tab);
+ShelfDrawingTabRenderer* shelf_drawing_tab_renderer_construct (GType object_type, ShelfItemsTab* the_tab);
 static void shelf_items_tab_finalize (GObject* obj);
 static void _vala_shelf_items_tab_get_property (GObject * object, guint property_id, GValue * value, GParamSpec * pspec);
 static void _vala_shelf_items_tab_set_property (GObject * object, guint property_id, const GValue * value, GParamSpec * pspec);
@@ -100,22 +119,22 @@ static void _vala_shelf_items_tab_set_property (GObject * object, guint property
 ShelfItemsTab* shelf_items_tab_construct (GType object_type, ShelfItemsTabManager* manager) {
 	ShelfItemsTab * self = NULL;
 	ShelfItemsTabManager* _tmp0_;
-#line 38 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 40 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	g_return_val_if_fail (manager != NULL, NULL);
-#line 40 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 42 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	_tmp0_ = manager;
-#line 40 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 42 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	self = (ShelfItemsTab*) g_object_new (object_type, "tab-manager", _tmp0_, NULL);
-#line 38 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 40 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	return self;
-#line 112 "Tab.c"
+#line 131 "Tab.c"
 }
 
 
 ShelfItemsTab* shelf_items_tab_new (ShelfItemsTabManager* manager) {
-#line 38 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 40 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	return shelf_items_tab_construct (SHELF_ITEMS_TYPE_TAB, manager);
-#line 119 "Tab.c"
+#line 138 "Tab.c"
 }
 
 
@@ -126,60 +145,199 @@ void shelf_items_tab_draw (ShelfItemsTab* self, cairo_t* cr, gint position) {
 	ShelfDrawingTabRenderer* _tmp0_;
 	cairo_t* _tmp1_;
 	gint _tmp2_;
-#line 55 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 58 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	g_return_if_fail (self != NULL);
-#line 55 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 58 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	g_return_if_fail (cr != NULL);
-#line 57 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
-	_tmp0_ = self->priv->tab_renderer;
-#line 57 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 60 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	_tmp0_ = self->tab_renderer;
+#line 60 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	_tmp1_ = cr;
-#line 57 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 60 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	_tmp2_ = position;
-#line 57 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 60 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	shelf_drawing_tab_renderer_draw (_tmp0_, _tmp1_, _tmp2_);
-#line 142 "Tab.c"
+#line 161 "Tab.c"
 }
 
 
-static ShelfItemsTabManager* shelf_items_tab_get_tab_manager (ShelfItemsTab* self) {
+gboolean shelf_items_tab_is_mouse_inside_tab (ShelfItemsTab* self, GdkEventMotion* event) {
+	gboolean result = FALSE;
+	gint tab_x;
+	ShelfItemsTabManager* _tmp0_;
+	gint _tmp1_;
+	ShelfItemsTabManager* _tmp2_;
+	gint _tmp3_;
+	ShelfItemsTabManager* _tmp4_;
+	gint _tmp5_ = 0;
+	gint tab_y;
+	ShelfItemsTabManager* _tmp6_;
+	gint _tmp7_;
+	ShelfItemsTabManager* _tmp8_;
+	gint _tmp9_;
+	ShelfItemsTabManager* _tmp10_;
+	gint _tmp11_ = 0;
+	gint next_tab_y;
+	FILE* _tmp12_;
+	ShelfItemsTabManager* _tmp13_;
+	gint _tmp14_ = 0;
+	GdkEventMotion _tmp15_;
+	gdouble _tmp16_;
+	GdkEventMotion _tmp17_;
+	gdouble _tmp18_;
+	gint _tmp19_;
+	gint _tmp20_;
+	GdkEventMotion _tmp21_;
+	gdouble _tmp22_;
+#line 63 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	g_return_val_if_fail (self != NULL, FALSE);
+#line 63 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	g_return_val_if_fail (event != NULL, FALSE);
+#line 65 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	tab_x = 0;
+#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	_tmp0_ = self->priv->_tab_manager;
+#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	_tmp1_ = _tmp0_->tab_icon_size;
+#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	_tmp2_ = self->priv->_tab_manager;
+#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	_tmp3_ = _tmp2_->tab_margin;
+#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	_tmp4_ = self->priv->_tab_manager;
+#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	_tmp5_ = shelf_items_tab_manager_get_tab_position (_tmp4_, self);
+#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	tab_y = (_tmp1_ + (_tmp3_ * 3)) * _tmp5_;
+#line 67 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	_tmp6_ = self->priv->_tab_manager;
+#line 67 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	_tmp7_ = _tmp6_->tab_icon_size;
+#line 67 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	_tmp8_ = self->priv->_tab_manager;
+#line 67 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	_tmp9_ = _tmp8_->tab_margin;
+#line 67 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	_tmp10_ = self->priv->_tab_manager;
+#line 67 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	_tmp11_ = shelf_items_tab_manager_get_tab_position (_tmp10_, self);
+#line 67 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	next_tab_y = (_tmp7_ + (_tmp9_ * 3)) * (_tmp11_ + 1);
+#line 69 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	_tmp12_ = stdout;
+#line 69 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	_tmp13_ = self->priv->_tab_manager;
+#line 69 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	_tmp14_ = shelf_items_tab_manager_get_tab_position (_tmp13_, self);
+#line 69 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	_tmp15_ = *event;
+#line 69 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	_tmp16_ = _tmp15_.x;
+#line 69 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	_tmp17_ = *event;
+#line 69 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	_tmp18_ = _tmp17_.y;
+#line 69 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	_tmp19_ = tab_y;
+#line 69 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	_tmp20_ = next_tab_y;
+#line 69 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	fprintf (_tmp12_, "tab %d. mouse : %lf,%lf. tab_y=%d. next_tab_y=%d\n", _tmp14_, _tmp16_, _tmp18_, _tmp19_, _tmp20_);
+#line 71 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	_tmp21_ = *event;
+#line 71 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	_tmp22_ = _tmp21_.x;
+#line 71 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	if (_tmp22_ < ((gdouble) 48)) {
+#line 253 "Tab.c"
+		gboolean _tmp23_ = FALSE;
+		GdkEventMotion _tmp24_;
+		gdouble _tmp25_;
+		gint _tmp26_;
+		gboolean _tmp30_;
+#line 73 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+		_tmp24_ = *event;
+#line 73 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+		_tmp25_ = _tmp24_.y;
+#line 73 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+		_tmp26_ = next_tab_y;
+#line 73 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+		if (_tmp25_ < ((gdouble) _tmp26_)) {
+#line 267 "Tab.c"
+			GdkEventMotion _tmp27_;
+			gdouble _tmp28_;
+			gint _tmp29_;
+#line 73 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+			_tmp27_ = *event;
+#line 73 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+			_tmp28_ = _tmp27_.y;
+#line 73 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+			_tmp29_ = tab_y;
+#line 73 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+			_tmp23_ = _tmp28_ > ((gdouble) _tmp29_);
+#line 279 "Tab.c"
+		} else {
+#line 73 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+			_tmp23_ = FALSE;
+#line 283 "Tab.c"
+		}
+#line 73 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+		_tmp30_ = _tmp23_;
+#line 73 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+		if (_tmp30_) {
+#line 75 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+			result = TRUE;
+#line 75 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+			return result;
+#line 293 "Tab.c"
+		}
+	}
+#line 79 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	result = FALSE;
+#line 79 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	return result;
+#line 300 "Tab.c"
+}
+
+
+ShelfItemsTabManager* shelf_items_tab_get_tab_manager (ShelfItemsTab* self) {
 	ShelfItemsTabManager* result;
 	ShelfItemsTabManager* _tmp0_;
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	g_return_val_if_fail (self != NULL, NULL);
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	_tmp0_ = self->priv->_tab_manager;
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	result = _tmp0_;
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	return result;
-#line 157 "Tab.c"
+#line 315 "Tab.c"
 }
 
 
 static gpointer _g_object_ref0 (gpointer self) {
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	return self ? g_object_ref (self) : NULL;
-#line 164 "Tab.c"
+#line 322 "Tab.c"
 }
 
 
 static void shelf_items_tab_set_tab_manager (ShelfItemsTab* self, ShelfItemsTabManager* value) {
 	ShelfItemsTabManager* _tmp0_;
 	ShelfItemsTabManager* _tmp1_;
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	g_return_if_fail (self != NULL);
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	_tmp0_ = value;
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	_tmp1_ = _g_object_ref0 (_tmp0_);
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	_g_object_unref0 (self->priv->_tab_manager);
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	self->priv->_tab_manager = _tmp1_;
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	g_object_notify ((GObject *) self, "tab-manager");
-#line 183 "Tab.c"
+#line 341 "Tab.c"
 }
 
 
@@ -188,65 +346,67 @@ static GObject * shelf_items_tab_constructor (GType type, guint n_construct_prop
 	GObjectClass * parent_class;
 	ShelfItemsTab * self;
 	ShelfDrawingTabRenderer* _tmp0_;
-#line 43 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 45 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	parent_class = G_OBJECT_CLASS (shelf_items_tab_parent_class);
-#line 43 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 45 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	obj = parent_class->constructor (type, n_construct_properties, construct_properties);
-#line 43 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 45 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	self = G_TYPE_CHECK_INSTANCE_CAST (obj, SHELF_ITEMS_TYPE_TAB, ShelfItemsTab);
+#line 47 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	_tmp0_ = shelf_drawing_tab_renderer_new (self);
+#line 47 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	_g_object_unref0 (self->tab_renderer);
+#line 47 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	self->tab_renderer = _tmp0_;
+#line 48 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	self->hovered = FALSE;
 #line 45 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
-	_tmp0_ = shelf_drawing_tab_renderer_new ();
-#line 45 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
-	_g_object_unref0 (self->priv->tab_renderer);
-#line 45 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
-	self->priv->tab_renderer = _tmp0_;
-#line 43 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	return obj;
-#line 206 "Tab.c"
+#line 366 "Tab.c"
 }
 
 
 static void shelf_items_tab_class_init (ShelfItemsTabClass * klass) {
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	shelf_items_tab_parent_class = g_type_class_peek_parent (klass);
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	g_type_class_add_private (klass, sizeof (ShelfItemsTabPrivate));
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	G_OBJECT_CLASS (klass)->get_property = _vala_shelf_items_tab_get_property;
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	G_OBJECT_CLASS (klass)->set_property = _vala_shelf_items_tab_set_property;
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	G_OBJECT_CLASS (klass)->constructor = shelf_items_tab_constructor;
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	G_OBJECT_CLASS (klass)->finalize = shelf_items_tab_finalize;
-#line 223 "Tab.c"
+#line 383 "Tab.c"
 	/**
 	 * The tab manager.
 	 */
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
-	g_object_class_install_property (G_OBJECT_CLASS (klass), SHELF_ITEMS_TAB_TAB_MANAGER, g_param_spec_object ("tab-manager", "tab-manager", "tab-manager", SHELF_ITEMS_TYPE_TAB_MANAGER, G_PARAM_STATIC_NAME | G_PARAM_STATIC_NICK | G_PARAM_STATIC_BLURB | G_PARAM_WRITABLE | G_PARAM_CONSTRUCT_ONLY));
-#line 229 "Tab.c"
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	g_object_class_install_property (G_OBJECT_CLASS (klass), SHELF_ITEMS_TAB_TAB_MANAGER, g_param_spec_object ("tab-manager", "tab-manager", "tab-manager", SHELF_ITEMS_TYPE_TAB_MANAGER, G_PARAM_STATIC_NAME | G_PARAM_STATIC_NICK | G_PARAM_STATIC_BLURB | G_PARAM_READABLE | G_PARAM_WRITABLE | G_PARAM_CONSTRUCT_ONLY));
+#line 389 "Tab.c"
 }
 
 
 static void shelf_items_tab_instance_init (ShelfItemsTab * self) {
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	self->priv = SHELF_ITEMS_TAB_GET_PRIVATE (self);
-#line 236 "Tab.c"
+#line 396 "Tab.c"
 }
 
 
 static void shelf_items_tab_finalize (GObject* obj) {
 	ShelfItemsTab * self;
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	self = G_TYPE_CHECK_INSTANCE_CAST (obj, SHELF_ITEMS_TYPE_TAB, ShelfItemsTab);
-#line 28 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
-	_g_object_unref0 (self->priv->tab_renderer);
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 29 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+	_g_object_unref0 (self->tab_renderer);
+#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	_g_object_unref0 (self->priv->_tab_manager);
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	G_OBJECT_CLASS (shelf_items_tab_parent_class)->finalize (obj);
-#line 250 "Tab.c"
+#line 410 "Tab.c"
 }
 
 
@@ -268,21 +428,21 @@ GType shelf_items_tab_get_type (void) {
 static void _vala_shelf_items_tab_get_property (GObject * object, guint property_id, GValue * value, GParamSpec * pspec) {
 	ShelfItemsTab * self;
 	self = G_TYPE_CHECK_INSTANCE_CAST (object, SHELF_ITEMS_TYPE_TAB, ShelfItemsTab);
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	switch (property_id) {
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 		case SHELF_ITEMS_TAB_TAB_MANAGER:
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 		g_value_set_object (value, shelf_items_tab_get_tab_manager (self));
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 		break;
-#line 280 "Tab.c"
+#line 440 "Tab.c"
 		default:
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 		break;
-#line 286 "Tab.c"
+#line 446 "Tab.c"
 	}
 }
 
@@ -290,21 +450,21 @@ static void _vala_shelf_items_tab_get_property (GObject * object, guint property
 static void _vala_shelf_items_tab_set_property (GObject * object, guint property_id, const GValue * value, GParamSpec * pspec) {
 	ShelfItemsTab * self;
 	self = G_TYPE_CHECK_INSTANCE_CAST (object, SHELF_ITEMS_TYPE_TAB, ShelfItemsTab);
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 	switch (property_id) {
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 		case SHELF_ITEMS_TAB_TAB_MANAGER:
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 		shelf_items_tab_set_tab_manager (self, g_value_get_object (value));
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 		break;
-#line 302 "Tab.c"
+#line 462 "Tab.c"
 		default:
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
+#line 27 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/Tab.vala"
 		break;
-#line 308 "Tab.c"
+#line 468 "Tab.c"
 	}
 }
 

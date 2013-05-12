@@ -101,8 +101,9 @@ libshelf_la_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 am__objects_3 = shelf-resources.lo $(am__objects_1)
 am__objects_4 = AbstractMain.lo Factory.lo ItemFactory.lo Tab.lo \
 	TabManager.lo Logger.lo DockPositionManager.lo \
-	DockController.lo DockRenderer.lo TabRenderer.lo DockWindow.lo \
-	CompositedWindow.lo $(am__objects_1)
+	DockController.lo Color.lo DockRenderer.lo TabRenderer.lo \
+	DrawingService.lo DockWindow.lo CompositedWindow.lo \
+	$(am__objects_1)
 nodist_libshelf_la_OBJECTS = $(am__objects_3) $(am__objects_4) \
 	$(am__objects_1)
 libshelf_la_OBJECTS = $(nodist_libshelf_la_OBJECTS)
@@ -384,8 +385,10 @@ libshelf_la_VALASOURCES = \
 	System/Logger.vala \
 	System/DockPositionManager.vala \
 	DockController.vala \
+	Drawing/Color.vala \
 	Drawing/DockRenderer.vala \
 	Drawing/TabRenderer.vala \
+	Drawing/DrawingService.vala \
 	Widgets/DockWindow.vala \
 	Widgets/CompositedWindow.vala \
 	$(NULL)
@@ -533,11 +536,13 @@ distclean-compile:
 	-rm -f *.tab.c
 
 include ./$(DEPDIR)/AbstractMain.Plo
+include ./$(DEPDIR)/Color.Plo
 include ./$(DEPDIR)/CompositedWindow.Plo
 include ./$(DEPDIR)/DockController.Plo
 include ./$(DEPDIR)/DockPositionManager.Plo
 include ./$(DEPDIR)/DockRenderer.Plo
 include ./$(DEPDIR)/DockWindow.Plo
+include ./$(DEPDIR)/DrawingService.Plo
 include ./$(DEPDIR)/Factory.Plo
 include ./$(DEPDIR)/ItemFactory.Plo
 include ./$(DEPDIR)/Logger.Plo
@@ -616,6 +621,13 @@ DockPositionManager.lo: System/DockPositionManager.c
 #	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
 #	$(AM_V_CC_no)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o DockPositionManager.lo `test -f 'System/DockPositionManager.c' || echo '$(srcdir)/'`System/DockPositionManager.c
 
+Color.lo: Drawing/Color.c
+	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT Color.lo -MD -MP -MF $(DEPDIR)/Color.Tpo -c -o Color.lo `test -f 'Drawing/Color.c' || echo '$(srcdir)/'`Drawing/Color.c
+	$(AM_V_at)$(am__mv) $(DEPDIR)/Color.Tpo $(DEPDIR)/Color.Plo
+#	$(AM_V_CC)source='Drawing/Color.c' object='Color.lo' libtool=yes \
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+#	$(AM_V_CC_no)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o Color.lo `test -f 'Drawing/Color.c' || echo '$(srcdir)/'`Drawing/Color.c
+
 DockRenderer.lo: Drawing/DockRenderer.c
 	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT DockRenderer.lo -MD -MP -MF $(DEPDIR)/DockRenderer.Tpo -c -o DockRenderer.lo `test -f 'Drawing/DockRenderer.c' || echo '$(srcdir)/'`Drawing/DockRenderer.c
 	$(AM_V_at)$(am__mv) $(DEPDIR)/DockRenderer.Tpo $(DEPDIR)/DockRenderer.Plo
@@ -629,6 +641,13 @@ TabRenderer.lo: Drawing/TabRenderer.c
 #	$(AM_V_CC)source='Drawing/TabRenderer.c' object='TabRenderer.lo' libtool=yes \
 #	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
 #	$(AM_V_CC_no)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o TabRenderer.lo `test -f 'Drawing/TabRenderer.c' || echo '$(srcdir)/'`Drawing/TabRenderer.c
+
+DrawingService.lo: Drawing/DrawingService.c
+	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT DrawingService.lo -MD -MP -MF $(DEPDIR)/DrawingService.Tpo -c -o DrawingService.lo `test -f 'Drawing/DrawingService.c' || echo '$(srcdir)/'`Drawing/DrawingService.c
+	$(AM_V_at)$(am__mv) $(DEPDIR)/DrawingService.Tpo $(DEPDIR)/DrawingService.Plo
+#	$(AM_V_CC)source='Drawing/DrawingService.c' object='DrawingService.lo' libtool=yes \
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+#	$(AM_V_CC_no)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o DrawingService.lo `test -f 'Drawing/DrawingService.c' || echo '$(srcdir)/'`Drawing/DrawingService.c
 
 DockWindow.lo: Widgets/DockWindow.c
 	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT DockWindow.lo -MD -MP -MF $(DEPDIR)/DockWindow.Tpo -c -o DockWindow.lo `test -f 'Widgets/DockWindow.c' || echo '$(srcdir)/'`Widgets/DockWindow.c

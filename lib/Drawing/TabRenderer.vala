@@ -15,6 +15,9 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 using Cairo;
+using Gdk;
+
+using Shelf.Items;
 
 namespace Shelf.Drawing
 {
@@ -23,16 +26,21 @@ namespace Shelf.Drawing
 	 */
 	public class TabRenderer : GLib.Object
 	{
+		ImageSurface surface_icon;
+
+		public Tab tab { private get; construct; }
+
 		/**
 		 * Creates a new tab renderer.
 		 */
-		public TabRenderer ()
+		public TabRenderer (Tab the_tab)
 		{
-			GLib.Object ();
+			GLib.Object (tab: the_tab);
 		}
 
 		construct
 		{
+			surface_icon = new ImageSurface.from_png("/usr/share/icons/Faenza/apps/48/facebook.png");
 		}
 		
 		~TabRenderer ()
@@ -44,20 +52,40 @@ namespace Shelf.Drawing
 		 */
 		public void draw (Context cr, int position)
 		{
-			int icon_size = 48;
-			int vertical_offset = icon_size * position;
-			cr.save ();
+			Pixbuf pixbuf = pixbuf_get_from_surface (surface_icon, 0, 0, 48, 48);
+			Drawing.Color c = DrawingService.average_color(pixbuf);
+
+			int icon_size = tab.tab_manager.tab_icon_size;
+			int margin = tab.tab_manager.tab_margin;
+			int vertical_offset = ( icon_size + margin * 3 ) * position;
+
+			if(tab.hovered)
+				cr.set_source_rgb (c.R + 0.1, c.G + 0.1, c.B + 0.1);
+			else
+				cr.set_source_rgb (c.R, c.G, c.B);
 
 			cr.move_to (0, vertical_offset);
+			cr.rel_line_to (icon_size, 0);
+			cr.rel_curve_to (margin, 0, margin, margin, margin, margin);
+			
+			cr.rel_line_to (0, icon_size);
+
+			cr.rel_line_to (- icon_size - margin, margin * 8);
+			
+			cr.fill();
+			cr.stroke();
+
+			vertical_offset = ( icon_size + margin * 3 ) * position;
+
+			cr.set_source_surface(surface_icon, margin / 4, vertical_offset + margin / 2);
+
+			cr.move_to (margin / 4, vertical_offset + margin / 2);
 			cr.rel_line_to (icon_size, 0);
 			cr.rel_line_to (0, icon_size);
 			cr.rel_line_to (-icon_size, 0);
 			cr.close_path ();
 
-			cr.stroke();
 			cr.fill();
-
-			cr.restore();
 		}
 	}
 }

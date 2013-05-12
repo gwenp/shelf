@@ -9,9 +9,47 @@ namespace Shelf {
 			public Shelf.DockController controller { private get; construct; }
 		}
 		[CCode (cheader_filename = "shelf.h")]
+		public class DrawingService : GLib.Object {
+			public DrawingService ();
+			public static Shelf.Drawing.Color average_color (Gdk.Pixbuf source);
+		}
+		[CCode (cheader_filename = "shelf.h")]
 		public class TabRenderer : GLib.Object {
-			public TabRenderer ();
+			public TabRenderer (Shelf.Items.Tab the_tab);
 			public void draw (Cairo.Context cr, int position);
+			public Shelf.Items.Tab tab { private get; construct; }
+		}
+		[CCode (cheader_filename = "shelf.h")]
+		public struct Color {
+			public double R;
+			public double G;
+			public double B;
+			public double A;
+			public void add_hue (double val);
+			public void brighten_val (double amount);
+			public void darken_by_sat (double amount);
+			public void darken_val (double amount);
+			public bool equal (Shelf.Drawing.Color color);
+			public static Shelf.Drawing.Color from_gdk_color (Gdk.Color color);
+			public static Shelf.Drawing.Color from_gdk_rgba (Gdk.RGBA color);
+			public static Shelf.Drawing.Color from_string (string s);
+			public void get_hsv (out double h, out double s, out double v);
+			public double get_hue ();
+			public double get_sat ();
+			public double get_val ();
+			public void multiply_sat (double amount);
+			public void set_alpha (double alpha);
+			public void set_hsv (double h, double s, double v);
+			public void set_hue (double hue);
+			public void set_max_sat (double sat);
+			public void set_max_val (double val);
+			public void set_min_sat (double sat);
+			public void set_min_value (double val);
+			public void set_sat (double sat);
+			public void set_val (double val);
+			public Gdk.Color to_gdk_color ();
+			public Gdk.RGBA to_gdk_rgba ();
+			public string to_string ();
 		}
 	}
 	namespace Factories {
@@ -47,14 +85,22 @@ namespace Shelf {
 	namespace Items {
 		[CCode (cheader_filename = "shelf.h")]
 		public class Tab : GLib.Object {
+			public bool hovered;
+			public Shelf.Drawing.TabRenderer tab_renderer;
 			public Tab (Shelf.Items.TabManager manager);
 			public void draw (Cairo.Context cr, int position);
-			public Shelf.Items.TabManager tab_manager { private get; construct; }
+			public bool is_mouse_inside_tab (Gdk.EventMotion event);
+			public Shelf.Items.TabManager tab_manager { get; construct; }
 		}
 		[CCode (cheader_filename = "shelf.h")]
 		public class TabManager : GLib.Object {
+			public int tab_icon_size;
+			public int tab_margin;
 			public TabManager (Shelf.DockController controller);
+			public void add_tab (Shelf.Items.Tab t);
+			public void check_tab_mouse_collision (Gdk.EventMotion event);
 			public void draw (Cairo.Context cr);
+			public int get_tab_position (Shelf.Items.Tab t);
 			public void populate ();
 			public Shelf.DockController controller { private get; construct; }
 		}

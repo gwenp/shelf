@@ -108,7 +108,8 @@ namespace Shelf.Widgets
 		 */
 		public override bool motion_notify_event (EventMotion event)
 		{
-
+			controller.tab_manager.check_tab_mouse_collision(event);
+			queue_draw();
 			return true;
 		}
 		
