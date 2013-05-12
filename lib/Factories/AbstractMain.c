@@ -125,59 +125,59 @@ static gint shelf_factories_abstract_main_real_run (ShelfFactoriesAbstractMain* 
 	gint result = 0;
 	gboolean _tmp0_ = FALSE;
 	gboolean _tmp1_ = FALSE;
-#line 53 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 53 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	shelf_factories_abstract_main_initialize_program (self);
-#line 55 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 55 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	_tmp0_ = shelf_factories_abstract_main_parse_commandline (self, args, args_length1);
-#line 55 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 55 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	if (!_tmp0_) {
-#line 56 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 56 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		result = EXIT_FAILURE;
-#line 56 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 56 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		return result;
 #line 139 "AbstractMain.c"
 	}
-#line 58 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 58 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	_tmp1_ = shelf_factories_abstract_main_initialize_libraries (self, args, args_length1);
-#line 58 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 58 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	if (!_tmp1_) {
-#line 59 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 59 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		result = EXIT_FAILURE;
-#line 59 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 59 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		return result;
 #line 149 "AbstractMain.c"
 	}
-#line 61 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 61 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	shelf_factories_abstract_main_set_options (self);
-#line 63 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 63 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	g_signal_emit_by_name (self, "initialized");
-#line 65 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 65 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	shelf_factories_abstract_main_create_controller (self);
-#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 66 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	gdk_threads_enter ();
-#line 67 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 67 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	gtk_main ();
-#line 68 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 68 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	gdk_threads_leave ();
-#line 70 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 70 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	result = EXIT_SUCCESS;
-#line 70 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 70 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	return result;
 #line 167 "AbstractMain.c"
 }
 
 
 gint shelf_factories_abstract_main_run (ShelfFactoriesAbstractMain* self, gchar*** args, int* args_length1) {
-#line 51 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 51 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	g_return_val_if_fail (self != NULL, 0);
-#line 51 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 51 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	return SHELF_FACTORIES_ABSTRACT_MAIN_GET_CLASS (self)->run (self, args, args_length1);
 #line 176 "AbstractMain.c"
 }
 
 
 static void _shelf_factories_abstract_main_sig_handler_sighandler_t (gint signal) {
-#line 89 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 89 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	shelf_factories_abstract_main_sig_handler (signal);
 #line 183 "AbstractMain.c"
 }
@@ -186,28 +186,28 @@ static void _shelf_factories_abstract_main_sig_handler_sighandler_t (gint signal
 static void shelf_factories_abstract_main_real_initialize_program (ShelfFactoriesAbstractMain* self) {
 	const gchar* _tmp0_;
 	const gchar* _tmp1_;
-#line 86 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 86 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	_tmp0_ = self->exec_name;
-#line 86 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 86 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	prctl (15, _tmp0_, (gulong) 0, (gulong) 0, (gulong) 0);
-#line 87 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 87 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	_tmp1_ = self->exec_name;
-#line 87 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 87 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	g_set_prgname (_tmp1_);
-#line 89 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 89 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	signal (SIGINT, _shelf_factories_abstract_main_sig_handler_sighandler_t);
-#line 90 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 90 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	signal (SIGTERM, _shelf_factories_abstract_main_sig_handler_sighandler_t);
-#line 92 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 92 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	shelf_system_logger_initialize ("shelf");
 #line 204 "AbstractMain.c"
 }
 
 
 void shelf_factories_abstract_main_initialize_program (ShelfFactoriesAbstractMain* self) {
-#line 83 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 83 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	g_return_if_fail (self != NULL);
-#line 83 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 83 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	SHELF_FACTORIES_ABSTRACT_MAIN_GET_CLASS (self)->initialize_program (self);
 #line 213 "AbstractMain.c"
 }
@@ -218,27 +218,27 @@ static gboolean shelf_factories_abstract_main_real_initialize_libraries (ShelfFa
 	gboolean _tmp0_ = FALSE;
 	GtkApplication* _tmp1_;
 	GError * _inner_error_ = NULL;
-#line 108 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 108 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	_tmp0_ = g_thread_supported ();
-#line 108 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 108 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	if (!_tmp0_) {
-#line 109 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 109 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		g_critical ("AbstractMain.vala:109: Problem initializing thread support.");
-#line 110 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 110 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		result = FALSE;
-#line 110 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 110 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		return result;
 #line 232 "AbstractMain.c"
 	}
-#line 113 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 113 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	gdk_threads_init ();
-#line 114 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 114 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	gtk_init (args_length1, args);
-#line 116 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 116 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	_tmp1_ = gtk_application_new ("testing.shelf", G_APPLICATION_FLAGS_NONE);
-#line 116 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 116 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	_g_object_unref0 (self->application);
-#line 116 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 116 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	self->application = _tmp1_;
 #line 244 "AbstractMain.c"
 	{
@@ -247,41 +247,41 @@ static gboolean shelf_factories_abstract_main_real_initialize_libraries (ShelfFa
 		gboolean _tmp4_ = FALSE;
 		gboolean _tmp5_;
 		gboolean _tmp8_;
-#line 118 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 118 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		_tmp3_ = self->application;
-#line 118 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 118 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		_tmp4_ = g_application_register ((GApplication*) _tmp3_, NULL, &_inner_error_);
-#line 118 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 118 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		_tmp5_ = _tmp4_;
-#line 118 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 118 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		if (_inner_error_ != NULL) {
 #line 259 "AbstractMain.c"
 			goto __catch0_g_error;
 		}
-#line 118 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 118 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		if (_tmp5_) {
 #line 264 "AbstractMain.c"
 			GtkApplication* _tmp6_;
 			gboolean _tmp7_ = FALSE;
-#line 118 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 118 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 			_tmp6_ = self->application;
-#line 118 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 118 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 			_tmp7_ = g_application_get_is_remote ((GApplication*) _tmp6_);
-#line 118 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 118 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 			_tmp2_ = !_tmp7_;
 #line 273 "AbstractMain.c"
 		} else {
-#line 118 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 118 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 			_tmp2_ = FALSE;
 #line 277 "AbstractMain.c"
 		}
-#line 118 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 118 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		_tmp8_ = _tmp2_;
-#line 118 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 118 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		if (_tmp8_) {
-#line 119 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 119 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 			result = TRUE;
-#line 119 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 119 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 			return result;
 #line 287 "AbstractMain.c"
 		}
@@ -292,47 +292,47 @@ static gboolean shelf_factories_abstract_main_real_initialize_libraries (ShelfFa
 		GError* e = NULL;
 		GError* _tmp9_;
 		const gchar* _tmp10_;
-#line 117 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 117 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		e = _inner_error_;
-#line 117 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 117 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		_inner_error_ = NULL;
-#line 121 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 121 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		_tmp9_ = e;
-#line 121 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 121 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		_tmp10_ = _tmp9_->message;
-#line 121 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 121 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		g_critical ("AbstractMain.vala:121: Registering application as '%s' failed. (%s)", "shelf", _tmp10_);
-#line 122 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 122 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		result = FALSE;
-#line 122 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 122 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		_g_error_free0 (e);
-#line 122 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 122 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		return result;
 #line 312 "AbstractMain.c"
 	}
 	__finally0:
-#line 117 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 117 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	if (_inner_error_ != NULL) {
-#line 117 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 117 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		g_critical ("file %s: line %d: uncaught error: %s (%s, %d)", __FILE__, __LINE__, _inner_error_->message, g_quark_to_string (_inner_error_->domain), _inner_error_->code);
-#line 117 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 117 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		g_clear_error (&_inner_error_);
-#line 117 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 117 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		return FALSE;
 #line 323 "AbstractMain.c"
 	}
-#line 126 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 126 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	result = FALSE;
-#line 126 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 126 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	return result;
 #line 329 "AbstractMain.c"
 }
 
 
 gboolean shelf_factories_abstract_main_initialize_libraries (ShelfFactoriesAbstractMain* self, gchar*** args, int* args_length1) {
-#line 104 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 104 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	g_return_val_if_fail (self != NULL, FALSE);
-#line 104 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 104 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	return SHELF_FACTORIES_ABSTRACT_MAIN_GET_CLASS (self)->initialize_libraries (self, args, args_length1);
 #line 338 "AbstractMain.c"
 }
@@ -340,11 +340,11 @@ gboolean shelf_factories_abstract_main_initialize_libraries (ShelfFactoriesAbstr
 
 static void shelf_factories_abstract_main_sig_handler (gint sig) {
 	gint _tmp0_;
-#line 131 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 131 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	_tmp0_ = sig;
-#line 131 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 131 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	g_warning ("AbstractMain.vala:131: Caught signal (%d), exiting", _tmp0_);
-#line 132 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 132 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	gtk_main_quit ();
 #line 350 "AbstractMain.c"
 }
@@ -364,28 +364,28 @@ static gboolean shelf_factories_abstract_main_real_parse_commandline (ShelfFacto
 	GOptionContext* _tmp2_;
 	GOptionGroup* _tmp3_ = NULL;
 	GError * _inner_error_ = NULL;
-#line 163 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 163 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	_tmp0_ = g_option_context_new ("");
-#line 163 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 163 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	context = _tmp0_;
-#line 165 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 165 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	_tmp1_ = context;
-#line 165 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 165 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	g_option_context_add_main_entries (_tmp1_, SHELF_FACTORIES_ABSTRACT_MAIN_options, NULL);
-#line 166 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 166 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	_tmp2_ = context;
-#line 166 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 166 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	_tmp3_ = gtk_get_option_group (FALSE);
-#line 166 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 166 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	g_option_context_add_group (_tmp2_, _tmp3_);
 #line 382 "AbstractMain.c"
 	{
 		GOptionContext* _tmp4_;
-#line 169 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 169 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		_tmp4_ = context;
-#line 169 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 169 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		g_option_context_parse (_tmp4_, args_length1, args, &_inner_error_);
-#line 169 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 169 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		if (_inner_error_ != NULL) {
 #line 391 "AbstractMain.c"
 			goto __catch1_g_error;
@@ -394,45 +394,45 @@ static gboolean shelf_factories_abstract_main_real_parse_commandline (ShelfFacto
 	goto __finally1;
 	__catch1_g_error:
 	{
-#line 168 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 168 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		g_clear_error (&_inner_error_);
-#line 168 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 168 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		_inner_error_ = NULL;
-#line 171 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 171 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		result = FALSE;
-#line 171 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 171 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		_g_option_context_free0 (context);
-#line 171 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 171 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		return result;
 #line 408 "AbstractMain.c"
 	}
 	__finally1:
-#line 168 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 168 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	if (_inner_error_ != NULL) {
-#line 168 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 168 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		_g_option_context_free0 (context);
-#line 168 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 168 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		g_critical ("file %s: line %d: uncaught error: %s (%s, %d)", __FILE__, __LINE__, _inner_error_->message, g_quark_to_string (_inner_error_->domain), _inner_error_->code);
-#line 168 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 168 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		g_clear_error (&_inner_error_);
-#line 168 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 168 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		return FALSE;
 #line 421 "AbstractMain.c"
 	}
-#line 174 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 174 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	result = TRUE;
-#line 174 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 174 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	_g_option_context_free0 (context);
-#line 174 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 174 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	return result;
 #line 429 "AbstractMain.c"
 }
 
 
 gboolean shelf_factories_abstract_main_parse_commandline (ShelfFactoriesAbstractMain* self, gchar*** args, int* args_length1) {
-#line 160 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 160 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	g_return_val_if_fail (self != NULL, FALSE);
-#line 160 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 160 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	return SHELF_FACTORIES_ABSTRACT_MAIN_GET_CLASS (self)->parse_commandline (self, args, args_length1);
 #line 438 "AbstractMain.c"
 }
@@ -444,33 +444,33 @@ gboolean shelf_factories_abstract_main_parse_commandline (ShelfFactoriesAbstract
 static void shelf_factories_abstract_main_real_set_options (ShelfFactoriesAbstractMain* self) {
 	gboolean _tmp0_;
 	gboolean _tmp3_;
-#line 182 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 182 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	_tmp0_ = shelf_factories_abstract_main_DEBUG;
-#line 182 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 182 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	if (_tmp0_) {
 #line 452 "AbstractMain.c"
 		ShelfSystemLogLevel _tmp1_;
 		ShelfSystemLogLevel _tmp2_;
-#line 183 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 183 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		_tmp1_ = shelf_system_logger_get_DisplayLevel ();
-#line 183 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 183 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		_tmp2_ = _tmp1_;
-#line 183 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 183 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		shelf_system_logger_set_DisplayLevel (SHELF_SYSTEM_LOG_LEVEL_DEBUG);
 #line 461 "AbstractMain.c"
 	}
-#line 184 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 184 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	_tmp3_ = shelf_factories_abstract_main_VERBOSE;
-#line 184 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 184 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	if (_tmp3_) {
 #line 467 "AbstractMain.c"
 		ShelfSystemLogLevel _tmp4_;
 		ShelfSystemLogLevel _tmp5_;
-#line 185 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 185 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		_tmp4_ = shelf_system_logger_get_DisplayLevel ();
-#line 185 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 185 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		_tmp5_ = _tmp4_;
-#line 185 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 185 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 		shelf_system_logger_set_DisplayLevel (SHELF_SYSTEM_LOG_LEVEL_VERBOSE);
 #line 476 "AbstractMain.c"
 	}
@@ -478,9 +478,9 @@ static void shelf_factories_abstract_main_real_set_options (ShelfFactoriesAbstra
 
 
 void shelf_factories_abstract_main_set_options (ShelfFactoriesAbstractMain* self) {
-#line 180 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 180 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	g_return_if_fail (self != NULL);
-#line 180 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 180 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	SHELF_FACTORIES_ABSTRACT_MAIN_GET_CLASS (self)->set_options (self);
 #line 486 "AbstractMain.c"
 }
@@ -492,20 +492,20 @@ void shelf_factories_abstract_main_set_options (ShelfFactoriesAbstractMain* self
 static void shelf_factories_abstract_main_real_create_controller (ShelfFactoriesAbstractMain* self) {
 	ShelfDockController* _tmp0_;
 	ShelfDockController* _tmp1_;
-#line 193 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 193 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	_tmp0_ = shelf_dock_controller_new ();
-#line 193 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 193 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	_tmp1_ = _tmp0_;
-#line 193 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 193 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	_g_object_unref0 (_tmp1_);
 #line 502 "AbstractMain.c"
 }
 
 
 void shelf_factories_abstract_main_create_controller (ShelfFactoriesAbstractMain* self) {
-#line 191 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 191 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	g_return_if_fail (self != NULL);
-#line 191 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 191 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	SHELF_FACTORIES_ABSTRACT_MAIN_GET_CLASS (self)->create_controller (self);
 #line 511 "AbstractMain.c"
 }
@@ -513,36 +513,36 @@ void shelf_factories_abstract_main_create_controller (ShelfFactoriesAbstractMain
 
 ShelfFactoriesAbstractMain* shelf_factories_abstract_main_construct (GType object_type) {
 	ShelfFactoriesAbstractMain * self = NULL;
-#line 29 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 29 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	self = (ShelfFactoriesAbstractMain*) g_object_new (object_type, NULL);
-#line 29 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 29 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	return self;
 #line 521 "AbstractMain.c"
 }
 
 
 static void shelf_factories_abstract_main_class_init (ShelfFactoriesAbstractMainClass * klass) {
-#line 29 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 29 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	shelf_factories_abstract_main_parent_class = g_type_class_peek_parent (klass);
-#line 29 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 29 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	SHELF_FACTORIES_ABSTRACT_MAIN_CLASS (klass)->run = shelf_factories_abstract_main_real_run;
-#line 29 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 29 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	SHELF_FACTORIES_ABSTRACT_MAIN_CLASS (klass)->initialize_program = shelf_factories_abstract_main_real_initialize_program;
-#line 29 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 29 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	SHELF_FACTORIES_ABSTRACT_MAIN_CLASS (klass)->initialize_libraries = shelf_factories_abstract_main_real_initialize_libraries;
-#line 29 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 29 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	SHELF_FACTORIES_ABSTRACT_MAIN_CLASS (klass)->parse_commandline = shelf_factories_abstract_main_real_parse_commandline;
-#line 29 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 29 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	SHELF_FACTORIES_ABSTRACT_MAIN_CLASS (klass)->set_options = shelf_factories_abstract_main_real_set_options;
-#line 29 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 29 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	SHELF_FACTORIES_ABSTRACT_MAIN_CLASS (klass)->create_controller = shelf_factories_abstract_main_real_create_controller;
-#line 29 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 29 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	G_OBJECT_CLASS (klass)->finalize = shelf_factories_abstract_main_finalize;
 #line 542 "AbstractMain.c"
 	/**
 	 * Signal fired when the program is fully initialized, before creating and showing the dock.
 	 */
-#line 29 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 29 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	g_signal_new ("initialized", SHELF_FACTORIES_TYPE_ABSTRACT_MAIN, G_SIGNAL_RUN_LAST, 0, NULL, NULL, g_cclosure_marshal_VOID__VOID, G_TYPE_NONE, 0);
 #line 548 "AbstractMain.c"
 }
@@ -551,13 +551,13 @@ static void shelf_factories_abstract_main_class_init (ShelfFactoriesAbstractMain
 static void shelf_factories_abstract_main_instance_init (ShelfFactoriesAbstractMain * self) {
 	gchar* _tmp0_;
 	gchar* _tmp1_;
-#line 45 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 45 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	_tmp0_ = g_strdup ("");
-#line 45 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 45 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	self->program_name = _tmp0_;
-#line 49 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 49 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	_tmp1_ = g_strdup ("");
-#line 49 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 49 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	self->exec_name = _tmp1_;
 #line 563 "AbstractMain.c"
 }
@@ -565,15 +565,15 @@ static void shelf_factories_abstract_main_instance_init (ShelfFactoriesAbstractM
 
 static void shelf_factories_abstract_main_finalize (GObject* obj) {
 	ShelfFactoriesAbstractMain * self;
-#line 29 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 29 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	self = G_TYPE_CHECK_INSTANCE_CAST (obj, SHELF_FACTORIES_TYPE_ABSTRACT_MAIN, ShelfFactoriesAbstractMain);
-#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 35 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	_g_object_unref0 (self->application);
-#line 45 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 45 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	_g_free0 (self->program_name);
-#line 49 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 49 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	_g_free0 (self->exec_name);
-#line 29 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/AbstractMain.vala"
+#line 29 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/AbstractMain.vala"
 	G_OBJECT_CLASS (shelf_factories_abstract_main_parent_class)->finalize (obj);
 #line 579 "AbstractMain.c"
 }

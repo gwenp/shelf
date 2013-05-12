@@ -83,7 +83,7 @@ static void shelf_factories_factory_finalize (GObject* obj);
 
 
 static gpointer _g_object_ref0 (gpointer self) {
-#line 37 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/Factory.vala"
+#line 37 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/Factory.vala"
 	return self ? g_object_ref (self) : NULL;
 #line 89 "Factory.c"
 }
@@ -94,25 +94,25 @@ void shelf_factories_factory_init (ShelfFactoriesAbstractMain* main_class, Shelf
 	ShelfFactoriesAbstractMain* _tmp1_;
 	ShelfFactoriesItemFactory* _tmp2_;
 	ShelfFactoriesItemFactory* _tmp3_;
-#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/Factory.vala"
+#line 35 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/Factory.vala"
 	g_return_if_fail (main_class != NULL);
-#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/Factory.vala"
+#line 35 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/Factory.vala"
 	g_return_if_fail (item != NULL);
-#line 37 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/Factory.vala"
+#line 37 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/Factory.vala"
 	_tmp0_ = main_class;
-#line 37 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/Factory.vala"
+#line 37 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/Factory.vala"
 	_tmp1_ = _g_object_ref0 (_tmp0_);
-#line 37 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/Factory.vala"
+#line 37 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/Factory.vala"
 	_g_object_unref0 (shelf_factories_factory_main);
-#line 37 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/Factory.vala"
+#line 37 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/Factory.vala"
 	shelf_factories_factory_main = _tmp1_;
-#line 38 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/Factory.vala"
+#line 38 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/Factory.vala"
 	_tmp2_ = item;
-#line 38 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/Factory.vala"
+#line 38 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/Factory.vala"
 	_tmp3_ = _g_object_ref0 (_tmp2_);
-#line 38 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/Factory.vala"
+#line 38 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/Factory.vala"
 	_g_object_unref0 (shelf_factories_factory_item_factory);
-#line 38 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/Factory.vala"
+#line 38 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/Factory.vala"
 	shelf_factories_factory_item_factory = _tmp3_;
 #line 118 "Factory.c"
 }
@@ -120,25 +120,25 @@ void shelf_factories_factory_init (ShelfFactoriesAbstractMain* main_class, Shelf
 
 ShelfFactoriesFactory* shelf_factories_factory_construct (GType object_type) {
 	ShelfFactoriesFactory * self = NULL;
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/Factory.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/Factory.vala"
 	self = (ShelfFactoriesFactory*) g_object_new (object_type, NULL);
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/Factory.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/Factory.vala"
 	return self;
 #line 128 "Factory.c"
 }
 
 
 ShelfFactoriesFactory* shelf_factories_factory_new (void) {
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/Factory.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/Factory.vala"
 	return shelf_factories_factory_construct (SHELF_FACTORIES_TYPE_FACTORY);
 #line 135 "Factory.c"
 }
 
 
 static void shelf_factories_factory_class_init (ShelfFactoriesFactoryClass * klass) {
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/Factory.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/Factory.vala"
 	shelf_factories_factory_parent_class = g_type_class_peek_parent (klass);
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/Factory.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/Factory.vala"
 	G_OBJECT_CLASS (klass)->finalize = shelf_factories_factory_finalize;
 #line 144 "Factory.c"
 }
@@ -150,9 +150,9 @@ static void shelf_factories_factory_instance_init (ShelfFactoriesFactory * self)
 
 static void shelf_factories_factory_finalize (GObject* obj) {
 	ShelfFactoriesFactory * self;
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/Factory.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/Factory.vala"
 	self = G_TYPE_CHECK_INSTANCE_CAST (obj, SHELF_FACTORIES_TYPE_FACTORY, ShelfFactoriesFactory);
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/Factories/Factory.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Factories/Factory.vala"
 	G_OBJECT_CLASS (shelf_factories_factory_parent_class)->finalize (obj);
 #line 158 "Factory.c"
 }

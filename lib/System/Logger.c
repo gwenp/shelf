@@ -199,16 +199,16 @@ GType shelf_system_console_color_get_type (void) {
 
 static ShelfSystemLogger* shelf_system_logger_construct (GType object_type) {
 	ShelfSystemLogger * self = NULL;
-#line 99 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 99 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	self = (ShelfSystemLogger*) g_object_new (object_type, NULL);
-#line 99 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 99 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	return self;
 #line 207 "Logger.c"
 }
 
 
 static ShelfSystemLogger* shelf_system_logger_new (void) {
-#line 99 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 99 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	return shelf_system_logger_construct (SHELF_SYSTEM_TYPE_LOGGER);
 #line 214 "Logger.c"
 }
@@ -220,7 +220,7 @@ static ShelfSystemLogger* shelf_system_logger_new (void) {
  * @param app_name the name of the application
  */
 static void _shelf_system_logger_glib_log_func_glog_func (const gchar* log_domain, GLogLevelFlags log_levels, const gchar* message, gpointer self) {
-#line 117 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 117 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	shelf_system_logger_glib_log_func (log_domain, log_levels, message);
 #line 226 "Logger.c"
 }
@@ -232,64 +232,64 @@ void shelf_system_logger_initialize (const gchar* app_name) {
 	const gchar* _tmp2_;
 	GeeArrayList* _tmp3_;
 	GError * _inner_error_ = NULL;
-#line 108 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 108 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	g_return_if_fail (app_name != NULL);
-#line 110 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 110 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp0_ = shelf_system_logger_get_AppName ();
-#line 110 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 110 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp1_ = _tmp0_;
-#line 110 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 110 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp2_ = app_name;
-#line 110 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 110 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	shelf_system_logger_set_AppName (_tmp2_);
-#line 111 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 111 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	shelf_system_logger_is_writing = FALSE;
-#line 112 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 112 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp3_ = gee_array_list_new (SHELF_SYSTEM_LOGGER_TYPE_LOG_MESSAGE, (GBoxedCopyFunc) g_object_ref, g_object_unref, NULL);
-#line 112 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 112 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_g_object_unref0 (shelf_system_logger_log_queue);
-#line 112 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 112 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	shelf_system_logger_log_queue = _tmp3_;
 #line 254 "Logger.c"
 	{
 		GRegex* _tmp4_;
 		GRegex* _tmp5_;
-#line 114 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 114 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp4_ = g_regex_new ("[(]?.*?([^/]*?)(\\.2)?\\.vala(:\\d+)[)]?:\\s*(.*)", 0, 0, &_inner_error_);
-#line 114 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 114 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp5_ = _tmp4_;
-#line 114 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 114 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		if (_inner_error_ != NULL) {
 #line 264 "Logger.c"
 			goto __catch2_g_error;
 		}
-#line 114 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 114 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_g_regex_unref0 (shelf_system_logger_re);
-#line 114 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 114 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		shelf_system_logger_re = _tmp5_;
 #line 271 "Logger.c"
 	}
 	goto __finally2;
 	__catch2_g_error:
 	{
-#line 113 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 113 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		g_clear_error (&_inner_error_);
-#line 113 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 113 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_inner_error_ = NULL;
 #line 280 "Logger.c"
 	}
 	__finally2:
-#line 113 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 113 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	if (_inner_error_ != NULL) {
-#line 113 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 113 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		g_critical ("file %s: line %d: uncaught error: %s (%s, %d)", __FILE__, __LINE__, _inner_error_->message, g_quark_to_string (_inner_error_->domain), _inner_error_->code);
-#line 113 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 113 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		g_clear_error (&_inner_error_);
-#line 113 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 113 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		return;
 #line 291 "Logger.c"
 	}
-#line 117 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 117 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	g_log_set_default_handler (_shelf_system_logger_glib_log_func_glog_func, NULL);
 #line 295 "Logger.c"
 }
@@ -302,33 +302,33 @@ static gchar* shelf_system_logger_format_message (const gchar* msg) {
 	gboolean _tmp5_;
 	const gchar* _tmp17_;
 	gchar* _tmp18_;
-#line 120 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 120 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	g_return_val_if_fail (msg != NULL, NULL);
-#line 122 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 122 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp1_ = shelf_system_logger_re;
-#line 122 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 122 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	if (_tmp1_ != NULL) {
 #line 312 "Logger.c"
 		GRegex* _tmp2_;
 		const gchar* _tmp3_;
 		gboolean _tmp4_ = FALSE;
-#line 122 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 122 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp2_ = shelf_system_logger_re;
-#line 122 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 122 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp3_ = msg;
-#line 122 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 122 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp4_ = g_regex_match (_tmp2_, _tmp3_, 0, NULL);
-#line 122 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 122 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp0_ = _tmp4_;
 #line 324 "Logger.c"
 	} else {
-#line 122 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 122 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp0_ = FALSE;
 #line 328 "Logger.c"
 	}
-#line 122 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 122 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp5_ = _tmp0_;
-#line 122 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 122 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	if (_tmp5_) {
 #line 334 "Logger.c"
 		GRegex* _tmp6_;
@@ -348,53 +348,53 @@ static gchar* shelf_system_logger_format_message (const gchar* msg) {
 		gint _tmp14__length1;
 		const gchar* _tmp15_;
 		gchar* _tmp16_ = NULL;
-#line 123 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 123 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp6_ = shelf_system_logger_re;
-#line 123 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 123 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp7_ = msg;
-#line 123 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 123 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp9_ = _tmp8_ = g_regex_split (_tmp6_, _tmp7_, 0);
-#line 123 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 123 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		parts = _tmp9_;
-#line 123 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 123 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		parts_length1 = _vala_array_length (_tmp8_);
-#line 123 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 123 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_parts_size_ = parts_length1;
-#line 124 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 124 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp10_ = parts;
-#line 124 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 124 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp10__length1 = parts_length1;
-#line 124 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 124 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp11_ = _tmp10_[1];
-#line 124 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 124 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp12_ = parts;
-#line 124 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 124 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp12__length1 = parts_length1;
-#line 124 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 124 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp13_ = _tmp12_[3];
-#line 124 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 124 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp14_ = parts;
-#line 124 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 124 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp14__length1 = parts_length1;
-#line 124 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 124 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp15_ = _tmp14_[4];
-#line 124 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 124 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp16_ = g_strdup_printf ("[%s%s] %s", _tmp11_, _tmp13_, _tmp15_);
-#line 124 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 124 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		result = _tmp16_;
-#line 124 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 124 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		parts = (_vala_array_free (parts, parts_length1, (GDestroyNotify) g_free), NULL);
-#line 124 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 124 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		return result;
 #line 390 "Logger.c"
 	}
-#line 126 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 126 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp17_ = msg;
-#line 126 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 126 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp18_ = g_strdup (_tmp17_);
-#line 126 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 126 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	result = _tmp18_;
-#line 126 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 126 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	return result;
 #line 400 "Logger.c"
 }
@@ -410,19 +410,19 @@ void shelf_system_logger_notification (const gchar* msg, const gchar* icon) {
 	const gchar* _tmp0_;
 	gchar* _tmp1_ = NULL;
 	gchar* _tmp2_;
-#line 135 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 135 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	g_return_if_fail (msg != NULL);
-#line 135 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 135 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	g_return_if_fail (icon != NULL);
-#line 138 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 138 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp0_ = msg;
-#line 138 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 138 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp1_ = shelf_system_logger_format_message (_tmp0_);
-#line 138 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 138 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp2_ = _tmp1_;
-#line 138 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 138 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	shelf_system_logger_write (SHELF_SYSTEM_LOG_LEVEL_NOTIFY, _tmp2_);
-#line 138 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 138 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_g_free0 (_tmp2_);
 #line 428 "Logger.c"
 }
@@ -440,27 +440,27 @@ void shelf_system_logger_verbose (const gchar* msg, ...) {
 	gchar* _tmp2_;
 	gchar* _tmp3_ = NULL;
 	gchar* _tmp4_;
-#line 146 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 146 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	g_return_if_fail (msg != NULL);
-#line 149 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 149 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	va_start (vargs, msg);
-#line 150 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 150 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp0_ = msg;
-#line 150 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 150 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp1_ = g_strdup_vprintf (_tmp0_, vargs);
-#line 150 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 150 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp2_ = _tmp1_;
-#line 150 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 150 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp3_ = shelf_system_logger_format_message (_tmp2_);
-#line 150 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 150 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp4_ = _tmp3_;
-#line 150 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 150 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	shelf_system_logger_write (SHELF_SYSTEM_LOG_LEVEL_VERBOSE, _tmp4_);
-#line 150 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 150 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_g_free0 (_tmp4_);
-#line 150 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 150 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_g_free0 (_tmp2_);
-#line 146 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 146 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	va_end (vargs);
 #line 466 "Logger.c"
 }
@@ -475,32 +475,32 @@ static gchar* shelf_system_logger_get_time (void) {
 	gint _tmp3_ = 0;
 	gint _tmp4_ = 0;
 	gchar* _tmp5_ = NULL;
-#line 155 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 155 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp0_ = g_date_time_new_now_local ();
-#line 155 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 155 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	now = _tmp0_;
-#line 156 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 156 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp1_ = g_date_time_get_hour (now);
-#line 156 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 156 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp2_ = g_date_time_get_minute (now);
-#line 156 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 156 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp3_ = g_date_time_get_second (now);
-#line 156 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 156 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp4_ = g_date_time_get_microsecond (now);
-#line 156 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 156 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp5_ = g_strdup_printf ("%.2d:%.2d:%.2d.%.6d", _tmp1_, _tmp2_, _tmp3_, _tmp4_);
-#line 156 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 156 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	result = _tmp5_;
-#line 156 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 156 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_g_date_time_unref0 (now);
-#line 156 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 156 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	return result;
 #line 499 "Logger.c"
 }
 
 
 static gpointer _g_object_ref0 (gpointer self) {
-#line 171 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 171 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	return self ? g_object_ref (self) : NULL;
 #line 506 "Logger.c"
 }
@@ -512,30 +512,30 @@ static void shelf_system_logger_write (ShelfSystemLogLevel level, const gchar* m
 	ShelfSystemLogLevel _tmp2_;
 	gboolean _tmp3_;
 	GError * _inner_error_ = NULL;
-#line 159 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 159 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	g_return_if_fail (msg != NULL);
-#line 161 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 161 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp0_ = level;
-#line 161 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 161 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp1_ = shelf_system_logger_get_DisplayLevel ();
-#line 161 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 161 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp2_ = _tmp1_;
-#line 161 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 161 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	if (_tmp0_ < _tmp2_) {
-#line 162 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 162 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		return;
 #line 528 "Logger.c"
 	}
-#line 164 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 164 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp3_ = shelf_system_logger_is_writing;
-#line 164 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 164 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	if (_tmp3_) {
 #line 534 "Logger.c"
 		{
 			GObject* _tmp4_;
-#line 165 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 165 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_tmp4_ = shelf_system_logger_queue_lock;
-#line 165 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 165 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			g_rec_mutex_lock (&__lock_shelf_system_logger_queue_lock);
 #line 541 "Logger.c"
 			{
@@ -544,38 +544,38 @@ static void shelf_system_logger_write (ShelfSystemLogLevel level, const gchar* m
 				const gchar* _tmp7_;
 				ShelfSystemLoggerLogMessage* _tmp8_;
 				ShelfSystemLoggerLogMessage* _tmp9_;
-#line 166 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 166 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 				_tmp5_ = shelf_system_logger_log_queue;
-#line 166 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 166 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 				_tmp6_ = level;
-#line 166 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 166 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 				_tmp7_ = msg;
-#line 166 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 166 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 				_tmp8_ = shelf_system_logger_log_message_new (_tmp6_, _tmp7_);
-#line 166 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 166 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 				_tmp9_ = _tmp8_;
-#line 166 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 166 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 				gee_abstract_collection_add ((GeeAbstractCollection*) _tmp5_, _tmp9_);
-#line 166 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 166 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 				_g_object_unref0 (_tmp9_);
 #line 562 "Logger.c"
 			}
 			__finally3:
 			{
 				GObject* _tmp10_;
-#line 165 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 165 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 				_tmp10_ = shelf_system_logger_queue_lock;
-#line 165 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 165 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 				g_rec_mutex_unlock (&__lock_shelf_system_logger_queue_lock);
 #line 571 "Logger.c"
 			}
-#line 165 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 165 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			if (_inner_error_ != NULL) {
-#line 165 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 165 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 				g_critical ("file %s: line %d: uncaught error: %s (%s, %d)", __FILE__, __LINE__, _inner_error_->message, g_quark_to_string (_inner_error_->domain), _inner_error_->code);
-#line 165 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 165 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 				g_clear_error (&_inner_error_);
-#line 165 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 165 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 				return;
 #line 581 "Logger.c"
 			}
@@ -588,62 +588,62 @@ static void shelf_system_logger_write (ShelfSystemLogLevel level, const gchar* m
 		const gchar* _tmp32_;
 		ShelfSystemLoggerLogMessage* _tmp33_;
 		ShelfSystemLoggerLogMessage* _tmp34_;
-#line 168 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 168 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		shelf_system_logger_is_writing = TRUE;
-#line 170 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 170 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp11_ = shelf_system_logger_log_queue;
-#line 170 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 170 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp12_ = gee_abstract_collection_get_size ((GeeCollection*) _tmp11_);
-#line 170 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 170 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp13_ = _tmp12_;
-#line 170 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 170 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		if (_tmp13_ > 0) {
 #line 602 "Logger.c"
 			GeeArrayList* _tmp14_;
 			GeeArrayList* _tmp15_;
 			GeeArrayList* logs;
-#line 171 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 171 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_tmp14_ = shelf_system_logger_log_queue;
-#line 171 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 171 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_tmp15_ = _g_object_ref0 (_tmp14_);
-#line 171 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 171 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			logs = _tmp15_;
 #line 612 "Logger.c"
 			{
 				GObject* _tmp16_;
-#line 172 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 172 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 				_tmp16_ = shelf_system_logger_queue_lock;
-#line 172 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 172 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 				g_rec_mutex_lock (&__lock_shelf_system_logger_queue_lock);
 #line 619 "Logger.c"
 				{
 					GeeArrayList* _tmp17_;
-#line 173 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 173 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 					_tmp17_ = gee_array_list_new (SHELF_SYSTEM_LOGGER_TYPE_LOG_MESSAGE, (GBoxedCopyFunc) g_object_ref, g_object_unref, NULL);
-#line 173 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 173 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 					_g_object_unref0 (shelf_system_logger_log_queue);
-#line 173 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 173 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 					shelf_system_logger_log_queue = _tmp17_;
 #line 628 "Logger.c"
 				}
 				__finally4:
 				{
 					GObject* _tmp18_;
-#line 172 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 172 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 					_tmp18_ = shelf_system_logger_queue_lock;
-#line 172 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 172 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 					g_rec_mutex_unlock (&__lock_shelf_system_logger_queue_lock);
 #line 637 "Logger.c"
 				}
-#line 172 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 172 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 				if (_inner_error_ != NULL) {
-#line 172 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 172 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 					_g_object_unref0 (logs);
-#line 172 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 172 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 					g_critical ("file %s: line %d: uncaught error: %s (%s, %d)", __FILE__, __LINE__, _inner_error_->message, g_quark_to_string (_inner_error_->domain), _inner_error_->code);
-#line 172 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 172 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 					g_clear_error (&_inner_error_);
-#line 172 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 172 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 					return;
 #line 649 "Logger.c"
 				}
@@ -657,23 +657,23 @@ static void shelf_system_logger_write (ShelfSystemLogLevel level, const gchar* m
 				gint _tmp23_;
 				gint _log_size;
 				gint _log_index;
-#line 175 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 175 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 				_tmp19_ = logs;
-#line 175 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 175 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 				_tmp20_ = _g_object_ref0 (_tmp19_);
-#line 175 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 175 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 				_log_list = _tmp20_;
-#line 175 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 175 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 				_tmp21_ = _log_list;
-#line 175 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 175 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 				_tmp22_ = gee_abstract_collection_get_size ((GeeCollection*) _tmp21_);
-#line 175 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 175 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 				_tmp23_ = _tmp22_;
-#line 175 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 175 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 				_log_size = _tmp23_;
-#line 175 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 175 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 				_log_index = -1;
-#line 175 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 175 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 				while (TRUE) {
 #line 679 "Logger.c"
 					gint _tmp24_;
@@ -684,57 +684,57 @@ static void shelf_system_logger_write (ShelfSystemLogLevel level, const gchar* m
 					gpointer _tmp29_ = NULL;
 					ShelfSystemLoggerLogMessage* log;
 					ShelfSystemLoggerLogMessage* _tmp30_;
-#line 175 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 175 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 					_tmp24_ = _log_index;
-#line 175 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 175 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 					_log_index = _tmp24_ + 1;
-#line 175 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 175 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 					_tmp25_ = _log_index;
-#line 175 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 175 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 					_tmp26_ = _log_size;
-#line 175 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 175 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 					if (!(_tmp25_ < _tmp26_)) {
-#line 175 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 175 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 						break;
 #line 700 "Logger.c"
 					}
-#line 175 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 175 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 					_tmp27_ = _log_list;
-#line 175 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 175 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 					_tmp28_ = _log_index;
-#line 175 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 175 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 					_tmp29_ = gee_abstract_list_get ((GeeAbstractList*) _tmp27_, _tmp28_);
-#line 175 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 175 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 					log = (ShelfSystemLoggerLogMessage*) _tmp29_;
-#line 176 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 176 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 					_tmp30_ = log;
-#line 176 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 176 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 					shelf_system_logger_print_log (_tmp30_);
-#line 175 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 175 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 					_g_object_unref0 (log);
 #line 716 "Logger.c"
 				}
-#line 175 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 175 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 				_g_object_unref0 (_log_list);
 #line 720 "Logger.c"
 			}
-#line 170 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 170 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_g_object_unref0 (logs);
 #line 724 "Logger.c"
 		}
-#line 179 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 179 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp31_ = level;
-#line 179 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 179 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp32_ = msg;
-#line 179 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 179 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp33_ = shelf_system_logger_log_message_new (_tmp31_, _tmp32_);
-#line 179 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 179 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp34_ = _tmp33_;
-#line 179 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 179 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		shelf_system_logger_print_log (_tmp34_);
-#line 179 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 179 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_g_object_unref0 (_tmp34_);
-#line 181 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 181 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		shelf_system_logger_is_writing = FALSE;
 #line 740 "Logger.c"
 	}
@@ -929,51 +929,51 @@ static void shelf_system_logger_print_log (ShelfSystemLoggerLogMessage* log) {
 	ShelfSystemLoggerLogMessage* _tmp13_;
 	const gchar* _tmp14_;
 	const gchar* _tmp15_;
-#line 185 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 185 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	g_return_if_fail (log != NULL);
-#line 187 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 187 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp0_ = log;
-#line 187 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 187 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp1_ = shelf_system_logger_log_message_get_Level (_tmp0_);
-#line 187 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 187 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp2_ = _tmp1_;
-#line 187 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 187 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	shelf_system_logger_set_color_for_level (_tmp2_);
-#line 188 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 188 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp3_ = stdout;
-#line 188 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 188 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp4_ = log;
-#line 188 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 188 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp5_ = shelf_system_logger_log_message_get_Level (_tmp4_);
-#line 188 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 188 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp6_ = _tmp5_;
-#line 188 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 188 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp7_ = g_enum_get_value (g_type_class_ref (SHELF_SYSTEM_TYPE_LOG_LEVEL), _tmp6_);
-#line 188 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 188 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp8_ = string_substring ((_tmp7_ != NULL) ? _tmp7_->value_name : NULL, (glong) 25, (glong) (-1));
-#line 188 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 188 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp9_ = _tmp8_;
-#line 188 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 188 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp10_ = shelf_system_logger_get_time ();
-#line 188 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 188 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp11_ = _tmp10_;
-#line 188 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 188 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	fprintf (_tmp3_, "[%s %s]", _tmp9_, _tmp11_);
-#line 188 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 188 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_g_free0 (_tmp11_);
-#line 188 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 188 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_g_free0 (_tmp9_);
-#line 190 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 190 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	shelf_system_logger_reset_color ();
-#line 191 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 191 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp12_ = stdout;
-#line 191 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 191 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp13_ = log;
-#line 191 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 191 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp14_ = shelf_system_logger_log_message_get_Message (_tmp13_);
-#line 191 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 191 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp15_ = _tmp14_;
-#line 191 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 191 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	fprintf (_tmp12_, " %s\n", _tmp15_);
 #line 979 "Logger.c"
 }
@@ -981,80 +981,80 @@ static void shelf_system_logger_print_log (ShelfSystemLoggerLogMessage* log) {
 
 static void shelf_system_logger_set_color_for_level (ShelfSystemLogLevel level) {
 	ShelfSystemLogLevel _tmp0_;
-#line 196 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 196 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp0_ = level;
-#line 196 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 196 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	switch (_tmp0_) {
-#line 196 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 196 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		case SHELF_SYSTEM_LOG_LEVEL_VERBOSE:
 #line 991 "Logger.c"
 		{
-#line 198 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 198 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			shelf_system_logger_set_foreground (SHELF_SYSTEM_CONSOLE_COLOR_CYAN);
-#line 199 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 199 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			break;
 #line 997 "Logger.c"
 		}
-#line 196 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 196 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		case SHELF_SYSTEM_LOG_LEVEL_DEBUG:
 #line 1001 "Logger.c"
 		{
-#line 201 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 201 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			shelf_system_logger_set_foreground (SHELF_SYSTEM_CONSOLE_COLOR_GREEN);
-#line 202 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 202 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			break;
 #line 1007 "Logger.c"
 		}
-#line 196 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 196 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		case SHELF_SYSTEM_LOG_LEVEL_INFO:
 #line 1011 "Logger.c"
 		{
-#line 204 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 204 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			shelf_system_logger_set_foreground (SHELF_SYSTEM_CONSOLE_COLOR_BLUE);
-#line 205 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 205 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			break;
 #line 1017 "Logger.c"
 		}
-#line 196 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 196 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		case SHELF_SYSTEM_LOG_LEVEL_NOTIFY:
 #line 1021 "Logger.c"
 		{
-#line 207 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 207 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			shelf_system_logger_set_foreground (SHELF_SYSTEM_CONSOLE_COLOR_MAGENTA);
-#line 208 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 208 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			break;
 #line 1027 "Logger.c"
 		}
 		default:
-#line 196 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 196 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		case SHELF_SYSTEM_LOG_LEVEL_WARN:
 #line 1032 "Logger.c"
 		{
-#line 211 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 211 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			shelf_system_logger_set_foreground (SHELF_SYSTEM_CONSOLE_COLOR_YELLOW);
-#line 212 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 212 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			break;
 #line 1038 "Logger.c"
 		}
-#line 196 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 196 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		case SHELF_SYSTEM_LOG_LEVEL_ERROR:
 #line 1042 "Logger.c"
 		{
-#line 214 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 214 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			shelf_system_logger_set_foreground (SHELF_SYSTEM_CONSOLE_COLOR_RED);
-#line 215 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 215 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			break;
 #line 1048 "Logger.c"
 		}
-#line 196 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 196 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		case SHELF_SYSTEM_LOG_LEVEL_FATAL:
 #line 1052 "Logger.c"
 		{
-#line 217 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 217 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			shelf_system_logger_set_background (SHELF_SYSTEM_CONSOLE_COLOR_RED);
-#line 218 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 218 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			shelf_system_logger_set_foreground (SHELF_SYSTEM_CONSOLE_COLOR_WHITE);
-#line 219 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 219 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			break;
 #line 1060 "Logger.c"
 		}
@@ -1064,9 +1064,9 @@ static void shelf_system_logger_set_color_for_level (ShelfSystemLogLevel level) 
 
 static void shelf_system_logger_reset_color (void) {
 	FILE* _tmp0_;
-#line 225 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 225 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp0_ = stdout;
-#line 225 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 225 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	fprintf (_tmp0_, "\x001b[0m");
 #line 1072 "Logger.c"
 }
@@ -1074,9 +1074,9 @@ static void shelf_system_logger_reset_color (void) {
 
 static void shelf_system_logger_set_foreground (ShelfSystemConsoleColor color) {
 	ShelfSystemConsoleColor _tmp0_;
-#line 230 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 230 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp0_ = color;
-#line 230 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 230 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	shelf_system_logger_set_color (_tmp0_, TRUE);
 #line 1082 "Logger.c"
 }
@@ -1084,9 +1084,9 @@ static void shelf_system_logger_set_foreground (ShelfSystemConsoleColor color) {
 
 static void shelf_system_logger_set_background (ShelfSystemConsoleColor color) {
 	ShelfSystemConsoleColor _tmp0_;
-#line 235 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 235 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp0_ = color;
-#line 235 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 235 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	shelf_system_logger_set_color (_tmp0_, FALSE);
 #line 1092 "Logger.c"
 }
@@ -1098,27 +1098,27 @@ static void shelf_system_logger_set_color (ShelfSystemConsoleColor color, gboole
 	gboolean _tmp1_;
 	FILE* _tmp3_;
 	ShelfSystemConsoleColor _tmp4_;
-#line 240 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 240 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp0_ = color;
-#line 240 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 240 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	color_code = (_tmp0_ + 30) + 60;
-#line 241 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 241 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp1_ = isForeground;
-#line 241 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 241 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	if (!_tmp1_) {
 #line 1110 "Logger.c"
 		ShelfSystemConsoleColor _tmp2_;
-#line 242 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 242 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp2_ = color_code;
-#line 242 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 242 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		color_code = _tmp2_ + 10;
 #line 1116 "Logger.c"
 	}
-#line 243 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 243 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp3_ = stdout;
-#line 243 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 243 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp4_ = color_code;
-#line 243 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 243 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	fprintf (_tmp3_, "\x001b[%dm", (gint) _tmp4_);
 #line 1124 "Logger.c"
 }
@@ -1251,15 +1251,15 @@ static void shelf_system_logger_glib_log_func (const gchar* d, GLogLevelFlags fl
 	const gchar* _tmp15_;
 	gchar* _tmp16_ = NULL;
 	GLogLevelFlags _tmp17_;
-#line 246 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 246 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	g_return_if_fail (msg != NULL);
-#line 248 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 248 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp0_ = g_strdup ("");
-#line 248 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 248 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	domain = _tmp0_;
-#line 249 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 249 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp1_ = d;
-#line 249 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 249 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	if (_tmp1_ != NULL) {
 #line 1265 "Logger.c"
 		const gchar* _tmp2_;
@@ -1268,67 +1268,67 @@ static void shelf_system_logger_glib_log_func (const gchar* d, GLogLevelFlags fl
 		const gchar* _tmp5_;
 		const gchar* _tmp7_;
 		gchar* _tmp8_ = NULL;
-#line 250 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 250 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp2_ = d;
-#line 250 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 250 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp3_ = g_strdup (_tmp2_);
-#line 250 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 250 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp4_ = _tmp3_;
-#line 250 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 250 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp5_ = _tmp4_;
-#line 250 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 250 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		if (_tmp5_ == NULL) {
 #line 1282 "Logger.c"
 			gchar* _tmp6_;
-#line 250 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 250 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_tmp6_ = g_strdup ("");
-#line 250 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 250 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_g_free0 (_tmp4_);
-#line 250 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 250 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_tmp4_ = _tmp6_;
 #line 1290 "Logger.c"
 		}
-#line 250 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 250 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp7_ = _tmp4_;
-#line 250 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 250 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_tmp8_ = g_strdup_printf ("[%s] ", _tmp7_);
-#line 250 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 250 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_g_free0 (domain);
-#line 250 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 250 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		domain = _tmp8_;
-#line 249 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 249 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		_g_free0 (_tmp4_);
 #line 1302 "Logger.c"
 	}
-#line 252 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 252 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp9_ = msg;
-#line 252 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 252 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp10_ = string_replace (_tmp9_, "\n", "");
-#line 252 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 252 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp11_ = _tmp10_;
-#line 252 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 252 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp12_ = string_replace (_tmp11_, "\r", "");
-#line 252 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 252 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp13_ = _tmp12_;
-#line 252 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 252 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_g_free0 (_tmp11_);
-#line 252 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 252 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	message = _tmp13_;
-#line 253 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 253 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp14_ = domain;
-#line 253 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 253 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp15_ = message;
-#line 253 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 253 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp16_ = g_strdup_printf ("%s%s", _tmp14_, _tmp15_);
-#line 253 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 253 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_g_free0 (message);
-#line 253 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 253 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	message = _tmp16_;
-#line 255 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 255 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp17_ = flags;
-#line 255 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 255 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	switch (_tmp17_) {
-#line 255 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 255 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		case G_LOG_LEVEL_CRITICAL:
 #line 1334 "Logger.c"
 		{
@@ -1341,129 +1341,129 @@ static void shelf_system_logger_glib_log_func (const gchar* d, GLogLevelFlags fl
 			gchar* _tmp24_;
 			gchar* _tmp25_ = NULL;
 			gchar* _tmp26_;
-#line 257 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 257 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_tmp18_ = message;
-#line 257 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 257 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_tmp19_ = shelf_system_logger_format_message (_tmp18_);
-#line 257 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 257 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_tmp20_ = _tmp19_;
-#line 257 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 257 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			shelf_system_logger_write (SHELF_SYSTEM_LOG_LEVEL_FATAL, _tmp20_);
-#line 257 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 257 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_g_free0 (_tmp20_);
-#line 258 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 258 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_tmp21_ = shelf_system_logger_get_AppName ();
-#line 258 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 258 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_tmp22_ = _tmp21_;
-#line 258 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 258 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_tmp23_ = g_strconcat (_tmp22_, " will not function properly.", NULL);
-#line 258 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 258 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_tmp24_ = _tmp23_;
-#line 258 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 258 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_tmp25_ = shelf_system_logger_format_message (_tmp24_);
-#line 258 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 258 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_tmp26_ = _tmp25_;
-#line 258 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 258 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			shelf_system_logger_write (SHELF_SYSTEM_LOG_LEVEL_FATAL, _tmp26_);
-#line 258 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 258 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_g_free0 (_tmp26_);
-#line 258 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 258 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_g_free0 (_tmp24_);
-#line 259 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 259 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			break;
 #line 1375 "Logger.c"
 		}
-#line 255 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 255 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		case G_LOG_LEVEL_ERROR:
 #line 1379 "Logger.c"
 		{
 			const gchar* _tmp27_;
 			gchar* _tmp28_ = NULL;
 			gchar* _tmp29_;
-#line 262 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 262 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_tmp27_ = message;
-#line 262 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 262 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_tmp28_ = shelf_system_logger_format_message (_tmp27_);
-#line 262 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 262 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_tmp29_ = _tmp28_;
-#line 262 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 262 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			shelf_system_logger_write (SHELF_SYSTEM_LOG_LEVEL_ERROR, _tmp29_);
-#line 262 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 262 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_g_free0 (_tmp29_);
-#line 263 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 263 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			break;
 #line 1396 "Logger.c"
 		}
-#line 255 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 255 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		case G_LOG_LEVEL_INFO:
-#line 255 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 255 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		case G_LOG_LEVEL_MESSAGE:
 #line 1402 "Logger.c"
 		{
 			const gchar* _tmp30_;
 			gchar* _tmp31_ = NULL;
 			gchar* _tmp32_;
-#line 267 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 267 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_tmp30_ = message;
-#line 267 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 267 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_tmp31_ = shelf_system_logger_format_message (_tmp30_);
-#line 267 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 267 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_tmp32_ = _tmp31_;
-#line 267 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 267 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			shelf_system_logger_write (SHELF_SYSTEM_LOG_LEVEL_INFO, _tmp32_);
-#line 267 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 267 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_g_free0 (_tmp32_);
-#line 268 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 268 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			break;
 #line 1419 "Logger.c"
 		}
-#line 255 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 255 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		case G_LOG_LEVEL_DEBUG:
 #line 1423 "Logger.c"
 		{
 			const gchar* _tmp33_;
 			gchar* _tmp34_ = NULL;
 			gchar* _tmp35_;
-#line 271 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 271 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_tmp33_ = message;
-#line 271 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 271 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_tmp34_ = shelf_system_logger_format_message (_tmp33_);
-#line 271 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 271 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_tmp35_ = _tmp34_;
-#line 271 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 271 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			shelf_system_logger_write (SHELF_SYSTEM_LOG_LEVEL_DEBUG, _tmp35_);
-#line 271 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 271 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_g_free0 (_tmp35_);
-#line 272 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 272 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			break;
 #line 1440 "Logger.c"
 		}
 		default:
-#line 255 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 255 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		case G_LOG_LEVEL_WARNING:
 #line 1445 "Logger.c"
 		{
 			const gchar* _tmp36_;
 			gchar* _tmp37_ = NULL;
 			gchar* _tmp38_;
-#line 276 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 276 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_tmp36_ = message;
-#line 276 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 276 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_tmp37_ = shelf_system_logger_format_message (_tmp36_);
-#line 276 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 276 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_tmp38_ = _tmp37_;
-#line 276 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 276 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			shelf_system_logger_write (SHELF_SYSTEM_LOG_LEVEL_WARN, _tmp38_);
-#line 276 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 276 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			_g_free0 (_tmp38_);
-#line 277 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 277 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 			break;
 #line 1462 "Logger.c"
 		}
 	}
-#line 246 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 246 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_g_free0 (message);
-#line 246 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 246 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_g_free0 (domain);
 #line 1469 "Logger.c"
 }
@@ -1472,11 +1472,11 @@ static void shelf_system_logger_glib_log_func (const gchar* d, GLogLevelFlags fl
 ShelfSystemLogLevel shelf_system_logger_get_DisplayLevel (void) {
 	ShelfSystemLogLevel result;
 	ShelfSystemLogLevel _tmp0_;
-#line 88 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 88 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp0_ = shelf_system_logger__DisplayLevel;
-#line 88 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 88 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	result = _tmp0_;
-#line 88 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 88 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	return result;
 #line 1482 "Logger.c"
 }
@@ -1484,9 +1484,9 @@ ShelfSystemLogLevel shelf_system_logger_get_DisplayLevel (void) {
 
 void shelf_system_logger_set_DisplayLevel (ShelfSystemLogLevel value) {
 	ShelfSystemLogLevel _tmp0_;
-#line 88 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 88 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp0_ = value;
-#line 88 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 88 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	shelf_system_logger__DisplayLevel = _tmp0_;
 #line 1492 "Logger.c"
 }
@@ -1495,11 +1495,11 @@ void shelf_system_logger_set_DisplayLevel (ShelfSystemLogLevel value) {
 static const gchar* shelf_system_logger_get_AppName (void) {
 	const gchar* result;
 	const gchar* _tmp0_;
-#line 90 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 90 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp0_ = shelf_system_logger__AppName;
-#line 90 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 90 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	result = _tmp0_;
-#line 90 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 90 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	return result;
 #line 1505 "Logger.c"
 }
@@ -1508,13 +1508,13 @@ static const gchar* shelf_system_logger_get_AppName (void) {
 static void shelf_system_logger_set_AppName (const gchar* value) {
 	const gchar* _tmp0_;
 	gchar* _tmp1_;
-#line 90 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 90 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp0_ = value;
-#line 90 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 90 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp1_ = g_strdup (_tmp0_);
-#line 90 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 90 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_g_free0 (shelf_system_logger__AppName);
-#line 90 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 90 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	shelf_system_logger__AppName = _tmp1_;
 #line 1520 "Logger.c"
 }
@@ -1524,22 +1524,22 @@ static ShelfSystemLoggerLogMessage* shelf_system_logger_log_message_construct (G
 	ShelfSystemLoggerLogMessage * self = NULL;
 	ShelfSystemLogLevel _tmp0_;
 	const gchar* _tmp1_;
-#line 79 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 79 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	g_return_val_if_fail (message != NULL, NULL);
-#line 81 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 81 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp0_ = level;
-#line 81 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 81 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp1_ = message;
-#line 81 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 81 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	self = (ShelfSystemLoggerLogMessage*) g_object_new (object_type, "Level", _tmp0_, "Message", _tmp1_, NULL);
-#line 79 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 79 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	return self;
 #line 1538 "Logger.c"
 }
 
 
 static ShelfSystemLoggerLogMessage* shelf_system_logger_log_message_new (ShelfSystemLogLevel level, const gchar* message) {
-#line 79 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 79 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	return shelf_system_logger_log_message_construct (SHELF_SYSTEM_LOGGER_TYPE_LOG_MESSAGE, level, message);
 #line 1545 "Logger.c"
 }
@@ -1548,13 +1548,13 @@ static ShelfSystemLoggerLogMessage* shelf_system_logger_log_message_new (ShelfSy
 static ShelfSystemLogLevel shelf_system_logger_log_message_get_Level (ShelfSystemLoggerLogMessage* self) {
 	ShelfSystemLogLevel result;
 	ShelfSystemLogLevel _tmp0_;
-#line 76 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 76 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	g_return_val_if_fail (self != NULL, 0);
-#line 76 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 76 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp0_ = self->priv->_Level;
-#line 76 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 76 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	result = _tmp0_;
-#line 76 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 76 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	return result;
 #line 1560 "Logger.c"
 }
@@ -1562,13 +1562,13 @@ static ShelfSystemLogLevel shelf_system_logger_log_message_get_Level (ShelfSyste
 
 static void shelf_system_logger_log_message_set_Level (ShelfSystemLoggerLogMessage* self, ShelfSystemLogLevel value) {
 	ShelfSystemLogLevel _tmp0_;
-#line 76 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 76 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	g_return_if_fail (self != NULL);
-#line 76 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 76 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp0_ = value;
-#line 76 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 76 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	self->priv->_Level = _tmp0_;
-#line 76 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 76 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	g_object_notify ((GObject *) self, "Level");
 #line 1574 "Logger.c"
 }
@@ -1577,13 +1577,13 @@ static void shelf_system_logger_log_message_set_Level (ShelfSystemLoggerLogMessa
 static const gchar* shelf_system_logger_log_message_get_Message (ShelfSystemLoggerLogMessage* self) {
 	const gchar* result;
 	const gchar* _tmp0_;
-#line 77 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 77 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	g_return_val_if_fail (self != NULL, NULL);
-#line 77 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 77 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp0_ = self->priv->_Message;
-#line 77 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 77 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	result = _tmp0_;
-#line 77 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 77 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	return result;
 #line 1589 "Logger.c"
 }
@@ -1592,43 +1592,43 @@ static const gchar* shelf_system_logger_log_message_get_Message (ShelfSystemLogg
 static void shelf_system_logger_log_message_set_Message (ShelfSystemLoggerLogMessage* self, const gchar* value) {
 	const gchar* _tmp0_;
 	gchar* _tmp1_;
-#line 77 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 77 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	g_return_if_fail (self != NULL);
-#line 77 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 77 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp0_ = value;
-#line 77 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 77 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_tmp1_ = g_strdup (_tmp0_);
-#line 77 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 77 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_g_free0 (self->priv->_Message);
-#line 77 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 77 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	self->priv->_Message = _tmp1_;
-#line 77 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 77 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	g_object_notify ((GObject *) self, "Message");
 #line 1608 "Logger.c"
 }
 
 
 static void shelf_system_logger_log_message_class_init (ShelfSystemLoggerLogMessageClass * klass) {
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	shelf_system_logger_log_message_parent_class = g_type_class_peek_parent (klass);
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	g_type_class_add_private (klass, sizeof (ShelfSystemLoggerLogMessagePrivate));
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	G_OBJECT_CLASS (klass)->get_property = _vala_shelf_system_logger_log_message_get_property;
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	G_OBJECT_CLASS (klass)->set_property = _vala_shelf_system_logger_log_message_set_property;
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	G_OBJECT_CLASS (klass)->finalize = shelf_system_logger_log_message_finalize;
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	g_object_class_install_property (G_OBJECT_CLASS (klass), SHELF_SYSTEM_LOGGER_LOG_MESSAGE_LEVEL, g_param_spec_enum ("Level", "Level", "Level", SHELF_SYSTEM_TYPE_LOG_LEVEL, 0, G_PARAM_STATIC_NAME | G_PARAM_STATIC_NICK | G_PARAM_STATIC_BLURB | G_PARAM_READABLE | G_PARAM_WRITABLE | G_PARAM_CONSTRUCT_ONLY));
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	g_object_class_install_property (G_OBJECT_CLASS (klass), SHELF_SYSTEM_LOGGER_LOG_MESSAGE_MESSAGE, g_param_spec_string ("Message", "Message", "Message", NULL, G_PARAM_STATIC_NAME | G_PARAM_STATIC_NICK | G_PARAM_STATIC_BLURB | G_PARAM_READABLE | G_PARAM_WRITABLE | G_PARAM_CONSTRUCT_ONLY));
 #line 1627 "Logger.c"
 }
 
 
 static void shelf_system_logger_log_message_instance_init (ShelfSystemLoggerLogMessage * self) {
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	self->priv = SHELF_SYSTEM_LOGGER_LOG_MESSAGE_GET_PRIVATE (self);
 #line 1634 "Logger.c"
 }
@@ -1636,11 +1636,11 @@ static void shelf_system_logger_log_message_instance_init (ShelfSystemLoggerLogM
 
 static void shelf_system_logger_log_message_finalize (GObject* obj) {
 	ShelfSystemLoggerLogMessage * self;
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	self = G_TYPE_CHECK_INSTANCE_CAST (obj, SHELF_SYSTEM_LOGGER_TYPE_LOG_MESSAGE, ShelfSystemLoggerLogMessage);
-#line 77 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 77 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	_g_free0 (self->priv->_Message);
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	G_OBJECT_CLASS (shelf_system_logger_log_message_parent_class)->finalize (obj);
 #line 1646 "Logger.c"
 }
@@ -1661,25 +1661,25 @@ static GType shelf_system_logger_log_message_get_type (void) {
 static void _vala_shelf_system_logger_log_message_get_property (GObject * object, guint property_id, GValue * value, GParamSpec * pspec) {
 	ShelfSystemLoggerLogMessage * self;
 	self = G_TYPE_CHECK_INSTANCE_CAST (object, SHELF_SYSTEM_LOGGER_TYPE_LOG_MESSAGE, ShelfSystemLoggerLogMessage);
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	switch (property_id) {
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		case SHELF_SYSTEM_LOGGER_LOG_MESSAGE_LEVEL:
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		g_value_set_enum (value, shelf_system_logger_log_message_get_Level (self));
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		break;
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		case SHELF_SYSTEM_LOGGER_LOG_MESSAGE_MESSAGE:
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		g_value_set_string (value, shelf_system_logger_log_message_get_Message (self));
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		break;
 #line 1679 "Logger.c"
 		default:
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		break;
 #line 1685 "Logger.c"
 	}
@@ -1689,25 +1689,25 @@ static void _vala_shelf_system_logger_log_message_get_property (GObject * object
 static void _vala_shelf_system_logger_log_message_set_property (GObject * object, guint property_id, const GValue * value, GParamSpec * pspec) {
 	ShelfSystemLoggerLogMessage * self;
 	self = G_TYPE_CHECK_INSTANCE_CAST (object, SHELF_SYSTEM_LOGGER_TYPE_LOG_MESSAGE, ShelfSystemLoggerLogMessage);
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	switch (property_id) {
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		case SHELF_SYSTEM_LOGGER_LOG_MESSAGE_LEVEL:
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		shelf_system_logger_log_message_set_Level (self, g_value_get_enum (value));
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		break;
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		case SHELF_SYSTEM_LOGGER_LOG_MESSAGE_MESSAGE:
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		shelf_system_logger_log_message_set_Message (self, g_value_get_string (value));
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		break;
 #line 1707 "Logger.c"
 		default:
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		break;
 #line 1713 "Logger.c"
 	}
@@ -1715,15 +1715,15 @@ static void _vala_shelf_system_logger_log_message_set_property (GObject * object
 
 
 static void shelf_system_logger_class_init (ShelfSystemLoggerClass * klass) {
-#line 72 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 72 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	shelf_system_logger_parent_class = g_type_class_peek_parent (klass);
-#line 72 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 72 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	G_OBJECT_CLASS (klass)->get_property = _vala_shelf_system_logger_get_property;
-#line 72 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 72 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	G_OBJECT_CLASS (klass)->set_property = _vala_shelf_system_logger_set_property;
-#line 72 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 72 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	G_OBJECT_CLASS (klass)->finalize = shelf_system_logger_finalize;
-#line 92 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 92 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	g_rec_mutex_init (&__lock_shelf_system_logger_queue_lock);
 #line 1729 "Logger.c"
 }
@@ -1735,9 +1735,9 @@ static void shelf_system_logger_instance_init (ShelfSystemLogger * self) {
 
 static void shelf_system_logger_finalize (GObject* obj) {
 	ShelfSystemLogger * self;
-#line 72 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 72 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	self = G_TYPE_CHECK_INSTANCE_CAST (obj, SHELF_SYSTEM_TYPE_LOGGER, ShelfSystemLogger);
-#line 72 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 72 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	G_OBJECT_CLASS (shelf_system_logger_parent_class)->finalize (obj);
 #line 1743 "Logger.c"
 }
@@ -1761,13 +1761,13 @@ GType shelf_system_logger_get_type (void) {
 static void _vala_shelf_system_logger_get_property (GObject * object, guint property_id, GValue * value, GParamSpec * pspec) {
 	ShelfSystemLogger * self;
 	self = G_TYPE_CHECK_INSTANCE_CAST (object, SHELF_SYSTEM_TYPE_LOGGER, ShelfSystemLogger);
-#line 72 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 72 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	switch (property_id) {
 #line 1767 "Logger.c"
 		default:
-#line 72 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 72 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-#line 72 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 72 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		break;
 #line 1773 "Logger.c"
 	}
@@ -1777,13 +1777,13 @@ static void _vala_shelf_system_logger_get_property (GObject * object, guint prop
 static void _vala_shelf_system_logger_set_property (GObject * object, guint property_id, const GValue * value, GParamSpec * pspec) {
 	ShelfSystemLogger * self;
 	self = G_TYPE_CHECK_INSTANCE_CAST (object, SHELF_SYSTEM_TYPE_LOGGER, ShelfSystemLogger);
-#line 72 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 72 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 	switch (property_id) {
 #line 1783 "Logger.c"
 		default:
-#line 72 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 72 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-#line 72 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/Logger.vala"
+#line 72 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/Logger.vala"
 		break;
 #line 1789 "Logger.c"
 	}

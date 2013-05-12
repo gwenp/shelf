@@ -143,20 +143,20 @@ static void _vala_shelf_system_dock_position_manager_set_property (GObject * obj
 ShelfSystemDockPositionManager* shelf_system_dock_position_manager_construct (GType object_type, ShelfDockController* controller) {
 	ShelfSystemDockPositionManager * self = NULL;
 	ShelfDockController* _tmp0_;
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 33 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	g_return_val_if_fail (controller != NULL, NULL);
-#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 35 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	_tmp0_ = controller;
-#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 35 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	self = (ShelfSystemDockPositionManager*) g_object_new (object_type, "controller", _tmp0_, NULL);
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 33 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	return self;
 #line 155 "DockPositionManager.c"
 }
 
 
 ShelfSystemDockPositionManager* shelf_system_dock_position_manager_new (ShelfDockController* controller) {
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 33 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	return shelf_system_dock_position_manager_construct (SHELF_SYSTEM_TYPE_DOCK_POSITION_MANAGER, controller);
 #line 162 "DockPositionManager.c"
 }
@@ -165,13 +165,13 @@ ShelfSystemDockPositionManager* shelf_system_dock_position_manager_new (ShelfDoc
 void shelf_system_dock_position_manager_initialize (ShelfSystemDockPositionManager* self) {
 	ShelfDockController* _tmp0_;
 	ShelfWidgetsDockWindow* _tmp1_;
-#line 46 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 46 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	g_return_if_fail (self != NULL);
-#line 48 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 48 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	_tmp0_ = self->priv->_controller;
-#line 48 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 48 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	_tmp1_ = _tmp0_->window;
-#line 48 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 48 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	gtk_window_move ((GtkWindow*) _tmp1_, 100, 100);
 #line 177 "DockPositionManager.c"
 }
@@ -180,20 +180,20 @@ void shelf_system_dock_position_manager_initialize (ShelfSystemDockPositionManag
 static ShelfDockController* shelf_system_dock_position_manager_get_controller (ShelfSystemDockPositionManager* self) {
 	ShelfDockController* result;
 	ShelfDockController* _tmp0_;
-#line 28 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 28 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	g_return_val_if_fail (self != NULL, NULL);
-#line 28 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 28 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	_tmp0_ = self->priv->_controller;
-#line 28 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 28 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	result = _tmp0_;
-#line 28 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 28 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	return result;
 #line 192 "DockPositionManager.c"
 }
 
 
 static gpointer _g_object_ref0 (gpointer self) {
-#line 28 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 28 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	return self ? g_object_ref (self) : NULL;
 #line 199 "DockPositionManager.c"
 }
@@ -202,17 +202,17 @@ static gpointer _g_object_ref0 (gpointer self) {
 static void shelf_system_dock_position_manager_set_controller (ShelfSystemDockPositionManager* self, ShelfDockController* value) {
 	ShelfDockController* _tmp0_;
 	ShelfDockController* _tmp1_;
-#line 28 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 28 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	g_return_if_fail (self != NULL);
-#line 28 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 28 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	_tmp0_ = value;
-#line 28 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 28 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	_tmp1_ = _g_object_ref0 (_tmp0_);
-#line 28 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 28 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	_g_object_unref0 (self->priv->_controller);
-#line 28 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 28 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	self->priv->_controller = _tmp1_;
-#line 28 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 28 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	g_object_notify ((GObject *) self, "controller");
 #line 218 "DockPositionManager.c"
 }
@@ -222,43 +222,43 @@ static GObject * shelf_system_dock_position_manager_constructor (GType type, gui
 	GObject * obj;
 	GObjectClass * parent_class;
 	ShelfSystemDockPositionManager * self;
-#line 38 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 38 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	parent_class = G_OBJECT_CLASS (shelf_system_dock_position_manager_parent_class);
-#line 38 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 38 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	obj = parent_class->constructor (type, n_construct_properties, construct_properties);
-#line 38 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 38 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	self = G_TYPE_CHECK_INSTANCE_CAST (obj, SHELF_SYSTEM_TYPE_DOCK_POSITION_MANAGER, ShelfSystemDockPositionManager);
-#line 38 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 38 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	return obj;
 #line 234 "DockPositionManager.c"
 }
 
 
 static void shelf_system_dock_position_manager_class_init (ShelfSystemDockPositionManagerClass * klass) {
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	shelf_system_dock_position_manager_parent_class = g_type_class_peek_parent (klass);
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	g_type_class_add_private (klass, sizeof (ShelfSystemDockPositionManagerPrivate));
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	G_OBJECT_CLASS (klass)->get_property = _vala_shelf_system_dock_position_manager_get_property;
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	G_OBJECT_CLASS (klass)->set_property = _vala_shelf_system_dock_position_manager_set_property;
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	G_OBJECT_CLASS (klass)->constructor = shelf_system_dock_position_manager_constructor;
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	G_OBJECT_CLASS (klass)->finalize = shelf_system_dock_position_manager_finalize;
 #line 251 "DockPositionManager.c"
 	/**
 	 * The controller for this dock.
 	 */
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	g_object_class_install_property (G_OBJECT_CLASS (klass), SHELF_SYSTEM_DOCK_POSITION_MANAGER_CONTROLLER, g_param_spec_object ("controller", "controller", "controller", SHELF_TYPE_DOCK_CONTROLLER, G_PARAM_STATIC_NAME | G_PARAM_STATIC_NICK | G_PARAM_STATIC_BLURB | G_PARAM_WRITABLE | G_PARAM_CONSTRUCT_ONLY));
 #line 257 "DockPositionManager.c"
 }
 
 
 static void shelf_system_dock_position_manager_instance_init (ShelfSystemDockPositionManager * self) {
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	self->priv = SHELF_SYSTEM_DOCK_POSITION_MANAGER_GET_PRIVATE (self);
 #line 264 "DockPositionManager.c"
 }
@@ -266,11 +266,11 @@ static void shelf_system_dock_position_manager_instance_init (ShelfSystemDockPos
 
 static void shelf_system_dock_position_manager_finalize (GObject* obj) {
 	ShelfSystemDockPositionManager * self;
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	self = G_TYPE_CHECK_INSTANCE_CAST (obj, SHELF_SYSTEM_TYPE_DOCK_POSITION_MANAGER, ShelfSystemDockPositionManager);
-#line 28 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 28 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	_g_object_unref0 (self->priv->_controller);
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	G_OBJECT_CLASS (shelf_system_dock_position_manager_parent_class)->finalize (obj);
 #line 276 "DockPositionManager.c"
 }
@@ -294,19 +294,19 @@ GType shelf_system_dock_position_manager_get_type (void) {
 static void _vala_shelf_system_dock_position_manager_get_property (GObject * object, guint property_id, GValue * value, GParamSpec * pspec) {
 	ShelfSystemDockPositionManager * self;
 	self = G_TYPE_CHECK_INSTANCE_CAST (object, SHELF_SYSTEM_TYPE_DOCK_POSITION_MANAGER, ShelfSystemDockPositionManager);
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	switch (property_id) {
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 		case SHELF_SYSTEM_DOCK_POSITION_MANAGER_CONTROLLER:
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 		g_value_set_object (value, shelf_system_dock_position_manager_get_controller (self));
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 		break;
 #line 306 "DockPositionManager.c"
 		default:
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 		break;
 #line 312 "DockPositionManager.c"
 	}
@@ -316,19 +316,19 @@ static void _vala_shelf_system_dock_position_manager_get_property (GObject * obj
 static void _vala_shelf_system_dock_position_manager_set_property (GObject * object, guint property_id, const GValue * value, GParamSpec * pspec) {
 	ShelfSystemDockPositionManager * self;
 	self = G_TYPE_CHECK_INSTANCE_CAST (object, SHELF_SYSTEM_TYPE_DOCK_POSITION_MANAGER, ShelfSystemDockPositionManager);
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 	switch (property_id) {
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 		case SHELF_SYSTEM_DOCK_POSITION_MANAGER_CONTROLLER:
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 		shelf_system_dock_position_manager_set_controller (self, g_value_get_object (value));
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 		break;
 #line 328 "DockPositionManager.c"
 		default:
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-#line 23 "/home/gwen/Programmation/vala/vala-sandbox/lib/System/DockPositionManager.vala"
+#line 23 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/System/DockPositionManager.vala"
 		break;
 #line 334 "DockPositionManager.c"
 	}

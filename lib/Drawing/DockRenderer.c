@@ -157,20 +157,20 @@ static void _vala_shelf_drawing_dock_renderer_set_property (GObject * object, gu
 ShelfDrawingDockRenderer* shelf_drawing_dock_renderer_construct (GType object_type, ShelfDockController* controller) {
 	ShelfDrawingDockRenderer * self = NULL;
 	ShelfDockController* _tmp0_;
-#line 40 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 40 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	g_return_val_if_fail (controller != NULL, NULL);
-#line 42 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 42 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp0_ = controller;
-#line 42 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 42 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	self = (ShelfDrawingDockRenderer*) g_object_new (object_type, "controller", _tmp0_, NULL);
-#line 40 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 40 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	return self;
 #line 169 "DockRenderer.c"
 }
 
 
 ShelfDrawingDockRenderer* shelf_drawing_dock_renderer_new (ShelfDockController* controller) {
-#line 40 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 40 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	return shelf_drawing_dock_renderer_construct (SHELF_DRAWING_TYPE_DOCK_RENDERER, controller);
 #line 176 "DockRenderer.c"
 }
@@ -188,44 +188,44 @@ gboolean shelf_drawing_dock_renderer_draw (ShelfDrawingDockRenderer* self, cairo
 	ShelfDockController* _tmp4_;
 	ShelfItemsTabManager* _tmp5_;
 	cairo_t* _tmp6_;
-#line 56 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 56 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	g_return_val_if_fail (self != NULL, FALSE);
-#line 56 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 56 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	g_return_val_if_fail (cr != NULL, FALSE);
-#line 60 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 60 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp0_ = cr;
-#line 60 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 60 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_set_source_rgb (_tmp0_, (gdouble) 0, (gdouble) 0, (gdouble) 0);
-#line 62 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 62 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp1_ = cr;
-#line 62 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 62 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_set_line_width (_tmp1_, (gdouble) (10 / 4));
-#line 63 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 63 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp2_ = cr;
-#line 63 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 63 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_set_tolerance (_tmp2_, 0.1);
-#line 65 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 65 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp3_ = cr;
-#line 65 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 65 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_set_line_join (_tmp3_, CAIRO_LINE_JOIN_ROUND);
-#line 67 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 67 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp4_ = self->priv->_controller;
-#line 67 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 67 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp5_ = _tmp4_->tab_manager;
-#line 67 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 67 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp6_ = cr;
-#line 67 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 67 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	shelf_items_tab_manager_draw (_tmp5_, _tmp6_);
-#line 68 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 68 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	result = TRUE;
-#line 68 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 68 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	return result;
 #line 224 "DockRenderer.c"
 }
 
 
 static void _cairo_stroke_shelf_drawing_dock_renderer_draw_method (gpointer self) {
-#line 72 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 72 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_stroke (self);
 #line 231 "DockRenderer.c"
 }
@@ -236,26 +236,26 @@ static void shelf_drawing_dock_renderer_stroke_shapes (ShelfDrawingDockRenderer*
 	gint _tmp1_;
 	gint _tmp2_;
 	cairo_t* _tmp3_;
-#line 71 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 71 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	g_return_if_fail (self != NULL);
-#line 71 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 71 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	g_return_if_fail (ctx != NULL);
-#line 72 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 72 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp0_ = ctx;
-#line 72 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 72 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp1_ = x;
-#line 72 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 72 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp2_ = y;
-#line 72 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 72 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp3_ = ctx;
-#line 72 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 72 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	shelf_drawing_dock_renderer_draw_shapes (self, _tmp0_, _tmp1_, _tmp2_, _cairo_stroke_shelf_drawing_dock_renderer_draw_method, _tmp3_);
 #line 254 "DockRenderer.c"
 }
 
 
 static void _cairo_fill_shelf_drawing_dock_renderer_draw_method (gpointer self) {
-#line 76 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 76 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_fill (self);
 #line 261 "DockRenderer.c"
 }
@@ -266,19 +266,19 @@ static void shelf_drawing_dock_renderer_fill_shapes (ShelfDrawingDockRenderer* s
 	gint _tmp1_;
 	gint _tmp2_;
 	cairo_t* _tmp3_;
-#line 75 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 75 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	g_return_if_fail (self != NULL);
-#line 75 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 75 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	g_return_if_fail (ctx != NULL);
-#line 76 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 76 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp0_ = ctx;
-#line 76 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 76 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp1_ = x;
-#line 76 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 76 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp2_ = y;
-#line 76 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 76 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp3_ = ctx;
-#line 76 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 76 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	shelf_drawing_dock_renderer_draw_shapes (self, _tmp0_, _tmp1_, _tmp2_, _cairo_fill_shelf_drawing_dock_renderer_draw_method, _tmp3_);
 #line 284 "DockRenderer.c"
 }
@@ -309,93 +309,93 @@ static void shelf_drawing_dock_renderer_draw_shapes (ShelfDrawingDockRenderer* s
 	ShelfDrawingDockRendererDrawMethod _tmp18_;
 	void* _tmp18__target;
 	cairo_t* _tmp19_;
-#line 81 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 81 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	g_return_if_fail (self != NULL);
-#line 81 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 81 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	g_return_if_fail (ctx != NULL);
-#line 82 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 82 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp0_ = ctx;
-#line 82 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 82 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_save (_tmp0_);
-#line 84 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 84 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp1_ = ctx;
-#line 84 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 84 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_new_path (_tmp1_);
-#line 85 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 85 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp2_ = ctx;
-#line 85 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 85 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp3_ = x;
-#line 85 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 85 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp4_ = y;
-#line 85 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 85 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_translate (_tmp2_, (gdouble) (_tmp3_ + 10), (gdouble) (_tmp4_ + 10));
-#line 86 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 86 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp5_ = ctx;
-#line 86 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 86 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	shelf_drawing_dock_renderer_bowtie (self, _tmp5_);
-#line 87 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 87 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp6_ = draw_method;
-#line 87 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 87 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp6__target = draw_method_target;
-#line 87 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 87 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp6_ (_tmp6__target);
-#line 89 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 89 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp7_ = ctx;
-#line 89 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 89 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_new_path (_tmp7_);
-#line 90 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 90 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp8_ = ctx;
-#line 90 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 90 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_translate (_tmp8_, (gdouble) (3 * 10), (gdouble) 0);
-#line 91 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 91 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp9_ = ctx;
-#line 91 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 91 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	shelf_drawing_dock_renderer_square (self, _tmp9_);
-#line 92 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 92 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp10_ = draw_method;
-#line 92 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 92 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp10__target = draw_method_target;
-#line 92 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 92 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp10_ (_tmp10__target);
-#line 94 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 94 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp11_ = ctx;
-#line 94 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 94 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_new_path (_tmp11_);
-#line 95 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 95 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp12_ = ctx;
-#line 95 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 95 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_translate (_tmp12_, (gdouble) (3 * 10), (gdouble) 0);
-#line 96 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 96 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp13_ = ctx;
-#line 96 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 96 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	shelf_drawing_dock_renderer_triangle (self, _tmp13_);
-#line 97 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 97 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp14_ = draw_method;
-#line 97 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 97 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp14__target = draw_method_target;
-#line 97 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 97 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp14_ (_tmp14__target);
-#line 99 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 99 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp15_ = ctx;
-#line 99 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 99 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_new_path (_tmp15_);
-#line 100 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 100 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp16_ = ctx;
-#line 100 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 100 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_translate (_tmp16_, (gdouble) (3 * 10), (gdouble) 0);
-#line 101 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 101 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp17_ = ctx;
-#line 101 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 101 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	shelf_drawing_dock_renderer_inf (self, _tmp17_);
-#line 102 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 102 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp18_ = draw_method;
-#line 102 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 102 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp18__target = draw_method_target;
-#line 102 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 102 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp18_ (_tmp18__target);
-#line 104 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 104 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp19_ = ctx;
-#line 104 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 104 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_restore (_tmp19_);
 #line 401 "DockRenderer.c"
 }
@@ -406,25 +406,25 @@ static void shelf_drawing_dock_renderer_triangle (ShelfDrawingDockRenderer* self
 	cairo_t* _tmp1_;
 	cairo_t* _tmp2_;
 	cairo_t* _tmp3_;
-#line 107 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 107 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	g_return_if_fail (self != NULL);
-#line 107 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 107 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	g_return_if_fail (ctx != NULL);
-#line 108 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 108 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp0_ = ctx;
-#line 108 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 108 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_move_to (_tmp0_, (gdouble) 10, (gdouble) 0);
-#line 109 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 109 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp1_ = ctx;
-#line 109 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 109 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_rel_line_to (_tmp1_, (gdouble) 10, (gdouble) (2 * 10));
-#line 110 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 110 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp2_ = ctx;
-#line 110 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 110 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_rel_line_to (_tmp2_, (gdouble) ((-2) * 10), (gdouble) 0);
-#line 111 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 111 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp3_ = ctx;
-#line 111 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 111 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_close_path (_tmp3_);
 #line 430 "DockRenderer.c"
 }
@@ -436,29 +436,29 @@ static void shelf_drawing_dock_renderer_square (ShelfDrawingDockRenderer* self, 
 	cairo_t* _tmp2_;
 	cairo_t* _tmp3_;
 	cairo_t* _tmp4_;
-#line 114 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 114 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	g_return_if_fail (self != NULL);
-#line 114 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 114 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	g_return_if_fail (ctx != NULL);
-#line 115 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 115 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp0_ = ctx;
-#line 115 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 115 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_move_to (_tmp0_, (gdouble) 0, (gdouble) 0);
-#line 116 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 116 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp1_ = ctx;
-#line 116 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 116 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_rel_line_to (_tmp1_, (gdouble) (2 * 10), (gdouble) 0);
-#line 117 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 117 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp2_ = ctx;
-#line 117 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 117 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_rel_line_to (_tmp2_, (gdouble) 0, (gdouble) (2 * 10));
-#line 118 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 118 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp3_ = ctx;
-#line 118 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 118 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_rel_line_to (_tmp3_, (gdouble) ((-2) * 10), (gdouble) 0);
-#line 119 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 119 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp4_ = ctx;
-#line 119 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 119 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_close_path (_tmp4_);
 #line 464 "DockRenderer.c"
 }
@@ -470,29 +470,29 @@ static void shelf_drawing_dock_renderer_bowtie (ShelfDrawingDockRenderer* self, 
 	cairo_t* _tmp2_;
 	cairo_t* _tmp3_;
 	cairo_t* _tmp4_;
-#line 122 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 122 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	g_return_if_fail (self != NULL);
-#line 122 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 122 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	g_return_if_fail (ctx != NULL);
-#line 123 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 123 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp0_ = ctx;
-#line 123 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 123 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_move_to (_tmp0_, (gdouble) 0, (gdouble) 0);
-#line 124 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 124 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp1_ = ctx;
-#line 124 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 124 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_rel_line_to (_tmp1_, (gdouble) (2 * 10), (gdouble) (2 * 10));
-#line 125 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 125 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp2_ = ctx;
-#line 125 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 125 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_rel_line_to (_tmp2_, (gdouble) ((-2) * 10), (gdouble) 0);
-#line 126 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 126 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp3_ = ctx;
-#line 126 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 126 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_rel_line_to (_tmp3_, (gdouble) (2 * 10), (gdouble) ((-2) * 10));
-#line 127 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 127 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp4_ = ctx;
-#line 127 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 127 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_close_path (_tmp4_);
 #line 498 "DockRenderer.c"
 }
@@ -505,33 +505,33 @@ static void shelf_drawing_dock_renderer_inf (ShelfDrawingDockRenderer* self, cai
 	cairo_t* _tmp3_;
 	cairo_t* _tmp4_;
 	cairo_t* _tmp5_;
-#line 130 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 130 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	g_return_if_fail (self != NULL);
-#line 130 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 130 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	g_return_if_fail (ctx != NULL);
-#line 131 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 131 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp0_ = ctx;
-#line 131 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 131 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_move_to (_tmp0_, (gdouble) 0, (gdouble) 10);
-#line 132 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 132 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp1_ = ctx;
-#line 132 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 132 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_rel_curve_to (_tmp1_, (gdouble) 0, (gdouble) 10, (gdouble) 10, (gdouble) 10, (gdouble) (2 * 10), (gdouble) 0);
-#line 133 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 133 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp2_ = ctx;
-#line 133 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 133 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_rel_curve_to (_tmp2_, (gdouble) 10, (gdouble) (-10), (gdouble) (2 * 10), (gdouble) (-10), (gdouble) (2 * 10), (gdouble) 0);
-#line 134 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 134 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp3_ = ctx;
-#line 134 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 134 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_rel_curve_to (_tmp3_, (gdouble) 0, (gdouble) 10, (gdouble) (-10), (gdouble) 10, (gdouble) ((-2) * 10), (gdouble) 0);
-#line 135 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 135 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp4_ = ctx;
-#line 135 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 135 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_rel_curve_to (_tmp4_, (gdouble) (-10), (gdouble) (-10), (gdouble) ((-2) * 10), (gdouble) (-10), (gdouble) ((-2) * 10), (gdouble) 0);
-#line 136 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 136 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp5_ = ctx;
-#line 136 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 136 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	cairo_close_path (_tmp5_);
 #line 537 "DockRenderer.c"
 }
@@ -540,20 +540,20 @@ static void shelf_drawing_dock_renderer_inf (ShelfDrawingDockRenderer* self, cai
 static ShelfDockController* shelf_drawing_dock_renderer_get_controller (ShelfDrawingDockRenderer* self) {
 	ShelfDockController* result;
 	ShelfDockController* _tmp0_;
-#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 35 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	g_return_val_if_fail (self != NULL, NULL);
-#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 35 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp0_ = self->priv->_controller;
-#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 35 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	result = _tmp0_;
-#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 35 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	return result;
 #line 552 "DockRenderer.c"
 }
 
 
 static gpointer _g_object_ref0 (gpointer self) {
-#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 35 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	return self ? g_object_ref (self) : NULL;
 #line 559 "DockRenderer.c"
 }
@@ -562,17 +562,17 @@ static gpointer _g_object_ref0 (gpointer self) {
 static void shelf_drawing_dock_renderer_set_controller (ShelfDrawingDockRenderer* self, ShelfDockController* value) {
 	ShelfDockController* _tmp0_;
 	ShelfDockController* _tmp1_;
-#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 35 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	g_return_if_fail (self != NULL);
-#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 35 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp0_ = value;
-#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 35 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_tmp1_ = _g_object_ref0 (_tmp0_);
-#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 35 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_g_object_unref0 (self->priv->_controller);
-#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 35 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	self->priv->_controller = _tmp1_;
-#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 35 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	g_object_notify ((GObject *) self, "controller");
 #line 578 "DockRenderer.c"
 }
@@ -582,43 +582,43 @@ static GObject * shelf_drawing_dock_renderer_constructor (GType type, guint n_co
 	GObject * obj;
 	GObjectClass * parent_class;
 	ShelfDrawingDockRenderer * self;
-#line 45 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 45 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	parent_class = G_OBJECT_CLASS (shelf_drawing_dock_renderer_parent_class);
-#line 45 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 45 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	obj = parent_class->constructor (type, n_construct_properties, construct_properties);
-#line 45 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 45 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	self = G_TYPE_CHECK_INSTANCE_CAST (obj, SHELF_DRAWING_TYPE_DOCK_RENDERER, ShelfDrawingDockRenderer);
-#line 45 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 45 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	return obj;
 #line 594 "DockRenderer.c"
 }
 
 
 static void shelf_drawing_dock_renderer_class_init (ShelfDrawingDockRendererClass * klass) {
-#line 30 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 30 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	shelf_drawing_dock_renderer_parent_class = g_type_class_peek_parent (klass);
-#line 30 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 30 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	g_type_class_add_private (klass, sizeof (ShelfDrawingDockRendererPrivate));
-#line 30 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 30 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	G_OBJECT_CLASS (klass)->get_property = _vala_shelf_drawing_dock_renderer_get_property;
-#line 30 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 30 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	G_OBJECT_CLASS (klass)->set_property = _vala_shelf_drawing_dock_renderer_set_property;
-#line 30 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 30 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	G_OBJECT_CLASS (klass)->constructor = shelf_drawing_dock_renderer_constructor;
-#line 30 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 30 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	G_OBJECT_CLASS (klass)->finalize = shelf_drawing_dock_renderer_finalize;
 #line 611 "DockRenderer.c"
 	/**
 	 * The controller for this dock.
 	 */
-#line 30 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 30 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	g_object_class_install_property (G_OBJECT_CLASS (klass), SHELF_DRAWING_DOCK_RENDERER_CONTROLLER, g_param_spec_object ("controller", "controller", "controller", SHELF_TYPE_DOCK_CONTROLLER, G_PARAM_STATIC_NAME | G_PARAM_STATIC_NICK | G_PARAM_STATIC_BLURB | G_PARAM_WRITABLE | G_PARAM_CONSTRUCT_ONLY));
 #line 617 "DockRenderer.c"
 }
 
 
 static void shelf_drawing_dock_renderer_instance_init (ShelfDrawingDockRenderer * self) {
-#line 30 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 30 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	self->priv = SHELF_DRAWING_DOCK_RENDERER_GET_PRIVATE (self);
 #line 624 "DockRenderer.c"
 }
@@ -626,11 +626,11 @@ static void shelf_drawing_dock_renderer_instance_init (ShelfDrawingDockRenderer 
 
 static void shelf_drawing_dock_renderer_finalize (GObject* obj) {
 	ShelfDrawingDockRenderer * self;
-#line 30 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 30 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	self = G_TYPE_CHECK_INSTANCE_CAST (obj, SHELF_DRAWING_TYPE_DOCK_RENDERER, ShelfDrawingDockRenderer);
-#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 35 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	_g_object_unref0 (self->priv->_controller);
-#line 30 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 30 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	G_OBJECT_CLASS (shelf_drawing_dock_renderer_parent_class)->finalize (obj);
 #line 636 "DockRenderer.c"
 }
@@ -654,19 +654,19 @@ GType shelf_drawing_dock_renderer_get_type (void) {
 static void _vala_shelf_drawing_dock_renderer_get_property (GObject * object, guint property_id, GValue * value, GParamSpec * pspec) {
 	ShelfDrawingDockRenderer * self;
 	self = G_TYPE_CHECK_INSTANCE_CAST (object, SHELF_DRAWING_TYPE_DOCK_RENDERER, ShelfDrawingDockRenderer);
-#line 30 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 30 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	switch (property_id) {
-#line 30 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 30 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 		case SHELF_DRAWING_DOCK_RENDERER_CONTROLLER:
-#line 30 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 30 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 		g_value_set_object (value, shelf_drawing_dock_renderer_get_controller (self));
-#line 30 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 30 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 		break;
 #line 666 "DockRenderer.c"
 		default:
-#line 30 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 30 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-#line 30 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 30 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 		break;
 #line 672 "DockRenderer.c"
 	}
@@ -676,19 +676,19 @@ static void _vala_shelf_drawing_dock_renderer_get_property (GObject * object, gu
 static void _vala_shelf_drawing_dock_renderer_set_property (GObject * object, guint property_id, const GValue * value, GParamSpec * pspec) {
 	ShelfDrawingDockRenderer * self;
 	self = G_TYPE_CHECK_INSTANCE_CAST (object, SHELF_DRAWING_TYPE_DOCK_RENDERER, ShelfDrawingDockRenderer);
-#line 30 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 30 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 	switch (property_id) {
-#line 30 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 30 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 		case SHELF_DRAWING_DOCK_RENDERER_CONTROLLER:
-#line 30 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 30 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 		shelf_drawing_dock_renderer_set_controller (self, g_value_get_object (value));
-#line 30 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 30 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 		break;
 #line 688 "DockRenderer.c"
 		default:
-#line 30 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 30 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-#line 30 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/DockRenderer.vala"
+#line 30 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/DockRenderer.vala"
 		break;
 #line 694 "DockRenderer.c"
 	}

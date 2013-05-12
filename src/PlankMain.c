@@ -66,34 +66,34 @@ gint plank_main_plank_main_main (gchar** args, int args_length1) {
 	ShelfFactoriesItemFactory* _tmp1_;
 	ShelfFactoriesItemFactory* _tmp2_;
 	gint _tmp3_ = 0;
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/src/PlankMain.vala"
+#line 26 "/home/gwen/Programmation/vala/testgit/vala-sandbox/src/PlankMain.vala"
 	_tmp0_ = plank_main_plank_main_new ();
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/src/PlankMain.vala"
+#line 26 "/home/gwen/Programmation/vala/testgit/vala-sandbox/src/PlankMain.vala"
 	main_class = _tmp0_;
-#line 27 "/home/gwen/Programmation/vala/vala-sandbox/src/PlankMain.vala"
+#line 27 "/home/gwen/Programmation/vala/testgit/vala-sandbox/src/PlankMain.vala"
 	_tmp1_ = shelf_factories_item_factory_new ();
-#line 27 "/home/gwen/Programmation/vala/vala-sandbox/src/PlankMain.vala"
+#line 27 "/home/gwen/Programmation/vala/testgit/vala-sandbox/src/PlankMain.vala"
 	_tmp2_ = _tmp1_;
-#line 27 "/home/gwen/Programmation/vala/vala-sandbox/src/PlankMain.vala"
+#line 27 "/home/gwen/Programmation/vala/testgit/vala-sandbox/src/PlankMain.vala"
 	shelf_factories_factory_init ((ShelfFactoriesAbstractMain*) main_class, _tmp2_);
-#line 27 "/home/gwen/Programmation/vala/vala-sandbox/src/PlankMain.vala"
+#line 27 "/home/gwen/Programmation/vala/testgit/vala-sandbox/src/PlankMain.vala"
 	_g_object_unref0 (_tmp2_);
-#line 28 "/home/gwen/Programmation/vala/vala-sandbox/src/PlankMain.vala"
+#line 28 "/home/gwen/Programmation/vala/testgit/vala-sandbox/src/PlankMain.vala"
 	_tmp3_ = shelf_factories_abstract_main_run ((ShelfFactoriesAbstractMain*) main_class, &args, &args_length1);
-#line 28 "/home/gwen/Programmation/vala/vala-sandbox/src/PlankMain.vala"
+#line 28 "/home/gwen/Programmation/vala/testgit/vala-sandbox/src/PlankMain.vala"
 	result = _tmp3_;
-#line 28 "/home/gwen/Programmation/vala/vala-sandbox/src/PlankMain.vala"
+#line 28 "/home/gwen/Programmation/vala/testgit/vala-sandbox/src/PlankMain.vala"
 	_g_object_unref0 (main_class);
-#line 28 "/home/gwen/Programmation/vala/vala-sandbox/src/PlankMain.vala"
+#line 28 "/home/gwen/Programmation/vala/testgit/vala-sandbox/src/PlankMain.vala"
 	return result;
 #line 90 "PlankMain.c"
 }
 
 
 int main (int argc, char ** argv) {
-#line 24 "/home/gwen/Programmation/vala/vala-sandbox/src/PlankMain.vala"
+#line 24 "/home/gwen/Programmation/vala/testgit/vala-sandbox/src/PlankMain.vala"
 	g_type_init ();
-#line 24 "/home/gwen/Programmation/vala/vala-sandbox/src/PlankMain.vala"
+#line 24 "/home/gwen/Programmation/vala/testgit/vala-sandbox/src/PlankMain.vala"
 	return plank_main_plank_main_main (argv, argc);
 #line 99 "PlankMain.c"
 }
@@ -103,35 +103,35 @@ PlankMainPlankMain* plank_main_plank_main_construct (GType object_type) {
 	PlankMainPlankMain * self = NULL;
 	gchar* _tmp0_;
 	gchar* _tmp1_;
-#line 31 "/home/gwen/Programmation/vala/vala-sandbox/src/PlankMain.vala"
+#line 31 "/home/gwen/Programmation/vala/testgit/vala-sandbox/src/PlankMain.vala"
 	self = (PlankMainPlankMain*) shelf_factories_abstract_main_construct (object_type);
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/src/PlankMain.vala"
+#line 33 "/home/gwen/Programmation/vala/testgit/vala-sandbox/src/PlankMain.vala"
 	_tmp0_ = g_strdup ("Shelf");
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/src/PlankMain.vala"
+#line 33 "/home/gwen/Programmation/vala/testgit/vala-sandbox/src/PlankMain.vala"
 	_g_free0 (((ShelfFactoriesAbstractMain*) self)->program_name);
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/src/PlankMain.vala"
+#line 33 "/home/gwen/Programmation/vala/testgit/vala-sandbox/src/PlankMain.vala"
 	((ShelfFactoriesAbstractMain*) self)->program_name = _tmp0_;
-#line 34 "/home/gwen/Programmation/vala/vala-sandbox/src/PlankMain.vala"
+#line 34 "/home/gwen/Programmation/vala/testgit/vala-sandbox/src/PlankMain.vala"
 	_tmp1_ = g_strdup ("shelf");
-#line 34 "/home/gwen/Programmation/vala/vala-sandbox/src/PlankMain.vala"
+#line 34 "/home/gwen/Programmation/vala/testgit/vala-sandbox/src/PlankMain.vala"
 	_g_free0 (((ShelfFactoriesAbstractMain*) self)->exec_name);
-#line 34 "/home/gwen/Programmation/vala/vala-sandbox/src/PlankMain.vala"
+#line 34 "/home/gwen/Programmation/vala/testgit/vala-sandbox/src/PlankMain.vala"
 	((ShelfFactoriesAbstractMain*) self)->exec_name = _tmp1_;
-#line 31 "/home/gwen/Programmation/vala/vala-sandbox/src/PlankMain.vala"
+#line 31 "/home/gwen/Programmation/vala/testgit/vala-sandbox/src/PlankMain.vala"
 	return self;
 #line 123 "PlankMain.c"
 }
 
 
 PlankMainPlankMain* plank_main_plank_main_new (void) {
-#line 31 "/home/gwen/Programmation/vala/vala-sandbox/src/PlankMain.vala"
+#line 31 "/home/gwen/Programmation/vala/testgit/vala-sandbox/src/PlankMain.vala"
 	return plank_main_plank_main_construct (PLANK_MAIN_TYPE_PLANK_MAIN);
 #line 130 "PlankMain.c"
 }
 
 
 static void plank_main_plank_main_class_init (PlankMainPlankMainClass * klass) {
-#line 22 "/home/gwen/Programmation/vala/vala-sandbox/src/PlankMain.vala"
+#line 22 "/home/gwen/Programmation/vala/testgit/vala-sandbox/src/PlankMain.vala"
 	plank_main_plank_main_parent_class = g_type_class_peek_parent (klass);
 #line 137 "PlankMain.c"
 }

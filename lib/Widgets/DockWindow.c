@@ -165,20 +165,20 @@ static void _vala_shelf_widgets_dock_window_set_property (GObject * object, guin
 ShelfWidgetsDockWindow* shelf_widgets_dock_window_construct (GType object_type, ShelfDockController* controller) {
 	ShelfWidgetsDockWindow * self = NULL;
 	ShelfDockController* _tmp0_;
-#line 45 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 45 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	g_return_val_if_fail (controller != NULL, NULL);
-#line 47 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 47 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	_tmp0_ = controller;
-#line 47 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 47 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	self = (ShelfWidgetsDockWindow*) g_object_new (object_type, "controller", _tmp0_, "type", GTK_WINDOW_TOPLEVEL, "type-hint", GDK_WINDOW_TYPE_HINT_DOCK, NULL);
-#line 45 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 45 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	return self;
 #line 177 "DockWindow.c"
 }
 
 
 ShelfWidgetsDockWindow* shelf_widgets_dock_window_new (ShelfDockController* controller) {
-#line 45 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 45 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	return shelf_widgets_dock_window_construct (SHELF_WIDGETS_TYPE_DOCK_WINDOW, controller);
 #line 184 "DockWindow.c"
 }
@@ -190,13 +190,13 @@ ShelfWidgetsDockWindow* shelf_widgets_dock_window_new (ShelfDockController* cont
 static gboolean shelf_widgets_dock_window_real_button_press_event (GtkWidget* base, GdkEventButton* event) {
 	ShelfWidgetsDockWindow * self;
 	gboolean result = FALSE;
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	self = (ShelfWidgetsDockWindow*) base;
-#line 74 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 74 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	g_return_val_if_fail (event != NULL, FALSE);
-#line 76 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 76 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	result = TRUE;
-#line 76 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 76 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	return result;
 #line 202 "DockWindow.c"
 }
@@ -208,13 +208,13 @@ static gboolean shelf_widgets_dock_window_real_button_press_event (GtkWidget* ba
 static gboolean shelf_widgets_dock_window_real_button_release_event (GtkWidget* base, GdkEventButton* event) {
 	ShelfWidgetsDockWindow * self;
 	gboolean result = FALSE;
-#line 82 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 82 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	self = (ShelfWidgetsDockWindow*) base;
-#line 82 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 82 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	g_return_val_if_fail (event != NULL, FALSE);
-#line 85 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 85 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	result = TRUE;
-#line 85 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 85 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	return result;
 #line 220 "DockWindow.c"
 }
@@ -226,13 +226,13 @@ static gboolean shelf_widgets_dock_window_real_button_release_event (GtkWidget* 
 static gboolean shelf_widgets_dock_window_real_enter_notify_event (GtkWidget* base, GdkEventCrossing* event) {
 	ShelfWidgetsDockWindow * self;
 	gboolean result = FALSE;
-#line 91 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 91 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	self = (ShelfWidgetsDockWindow*) base;
-#line 91 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 91 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	g_return_val_if_fail (event != NULL, FALSE);
-#line 94 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 94 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	result = TRUE;
-#line 94 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 94 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	return result;
 #line 238 "DockWindow.c"
 }
@@ -244,13 +244,13 @@ static gboolean shelf_widgets_dock_window_real_enter_notify_event (GtkWidget* ba
 static gboolean shelf_widgets_dock_window_real_leave_notify_event (GtkWidget* base, GdkEventCrossing* event) {
 	ShelfWidgetsDockWindow * self;
 	gboolean result = FALSE;
-#line 100 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 100 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	self = (ShelfWidgetsDockWindow*) base;
-#line 100 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 100 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	g_return_val_if_fail (event != NULL, FALSE);
-#line 103 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 103 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	result = TRUE;
-#line 103 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 103 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	return result;
 #line 256 "DockWindow.c"
 }
@@ -262,13 +262,13 @@ static gboolean shelf_widgets_dock_window_real_leave_notify_event (GtkWidget* ba
 static gboolean shelf_widgets_dock_window_real_motion_notify_event (GtkWidget* base, GdkEventMotion* event) {
 	ShelfWidgetsDockWindow * self;
 	gboolean result = FALSE;
-#line 109 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 109 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	self = (ShelfWidgetsDockWindow*) base;
-#line 109 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 109 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	g_return_val_if_fail (event != NULL, FALSE);
-#line 112 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 112 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	result = TRUE;
-#line 112 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 112 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	return result;
 #line 274 "DockWindow.c"
 }
@@ -280,13 +280,13 @@ static gboolean shelf_widgets_dock_window_real_motion_notify_event (GtkWidget* b
 static gboolean shelf_widgets_dock_window_real_scroll_event (GtkWidget* base, GdkEventScroll* event) {
 	ShelfWidgetsDockWindow * self;
 	gboolean result = FALSE;
-#line 118 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 118 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	self = (ShelfWidgetsDockWindow*) base;
-#line 118 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 118 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	g_return_val_if_fail (event != NULL, FALSE);
-#line 121 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 121 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	result = TRUE;
-#line 121 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 121 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	return result;
 #line 292 "DockWindow.c"
 }
@@ -303,42 +303,42 @@ static gboolean shelf_widgets_dock_window_real_draw (GtkWidget* base, cairo_t* c
 	ShelfDockController* _tmp4_;
 	ShelfDrawingDockRenderer* _tmp5_;
 	cairo_t* _tmp6_;
-#line 127 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 127 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	self = (ShelfWidgetsDockWindow*) base;
-#line 127 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 127 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	g_return_val_if_fail (cr != NULL, FALSE);
-#line 129 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 129 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	_tmp0_ = self->priv->firstDraw;
-#line 129 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 129 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	if (_tmp0_) {
 #line 315 "DockWindow.c"
 		ShelfDockController* _tmp1_;
 		ShelfSystemDockPositionManager* _tmp2_;
-#line 131 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 131 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 		self->priv->firstDraw = FALSE;
-#line 132 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 132 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 		_tmp1_ = self->priv->_controller;
-#line 132 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 132 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 		_tmp2_ = _tmp1_->position_manager;
-#line 132 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 132 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 		shelf_system_dock_position_manager_initialize (_tmp2_);
 #line 326 "DockWindow.c"
 	}
-#line 134 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 134 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	_tmp3_ = stdout;
-#line 134 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 134 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	fprintf (_tmp3_, "draw DockWindow\n");
-#line 136 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 136 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	_tmp4_ = self->priv->_controller;
-#line 136 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 136 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	_tmp5_ = _tmp4_->renderer;
-#line 136 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 136 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	_tmp6_ = cr;
-#line 136 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 136 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	shelf_drawing_dock_renderer_draw (_tmp5_, _tmp6_);
-#line 137 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 137 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	result = TRUE;
-#line 137 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 137 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	return result;
 #line 344 "DockWindow.c"
 }
@@ -347,20 +347,20 @@ static gboolean shelf_widgets_dock_window_real_draw (GtkWidget* base, cairo_t* c
 static ShelfDockController* shelf_widgets_dock_window_get_controller (ShelfWidgetsDockWindow* self) {
 	ShelfDockController* result;
 	ShelfDockController* _tmp0_;
-#line 40 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 40 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	g_return_val_if_fail (self != NULL, NULL);
-#line 40 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 40 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	_tmp0_ = self->priv->_controller;
-#line 40 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 40 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	result = _tmp0_;
-#line 40 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 40 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	return result;
 #line 359 "DockWindow.c"
 }
 
 
 static gpointer _g_object_ref0 (gpointer self) {
-#line 40 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 40 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	return self ? g_object_ref (self) : NULL;
 #line 366 "DockWindow.c"
 }
@@ -369,17 +369,17 @@ static gpointer _g_object_ref0 (gpointer self) {
 static void shelf_widgets_dock_window_set_controller (ShelfWidgetsDockWindow* self, ShelfDockController* value) {
 	ShelfDockController* _tmp0_;
 	ShelfDockController* _tmp1_;
-#line 40 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 40 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	g_return_if_fail (self != NULL);
-#line 40 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 40 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	_tmp0_ = value;
-#line 40 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 40 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	_tmp1_ = _g_object_ref0 (_tmp0_);
-#line 40 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 40 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	_g_object_unref0 (self->priv->_controller);
-#line 40 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 40 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	self->priv->_controller = _tmp1_;
-#line 40 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 40 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	g_object_notify ((GObject *) self, "controller");
 #line 385 "DockWindow.c"
 }
@@ -389,71 +389,71 @@ static GObject * shelf_widgets_dock_window_constructor (GType type, guint n_cons
 	GObject * obj;
 	GObjectClass * parent_class;
 	ShelfWidgetsDockWindow * self;
-#line 50 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 50 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	parent_class = G_OBJECT_CLASS (shelf_widgets_dock_window_parent_class);
-#line 50 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 50 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	obj = parent_class->constructor (type, n_construct_properties, construct_properties);
-#line 50 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 50 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	self = G_TYPE_CHECK_INSTANCE_CAST (obj, SHELF_WIDGETS_TYPE_DOCK_WINDOW, ShelfWidgetsDockWindow);
-#line 52 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 52 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	gtk_window_set_accept_focus ((GtkWindow*) self, FALSE);
-#line 53 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 53 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	g_object_set ((GtkWidget*) self, "can-focus", FALSE, NULL);
-#line 54 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 54 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	gtk_window_set_skip_pager_hint ((GtkWindow*) self, TRUE);
-#line 55 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 55 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	gtk_window_set_skip_taskbar_hint ((GtkWindow*) self, TRUE);
-#line 57 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 57 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	gtk_window_stick ((GtkWindow*) self);
-#line 59 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 59 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	gtk_widget_add_events ((GtkWidget*) self, (gint) (((((GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK) | GDK_ENTER_NOTIFY_MASK) | GDK_LEAVE_NOTIFY_MASK) | GDK_POINTER_MOTION_MASK) | GDK_SCROLL_MASK));
-#line 50 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 50 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	return obj;
 #line 413 "DockWindow.c"
 }
 
 
 static void shelf_widgets_dock_window_class_init (ShelfWidgetsDockWindowClass * klass) {
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	shelf_widgets_dock_window_parent_class = g_type_class_peek_parent (klass);
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	g_type_class_add_private (klass, sizeof (ShelfWidgetsDockWindowPrivate));
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	GTK_WIDGET_CLASS (klass)->button_press_event = shelf_widgets_dock_window_real_button_press_event;
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	GTK_WIDGET_CLASS (klass)->button_release_event = shelf_widgets_dock_window_real_button_release_event;
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	GTK_WIDGET_CLASS (klass)->enter_notify_event = shelf_widgets_dock_window_real_enter_notify_event;
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	GTK_WIDGET_CLASS (klass)->leave_notify_event = shelf_widgets_dock_window_real_leave_notify_event;
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	GTK_WIDGET_CLASS (klass)->motion_notify_event = shelf_widgets_dock_window_real_motion_notify_event;
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	GTK_WIDGET_CLASS (klass)->scroll_event = shelf_widgets_dock_window_real_scroll_event;
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	GTK_WIDGET_CLASS (klass)->draw = shelf_widgets_dock_window_real_draw;
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	G_OBJECT_CLASS (klass)->get_property = _vala_shelf_widgets_dock_window_get_property;
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	G_OBJECT_CLASS (klass)->set_property = _vala_shelf_widgets_dock_window_set_property;
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	G_OBJECT_CLASS (klass)->constructor = shelf_widgets_dock_window_constructor;
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	G_OBJECT_CLASS (klass)->finalize = shelf_widgets_dock_window_finalize;
 #line 444 "DockWindow.c"
 	/**
 	 * The controller for this dock.
 	 */
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	g_object_class_install_property (G_OBJECT_CLASS (klass), SHELF_WIDGETS_DOCK_WINDOW_CONTROLLER, g_param_spec_object ("controller", "controller", "controller", SHELF_TYPE_DOCK_CONTROLLER, G_PARAM_STATIC_NAME | G_PARAM_STATIC_NICK | G_PARAM_STATIC_BLURB | G_PARAM_WRITABLE | G_PARAM_CONSTRUCT_ONLY));
 #line 450 "DockWindow.c"
 }
 
 
 static void shelf_widgets_dock_window_instance_init (ShelfWidgetsDockWindow * self) {
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	self->priv = SHELF_WIDGETS_DOCK_WINDOW_GET_PRIVATE (self);
-#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 35 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	self->priv->firstDraw = TRUE;
 #line 459 "DockWindow.c"
 }
@@ -461,11 +461,11 @@ static void shelf_widgets_dock_window_instance_init (ShelfWidgetsDockWindow * se
 
 static void shelf_widgets_dock_window_finalize (GObject* obj) {
 	ShelfWidgetsDockWindow * self;
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	self = G_TYPE_CHECK_INSTANCE_CAST (obj, SHELF_WIDGETS_TYPE_DOCK_WINDOW, ShelfWidgetsDockWindow);
-#line 40 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 40 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	_g_object_unref0 (self->priv->_controller);
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	G_OBJECT_CLASS (shelf_widgets_dock_window_parent_class)->finalize (obj);
 #line 471 "DockWindow.c"
 }
@@ -489,19 +489,19 @@ GType shelf_widgets_dock_window_get_type (void) {
 static void _vala_shelf_widgets_dock_window_get_property (GObject * object, guint property_id, GValue * value, GParamSpec * pspec) {
 	ShelfWidgetsDockWindow * self;
 	self = G_TYPE_CHECK_INSTANCE_CAST (object, SHELF_WIDGETS_TYPE_DOCK_WINDOW, ShelfWidgetsDockWindow);
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	switch (property_id) {
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 		case SHELF_WIDGETS_DOCK_WINDOW_CONTROLLER:
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 		g_value_set_object (value, shelf_widgets_dock_window_get_controller (self));
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 		break;
 #line 501 "DockWindow.c"
 		default:
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 		break;
 #line 507 "DockWindow.c"
 	}
@@ -511,19 +511,19 @@ static void _vala_shelf_widgets_dock_window_get_property (GObject * object, guin
 static void _vala_shelf_widgets_dock_window_set_property (GObject * object, guint property_id, const GValue * value, GParamSpec * pspec) {
 	ShelfWidgetsDockWindow * self;
 	self = G_TYPE_CHECK_INSTANCE_CAST (object, SHELF_WIDGETS_TYPE_DOCK_WINDOW, ShelfWidgetsDockWindow);
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 	switch (property_id) {
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 		case SHELF_WIDGETS_DOCK_WINDOW_CONTROLLER:
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 		shelf_widgets_dock_window_set_controller (self, g_value_get_object (value));
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 		break;
 #line 523 "DockWindow.c"
 		default:
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-#line 32 "/home/gwen/Programmation/vala/vala-sandbox/lib/Widgets/DockWindow.vala"
+#line 32 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Widgets/DockWindow.vala"
 		break;
 #line 529 "DockWindow.c"
 	}

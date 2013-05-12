@@ -64,16 +64,16 @@ static void shelf_drawing_tab_renderer_finalize (GObject* obj);
  */
 ShelfDrawingTabRenderer* shelf_drawing_tab_renderer_construct (GType object_type) {
 	ShelfDrawingTabRenderer * self = NULL;
-#line 31 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 31 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	self = (ShelfDrawingTabRenderer*) g_object_new (object_type, NULL);
-#line 29 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 29 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	return self;
 #line 72 "TabRenderer.c"
 }
 
 
 ShelfDrawingTabRenderer* shelf_drawing_tab_renderer_new (void) {
-#line 29 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 29 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	return shelf_drawing_tab_renderer_construct (SHELF_DRAWING_TYPE_TAB_RENDERER);
 #line 79 "TabRenderer.c"
 }
@@ -95,51 +95,51 @@ void shelf_drawing_tab_renderer_draw (ShelfDrawingTabRenderer* self, cairo_t* cr
 	cairo_t* _tmp7_;
 	cairo_t* _tmp8_;
 	cairo_t* _tmp9_;
-#line 45 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 45 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	g_return_if_fail (self != NULL);
-#line 45 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 45 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	g_return_if_fail (cr != NULL);
-#line 47 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 47 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	icon_size = 48;
-#line 48 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 48 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	_tmp0_ = position;
-#line 48 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 48 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	vertical_offset = icon_size * _tmp0_;
-#line 49 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 49 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	_tmp1_ = cr;
-#line 49 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 49 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	cairo_save (_tmp1_);
-#line 51 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 51 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	_tmp2_ = cr;
-#line 51 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 51 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	cairo_move_to (_tmp2_, (gdouble) 0, (gdouble) vertical_offset);
-#line 52 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 52 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	_tmp3_ = cr;
-#line 52 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 52 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	cairo_rel_line_to (_tmp3_, (gdouble) icon_size, (gdouble) 0);
-#line 53 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 53 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	_tmp4_ = cr;
-#line 53 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 53 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	cairo_rel_line_to (_tmp4_, (gdouble) 0, (gdouble) icon_size);
-#line 54 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 54 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	_tmp5_ = cr;
-#line 54 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 54 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	cairo_rel_line_to (_tmp5_, (gdouble) (-icon_size), (gdouble) 0);
-#line 55 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 55 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	_tmp6_ = cr;
-#line 55 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 55 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	cairo_close_path (_tmp6_);
-#line 57 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 57 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	_tmp7_ = cr;
-#line 57 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 57 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	cairo_stroke (_tmp7_);
-#line 58 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 58 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	_tmp8_ = cr;
-#line 58 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 58 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	cairo_fill (_tmp8_);
-#line 60 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 60 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	_tmp9_ = cr;
-#line 60 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 60 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	cairo_restore (_tmp9_);
 #line 145 "TabRenderer.c"
 }
@@ -149,24 +149,24 @@ static GObject * shelf_drawing_tab_renderer_constructor (GType type, guint n_con
 	GObject * obj;
 	GObjectClass * parent_class;
 	ShelfDrawingTabRenderer * self;
-#line 34 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 34 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	parent_class = G_OBJECT_CLASS (shelf_drawing_tab_renderer_parent_class);
-#line 34 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 34 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	obj = parent_class->constructor (type, n_construct_properties, construct_properties);
-#line 34 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 34 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	self = G_TYPE_CHECK_INSTANCE_CAST (obj, SHELF_DRAWING_TYPE_TAB_RENDERER, ShelfDrawingTabRenderer);
-#line 34 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 34 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	return obj;
 #line 161 "TabRenderer.c"
 }
 
 
 static void shelf_drawing_tab_renderer_class_init (ShelfDrawingTabRendererClass * klass) {
-#line 24 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 24 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	shelf_drawing_tab_renderer_parent_class = g_type_class_peek_parent (klass);
-#line 24 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 24 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	G_OBJECT_CLASS (klass)->constructor = shelf_drawing_tab_renderer_constructor;
-#line 24 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 24 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	G_OBJECT_CLASS (klass)->finalize = shelf_drawing_tab_renderer_finalize;
 #line 172 "TabRenderer.c"
 }
@@ -178,9 +178,9 @@ static void shelf_drawing_tab_renderer_instance_init (ShelfDrawingTabRenderer * 
 
 static void shelf_drawing_tab_renderer_finalize (GObject* obj) {
 	ShelfDrawingTabRenderer * self;
-#line 24 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 24 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	self = G_TYPE_CHECK_INSTANCE_CAST (obj, SHELF_DRAWING_TYPE_TAB_RENDERER, ShelfDrawingTabRenderer);
-#line 24 "/home/gwen/Programmation/vala/vala-sandbox/lib/Drawing/TabRenderer.vala"
+#line 24 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Drawing/TabRenderer.vala"
 	G_OBJECT_CLASS (shelf_drawing_tab_renderer_parent_class)->finalize (obj);
 #line 186 "TabRenderer.c"
 }

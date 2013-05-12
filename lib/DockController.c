@@ -130,55 +130,55 @@ ShelfDockController* shelf_dock_controller_construct (GType object_type) {
 	ShelfDrawingDockRenderer* _tmp2_;
 	ShelfItemsTabManager* _tmp3_;
 	ShelfWidgetsDockWindow* _tmp4_;
-#line 38 "/home/gwen/Programmation/vala/vala-sandbox/lib/DockController.vala"
+#line 38 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/DockController.vala"
 	self = (ShelfDockController*) g_object_new (object_type, NULL);
-#line 41 "/home/gwen/Programmation/vala/vala-sandbox/lib/DockController.vala"
+#line 41 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/DockController.vala"
 	_tmp0_ = shelf_system_dock_position_manager_new (self);
-#line 41 "/home/gwen/Programmation/vala/vala-sandbox/lib/DockController.vala"
+#line 41 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/DockController.vala"
 	_g_object_unref0 (self->position_manager);
-#line 41 "/home/gwen/Programmation/vala/vala-sandbox/lib/DockController.vala"
+#line 41 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/DockController.vala"
 	self->position_manager = _tmp0_;
-#line 42 "/home/gwen/Programmation/vala/vala-sandbox/lib/DockController.vala"
+#line 42 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/DockController.vala"
 	_tmp1_ = shelf_widgets_dock_window_new (self);
-#line 42 "/home/gwen/Programmation/vala/vala-sandbox/lib/DockController.vala"
+#line 42 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/DockController.vala"
 	g_object_ref_sink (_tmp1_);
-#line 42 "/home/gwen/Programmation/vala/vala-sandbox/lib/DockController.vala"
+#line 42 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/DockController.vala"
 	_g_object_unref0 (self->window);
-#line 42 "/home/gwen/Programmation/vala/vala-sandbox/lib/DockController.vala"
+#line 42 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/DockController.vala"
 	self->window = _tmp1_;
-#line 43 "/home/gwen/Programmation/vala/vala-sandbox/lib/DockController.vala"
+#line 43 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/DockController.vala"
 	_tmp2_ = shelf_drawing_dock_renderer_new (self);
-#line 43 "/home/gwen/Programmation/vala/vala-sandbox/lib/DockController.vala"
+#line 43 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/DockController.vala"
 	_g_object_unref0 (self->renderer);
-#line 43 "/home/gwen/Programmation/vala/vala-sandbox/lib/DockController.vala"
+#line 43 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/DockController.vala"
 	self->renderer = _tmp2_;
-#line 44 "/home/gwen/Programmation/vala/vala-sandbox/lib/DockController.vala"
+#line 44 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/DockController.vala"
 	_tmp3_ = shelf_items_tab_manager_new (self);
-#line 44 "/home/gwen/Programmation/vala/vala-sandbox/lib/DockController.vala"
+#line 44 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/DockController.vala"
 	_g_object_unref0 (self->tab_manager);
-#line 44 "/home/gwen/Programmation/vala/vala-sandbox/lib/DockController.vala"
+#line 44 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/DockController.vala"
 	self->tab_manager = _tmp3_;
-#line 50 "/home/gwen/Programmation/vala/vala-sandbox/lib/DockController.vala"
+#line 50 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/DockController.vala"
 	_tmp4_ = self->window;
-#line 50 "/home/gwen/Programmation/vala/vala-sandbox/lib/DockController.vala"
+#line 50 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/DockController.vala"
 	gtk_widget_show_all ((GtkWidget*) _tmp4_);
-#line 38 "/home/gwen/Programmation/vala/vala-sandbox/lib/DockController.vala"
+#line 38 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/DockController.vala"
 	return self;
 #line 168 "DockController.c"
 }
 
 
 ShelfDockController* shelf_dock_controller_new (void) {
-#line 38 "/home/gwen/Programmation/vala/vala-sandbox/lib/DockController.vala"
+#line 38 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/DockController.vala"
 	return shelf_dock_controller_construct (SHELF_TYPE_DOCK_CONTROLLER);
 #line 175 "DockController.c"
 }
 
 
 static void shelf_dock_controller_class_init (ShelfDockControllerClass * klass) {
-#line 29 "/home/gwen/Programmation/vala/vala-sandbox/lib/DockController.vala"
+#line 29 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/DockController.vala"
 	shelf_dock_controller_parent_class = g_type_class_peek_parent (klass);
-#line 29 "/home/gwen/Programmation/vala/vala-sandbox/lib/DockController.vala"
+#line 29 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/DockController.vala"
 	G_OBJECT_CLASS (klass)->finalize = shelf_dock_controller_finalize;
 #line 184 "DockController.c"
 }
@@ -190,17 +190,17 @@ static void shelf_dock_controller_instance_init (ShelfDockController * self) {
 
 static void shelf_dock_controller_finalize (GObject* obj) {
 	ShelfDockController * self;
-#line 29 "/home/gwen/Programmation/vala/vala-sandbox/lib/DockController.vala"
+#line 29 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/DockController.vala"
 	self = G_TYPE_CHECK_INSTANCE_CAST (obj, SHELF_TYPE_DOCK_CONTROLLER, ShelfDockController);
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/lib/DockController.vala"
+#line 33 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/DockController.vala"
 	_g_object_unref0 (self->window);
-#line 34 "/home/gwen/Programmation/vala/vala-sandbox/lib/DockController.vala"
+#line 34 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/DockController.vala"
 	_g_object_unref0 (self->renderer);
-#line 35 "/home/gwen/Programmation/vala/vala-sandbox/lib/DockController.vala"
+#line 35 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/DockController.vala"
 	_g_object_unref0 (self->position_manager);
-#line 36 "/home/gwen/Programmation/vala/vala-sandbox/lib/DockController.vala"
+#line 36 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/DockController.vala"
 	_g_object_unref0 (self->tab_manager);
-#line 29 "/home/gwen/Programmation/vala/vala-sandbox/lib/DockController.vala"
+#line 29 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/DockController.vala"
 	G_OBJECT_CLASS (shelf_dock_controller_parent_class)->finalize (obj);
 #line 206 "DockController.c"
 }

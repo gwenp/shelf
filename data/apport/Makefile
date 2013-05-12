@@ -85,15 +85,15 @@ am__uninstall_files_from_dir = { \
 am__installdirs = "$(DESTDIR)$(crashdbdir)" "$(DESTDIR)$(hookdir)"
 DATA = $(crashdb_DATA) $(hook_DATA)
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /home/gwen/Programmation/vala/vala-sandbox/missing --run aclocal-1.11
+ACLOCAL = ${SHELL} /home/gwen/Programmation/vala/testgit/vala-sandbox/missing --run aclocal-1.11
 ALL_LINGUAS = 
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 0
 API_VERSION = 0.2
 AR = ar
-AUTOCONF = ${SHELL} /home/gwen/Programmation/vala/vala-sandbox/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/gwen/Programmation/vala/vala-sandbox/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/gwen/Programmation/vala/vala-sandbox/missing --run automake-1.11
+AUTOCONF = ${SHELL} /home/gwen/Programmation/vala/testgit/vala-sandbox/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/gwen/Programmation/vala/testgit/vala-sandbox/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/gwen/Programmation/vala/testgit/vala-sandbox/missing --run automake-1.11
 AWK = gawk
 BAMF_CFLAGS = 
 BAMF_LIBS = 
@@ -150,8 +150,8 @@ LTLIBOBJS =
 LT_AGE = 0
 LT_CURRENT = 0
 LT_REVISION = 0
-MAINT = #
-MAKEINFO = ${SHELL} /home/gwen/Programmation/vala/vala-sandbox/missing --run makeinfo
+MAINT = 
+MAKEINFO = ${SHELL} /home/gwen/Programmation/vala/testgit/vala-sandbox/missing --run makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /bin/mkdir -p
 MSGFMT = /usr/bin/msgfmt
@@ -194,10 +194,10 @@ VERSION = shelf_version
 XGETTEXT = /usr/bin/xgettext
 XMLLINT = /usr/bin/xmllint
 XVFB_RUN = 
-abs_builddir = /home/gwen/Programmation/vala/vala-sandbox/data/apport
-abs_srcdir = /home/gwen/Programmation/vala/vala-sandbox/data/apport
-abs_top_builddir = /home/gwen/Programmation/vala/vala-sandbox
-abs_top_srcdir = /home/gwen/Programmation/vala/vala-sandbox
+abs_builddir = /home/gwen/Programmation/vala/testgit/vala-sandbox/data/apport
+abs_srcdir = /home/gwen/Programmation/vala/testgit/vala-sandbox/data/apport
+abs_top_builddir = /home/gwen/Programmation/vala/testgit/vala-sandbox
+abs_top_srcdir = /home/gwen/Programmation/vala/testgit/vala-sandbox
 ac_ct_AR = ar
 ac_ct_CC = gcc
 ac_ct_DUMPBIN = 
@@ -226,7 +226,7 @@ host_vendor = unknown
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/gwen/Programmation/vala/vala-sandbox/install-sh
+install_sh = ${SHELL} /home/gwen/Programmation/vala/testgit/vala-sandbox/install-sh
 intltool__v_merge_options_ = $(intltool__v_merge_options_$(AM_DEFAULT_VERBOSITY))
 intltool__v_merge_options_0 = -q
 libdir = ${exec_prefix}/lib
@@ -256,7 +256,7 @@ crashdb_DATA = plank-crashdb.conf
 all: all-am
 
 .SUFFIXES:
-$(srcdir)/Makefile.in: # $(srcdir)/Makefile.am  $(am__configure_deps)
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -281,9 +281,9 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 
-$(top_srcdir)/configure: # $(am__configure_deps)
+$(top_srcdir)/configure:  $(am__configure_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
-$(ACLOCAL_M4): # $(am__aclocal_m4_deps)
+$(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
 

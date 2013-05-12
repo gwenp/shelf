@@ -117,15 +117,15 @@ distuninstallcheck_listfiles = find . -type f -print
 am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \
   | sed 's|^\./|$(prefix)/|' | grep -v '$(infodir)/dir$$'
 distcleancheck_listfiles = find . -type f -print
-ACLOCAL = ${SHELL} /home/gwen/Programmation/vala/vala-sandbox/missing --run aclocal-1.11
+ACLOCAL = ${SHELL} /home/gwen/Programmation/vala/testgit/vala-sandbox/missing --run aclocal-1.11
 ALL_LINGUAS = 
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 0
 API_VERSION = 0.2
 AR = ar
-AUTOCONF = ${SHELL} /home/gwen/Programmation/vala/vala-sandbox/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/gwen/Programmation/vala/vala-sandbox/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/gwen/Programmation/vala/vala-sandbox/missing --run automake-1.11
+AUTOCONF = ${SHELL} /home/gwen/Programmation/vala/testgit/vala-sandbox/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/gwen/Programmation/vala/testgit/vala-sandbox/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/gwen/Programmation/vala/testgit/vala-sandbox/missing --run automake-1.11
 AWK = gawk
 BAMF_CFLAGS = 
 BAMF_LIBS = 
@@ -182,8 +182,8 @@ LTLIBOBJS =
 LT_AGE = 0
 LT_CURRENT = 0
 LT_REVISION = 0
-MAINT = #
-MAKEINFO = ${SHELL} /home/gwen/Programmation/vala/vala-sandbox/missing --run makeinfo
+MAINT = 
+MAKEINFO = ${SHELL} /home/gwen/Programmation/vala/testgit/vala-sandbox/missing --run makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /bin/mkdir -p
 MSGFMT = /usr/bin/msgfmt
@@ -226,10 +226,10 @@ VERSION = shelf_version
 XGETTEXT = /usr/bin/xgettext
 XMLLINT = /usr/bin/xmllint
 XVFB_RUN = 
-abs_builddir = /home/gwen/Programmation/vala/vala-sandbox
-abs_srcdir = /home/gwen/Programmation/vala/vala-sandbox
-abs_top_builddir = /home/gwen/Programmation/vala/vala-sandbox
-abs_top_srcdir = /home/gwen/Programmation/vala/vala-sandbox
+abs_builddir = /home/gwen/Programmation/vala/testgit/vala-sandbox
+abs_srcdir = /home/gwen/Programmation/vala/testgit/vala-sandbox
+abs_top_builddir = /home/gwen/Programmation/vala/testgit/vala-sandbox
+abs_top_srcdir = /home/gwen/Programmation/vala/testgit/vala-sandbox
 ac_ct_AR = ar
 ac_ct_CC = gcc
 ac_ct_DUMPBIN = 
@@ -258,7 +258,7 @@ host_vendor = unknown
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/gwen/Programmation/vala/vala-sandbox/install-sh
+install_sh = ${SHELL} /home/gwen/Programmation/vala/testgit/vala-sandbox/install-sh
 intltool__v_merge_options_ = $(intltool__v_merge_options_$(AM_DEFAULT_VERBOSITY))
 intltool__v_merge_options_0 = -q
 libdir = ${exec_prefix}/lib
@@ -314,7 +314,7 @@ all: $(BUILT_SOURCES) config.h
 .SUFFIXES:
 am--refresh: Makefile
 	@:
-$(srcdir)/Makefile.in: # $(srcdir)/Makefile.am $(top_srcdir)/Makefile.common $(am__configure_deps)
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am $(top_srcdir)/Makefile.common $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -342,9 +342,9 @@ $(top_srcdir)/Makefile.common:
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	$(SHELL) ./config.status --recheck
 
-$(top_srcdir)/configure: # $(am__configure_deps)
+$(top_srcdir)/configure:  $(am__configure_deps)
 	$(am__cd) $(srcdir) && $(AUTOCONF)
-$(ACLOCAL_M4): # $(am__aclocal_m4_deps)
+$(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	$(am__cd) $(srcdir) && $(ACLOCAL) $(ACLOCAL_AMFLAGS)
 $(am__aclocal_m4_deps):
 
@@ -355,7 +355,7 @@ config.h: stamp-h1
 stamp-h1: $(srcdir)/config.h.in $(top_builddir)/config.status
 	@rm -f stamp-h1
 	cd $(top_builddir) && $(SHELL) ./config.status config.h
-$(srcdir)/config.h.in: # $(am__configure_deps) 
+$(srcdir)/config.h.in:  $(am__configure_deps) 
 	($(am__cd) $(top_srcdir) && $(AUTOHEADER))
 	rm -f stamp-h1
 	touch $@

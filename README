@@ -1,0 +1,7 @@
+-- Compiling
+
+in a terminal, type :
+./autogen.sh && make
+
+-- Executing
+the executable path is : /src/shelf

@@ -102,20 +102,20 @@ static void _vala_shelf_items_tab_manager_set_property (GObject * object, guint 
 ShelfItemsTabManager* shelf_items_tab_manager_construct (GType object_type, ShelfDockController* controller) {
 	ShelfItemsTabManager * self = NULL;
 	ShelfDockController* _tmp0_;
-#line 38 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 38 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	g_return_val_if_fail (controller != NULL, NULL);
-#line 40 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 40 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	_tmp0_ = controller;
-#line 40 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 40 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	self = (ShelfItemsTabManager*) g_object_new (object_type, "controller", _tmp0_, NULL);
-#line 38 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 38 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	return self;
 #line 114 "TabManager.c"
 }
 
 
 ShelfItemsTabManager* shelf_items_tab_manager_new (ShelfDockController* controller) {
-#line 38 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 38 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	return shelf_items_tab_manager_construct (SHELF_ITEMS_TYPE_TAB_MANAGER, controller);
 #line 121 "TabManager.c"
 }
@@ -131,37 +131,37 @@ void shelf_items_tab_manager_populate (ShelfItemsTabManager* self) {
 	GeeArrayList* _tmp6_;
 	ShelfItemsTab* _tmp7_;
 	ShelfItemsTab* _tmp8_;
-#line 53 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 53 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	g_return_if_fail (self != NULL);
-#line 55 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 55 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	_tmp0_ = self->priv->tabs;
-#line 55 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 55 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	_tmp1_ = shelf_items_tab_new (self);
-#line 55 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 55 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	_tmp2_ = _tmp1_;
-#line 55 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 55 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	gee_abstract_collection_add ((GeeAbstractCollection*) _tmp0_, _tmp2_);
-#line 55 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 55 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	_g_object_unref0 (_tmp2_);
-#line 56 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 56 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	_tmp3_ = self->priv->tabs;
-#line 56 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 56 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	_tmp4_ = shelf_items_tab_new (self);
-#line 56 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 56 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	_tmp5_ = _tmp4_;
-#line 56 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 56 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	gee_abstract_collection_add ((GeeAbstractCollection*) _tmp3_, _tmp5_);
-#line 56 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 56 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	_g_object_unref0 (_tmp5_);
-#line 57 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 57 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	_tmp6_ = self->priv->tabs;
-#line 57 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 57 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	_tmp7_ = shelf_items_tab_new (self);
-#line 57 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 57 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	_tmp8_ = _tmp7_;
-#line 57 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 57 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	gee_abstract_collection_add ((GeeAbstractCollection*) _tmp6_, _tmp8_);
-#line 57 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 57 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	_g_object_unref0 (_tmp8_);
 #line 167 "TabManager.c"
 }
@@ -171,7 +171,7 @@ void shelf_items_tab_manager_populate (ShelfItemsTabManager* self) {
  * Draws the list of tabs.
  */
 static gpointer _g_object_ref0 (gpointer self) {
-#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 66 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	return self ? g_object_ref (self) : NULL;
 #line 177 "TabManager.c"
 }
@@ -179,11 +179,11 @@ static gpointer _g_object_ref0 (gpointer self) {
 
 void shelf_items_tab_manager_draw (ShelfItemsTabManager* self, cairo_t* cr) {
 	gint i;
-#line 63 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 63 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	g_return_if_fail (self != NULL);
-#line 63 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 63 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	g_return_if_fail (cr != NULL);
-#line 65 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 65 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	i = 0;
 #line 189 "TabManager.c"
 	{
@@ -195,23 +195,23 @@ void shelf_items_tab_manager_draw (ShelfItemsTabManager* self, cairo_t* cr) {
 		gint _tmp4_;
 		gint _t_size;
 		gint _t_index;
-#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 66 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 		_tmp0_ = self->priv->tabs;
-#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 66 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 		_tmp1_ = _g_object_ref0 (_tmp0_);
-#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 66 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 		_t_list = _tmp1_;
-#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 66 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 		_tmp2_ = _t_list;
-#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 66 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 		_tmp3_ = gee_abstract_collection_get_size ((GeeCollection*) _tmp2_);
-#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 66 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 		_tmp4_ = _tmp3_;
-#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 66 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 		_t_size = _tmp4_;
-#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 66 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 		_t_index = -1;
-#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 66 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 		while (TRUE) {
 #line 217 "TabManager.c"
 			gint _tmp5_;
@@ -225,45 +225,45 @@ void shelf_items_tab_manager_draw (ShelfItemsTabManager* self, cairo_t* cr) {
 			cairo_t* _tmp12_;
 			gint _tmp13_;
 			gint _tmp14_;
-#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 66 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 			_tmp5_ = _t_index;
-#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 66 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 			_t_index = _tmp5_ + 1;
-#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 66 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 			_tmp6_ = _t_index;
-#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 66 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 			_tmp7_ = _t_size;
-#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 66 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 			if (!(_tmp6_ < _tmp7_)) {
-#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 66 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 				break;
 #line 241 "TabManager.c"
 			}
-#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 66 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 			_tmp8_ = _t_list;
-#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 66 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 			_tmp9_ = _t_index;
-#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 66 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 			_tmp10_ = gee_abstract_list_get ((GeeAbstractList*) _tmp8_, _tmp9_);
-#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 66 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 			t = (ShelfItemsTab*) _tmp10_;
-#line 67 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 67 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 			_tmp11_ = t;
-#line 67 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 67 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 			_tmp12_ = cr;
-#line 67 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 67 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 			_tmp13_ = i;
-#line 67 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 67 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 			shelf_items_tab_draw (_tmp11_, _tmp12_, _tmp13_);
-#line 68 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 68 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 			_tmp14_ = i;
-#line 68 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 68 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 			i = _tmp14_ + 1;
-#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 66 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 			_g_object_unref0 (t);
 #line 265 "TabManager.c"
 		}
-#line 66 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 66 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 		_g_object_unref0 (_t_list);
 #line 269 "TabManager.c"
 	}
@@ -273,13 +273,13 @@ void shelf_items_tab_manager_draw (ShelfItemsTabManager* self, cairo_t* cr) {
 static ShelfDockController* shelf_items_tab_manager_get_controller (ShelfItemsTabManager* self) {
 	ShelfDockController* result;
 	ShelfDockController* _tmp0_;
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 33 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	g_return_val_if_fail (self != NULL, NULL);
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 33 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	_tmp0_ = self->priv->_controller;
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 33 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	result = _tmp0_;
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 33 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	return result;
 #line 285 "TabManager.c"
 }
@@ -288,17 +288,17 @@ static ShelfDockController* shelf_items_tab_manager_get_controller (ShelfItemsTa
 static void shelf_items_tab_manager_set_controller (ShelfItemsTabManager* self, ShelfDockController* value) {
 	ShelfDockController* _tmp0_;
 	ShelfDockController* _tmp1_;
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 33 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	g_return_if_fail (self != NULL);
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 33 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	_tmp0_ = value;
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 33 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	_tmp1_ = _g_object_ref0 (_tmp0_);
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 33 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	_g_object_unref0 (self->priv->_controller);
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 33 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	self->priv->_controller = _tmp1_;
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 33 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	g_object_notify ((GObject *) self, "controller");
 #line 304 "TabManager.c"
 }
@@ -309,51 +309,51 @@ static GObject * shelf_items_tab_manager_constructor (GType type, guint n_constr
 	GObjectClass * parent_class;
 	ShelfItemsTabManager * self;
 	GeeArrayList* _tmp0_;
-#line 43 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 43 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	parent_class = G_OBJECT_CLASS (shelf_items_tab_manager_parent_class);
-#line 43 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 43 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	obj = parent_class->constructor (type, n_construct_properties, construct_properties);
-#line 43 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 43 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	self = G_TYPE_CHECK_INSTANCE_CAST (obj, SHELF_ITEMS_TYPE_TAB_MANAGER, ShelfItemsTabManager);
-#line 45 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 45 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	_tmp0_ = gee_array_list_new (SHELF_ITEMS_TYPE_TAB, (GBoxedCopyFunc) g_object_ref, g_object_unref, NULL);
-#line 45 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 45 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	_g_object_unref0 (self->priv->tabs);
-#line 45 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 45 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	self->priv->tabs = _tmp0_;
-#line 46 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 46 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	shelf_items_tab_manager_populate (self);
-#line 43 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 43 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	return obj;
 #line 329 "TabManager.c"
 }
 
 
 static void shelf_items_tab_manager_class_init (ShelfItemsTabManagerClass * klass) {
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 26 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	shelf_items_tab_manager_parent_class = g_type_class_peek_parent (klass);
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 26 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	g_type_class_add_private (klass, sizeof (ShelfItemsTabManagerPrivate));
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 26 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	G_OBJECT_CLASS (klass)->get_property = _vala_shelf_items_tab_manager_get_property;
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 26 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	G_OBJECT_CLASS (klass)->set_property = _vala_shelf_items_tab_manager_set_property;
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 26 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	G_OBJECT_CLASS (klass)->constructor = shelf_items_tab_manager_constructor;
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 26 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	G_OBJECT_CLASS (klass)->finalize = shelf_items_tab_manager_finalize;
 #line 346 "TabManager.c"
 	/**
 	 * The controller for this dock.
 	 */
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 26 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	g_object_class_install_property (G_OBJECT_CLASS (klass), SHELF_ITEMS_TAB_MANAGER_CONTROLLER, g_param_spec_object ("controller", "controller", "controller", SHELF_TYPE_DOCK_CONTROLLER, G_PARAM_STATIC_NAME | G_PARAM_STATIC_NICK | G_PARAM_STATIC_BLURB | G_PARAM_WRITABLE | G_PARAM_CONSTRUCT_ONLY));
 #line 352 "TabManager.c"
 }
 
 
 static void shelf_items_tab_manager_instance_init (ShelfItemsTabManager * self) {
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 26 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	self->priv = SHELF_ITEMS_TAB_MANAGER_GET_PRIVATE (self);
 #line 359 "TabManager.c"
 }
@@ -361,13 +361,13 @@ static void shelf_items_tab_manager_instance_init (ShelfItemsTabManager * self) 
 
 static void shelf_items_tab_manager_finalize (GObject* obj) {
 	ShelfItemsTabManager * self;
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 26 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	self = G_TYPE_CHECK_INSTANCE_CAST (obj, SHELF_ITEMS_TYPE_TAB_MANAGER, ShelfItemsTabManager);
-#line 28 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 28 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	_g_object_unref0 (self->priv->tabs);
-#line 33 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 33 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	_g_object_unref0 (self->priv->_controller);
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 26 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	G_OBJECT_CLASS (shelf_items_tab_manager_parent_class)->finalize (obj);
 #line 373 "TabManager.c"
 }
@@ -391,19 +391,19 @@ GType shelf_items_tab_manager_get_type (void) {
 static void _vala_shelf_items_tab_manager_get_property (GObject * object, guint property_id, GValue * value, GParamSpec * pspec) {
 	ShelfItemsTabManager * self;
 	self = G_TYPE_CHECK_INSTANCE_CAST (object, SHELF_ITEMS_TYPE_TAB_MANAGER, ShelfItemsTabManager);
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 26 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	switch (property_id) {
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 26 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 		case SHELF_ITEMS_TAB_MANAGER_CONTROLLER:
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 26 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 		g_value_set_object (value, shelf_items_tab_manager_get_controller (self));
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 26 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 		break;
 #line 403 "TabManager.c"
 		default:
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 26 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 26 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 		break;
 #line 409 "TabManager.c"
 	}
@@ -413,19 +413,19 @@ static void _vala_shelf_items_tab_manager_get_property (GObject * object, guint 
 static void _vala_shelf_items_tab_manager_set_property (GObject * object, guint property_id, const GValue * value, GParamSpec * pspec) {
 	ShelfItemsTabManager * self;
 	self = G_TYPE_CHECK_INSTANCE_CAST (object, SHELF_ITEMS_TYPE_TAB_MANAGER, ShelfItemsTabManager);
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 26 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 	switch (property_id) {
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 26 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 		case SHELF_ITEMS_TAB_MANAGER_CONTROLLER:
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 26 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 		shelf_items_tab_manager_set_controller (self, g_value_get_object (value));
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 26 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 		break;
 #line 425 "TabManager.c"
 		default:
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 26 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 		G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-#line 26 "/home/gwen/Programmation/vala/vala-sandbox/lib/Items/TabManager.vala"
+#line 26 "/home/gwen/Programmation/vala/testgit/vala-sandbox/lib/Items/TabManager.vala"
 		break;
 #line 431 "TabManager.c"
 	}

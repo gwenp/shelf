@@ -28,4 +28,8 @@ install-sh
 missing
 
 Makefile.in
+Makefile
+makefile
 
+config.h.in~
+config.h
