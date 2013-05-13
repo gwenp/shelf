@@ -61,9 +61,12 @@ namespace Shelf.Items
 		 */
 		public void populate()
 		{
-			add_tab (new Tab(this));
-			add_tab (new Tab(this));
-			add_tab (new Tab(this));
+			add_tab (new Tab(this, "data/icons/facebook.png"));
+			add_tab (new Tab(this, "data/icons/mail.png"));
+			add_tab (new Tab(this, "data/icons/twitter.png"));
+			add_tab (new Tab(this, "data/icons/transmission.png"));
+			add_tab (new Tab(this, "data/icons/rss.png"));
+			add_tab (new Tab(this, "data/icons/googleplus.png"));
 		}
 
 		public void add_tab(Tab t)

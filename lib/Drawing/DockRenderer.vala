@@ -24,11 +24,16 @@ using Shelf.Items;
 
 namespace Shelf.Drawing
 {
+
 	/**
 	 * The main renderer for the dock.
 	 */
 	public class DockRenderer : GLib.Object
 	{
+		DockSurface? main_buffer;
+		DockSurface? background_buffer;
+
+
 		/**
 		 * The controller for this dock.
 		 */
@@ -55,7 +60,6 @@ namespace Shelf.Drawing
 		 */
 		public bool draw (Context cr)
 		{
-			// set_input_mask ();
 			// controller.renderer.draw_dock (cr);
 			cr.set_source_rgb (0, 0, 0);
 
@@ -79,6 +83,7 @@ namespace Shelf.Drawing
 		private delegate void DrawMethod ();
 
 		private void draw_shapes (Context ctx, int x, int y, DrawMethod draw_method) {
+
 			ctx.save ();
 
 			ctx.new_path ();

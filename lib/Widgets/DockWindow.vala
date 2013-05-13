@@ -26,6 +26,23 @@ using Shelf.System;
 
 namespace Shelf.Widgets
 {
+	public enum Struts
+	{
+		LEFT,
+		RIGHT,
+		TOP,
+		BOTTOM,
+		LEFT_START,
+		LEFT_END,
+		RIGHT_START,
+		RIGHT_END,
+		TOP_START,
+		TOP_END,
+		BOTTOM_START,
+		BOTTOM_END,
+		N_VALUES
+	}
+	
 	/**
 	 * The main window for all docks.
 	 */
@@ -132,10 +149,52 @@ namespace Shelf.Widgets
 				firstDraw = false;
 				controller.position_manager.initialize();
 			}
-			stdout.printf("draw DockWindow\n");
 
 			controller.renderer.draw(cr);
 			return true;
+		}
+
+		public void update_size_and_position()
+		{
+			stdout.printf("update_size_and_position");
+			unowned DockPositionManager position_manager = controller.position_manager;
+
+			set_size_request (position_manager.win_width, position_manager.win_height);
+		}
+
+		/**
+		 * {@inheritDoc}
+		 */
+		public override bool map_event (EventAny event)
+		{
+			set_struts ();
+			
+			return base.map_event (event);
+		}
+
+		void set_struts ()
+		{
+			if (!get_realized ())
+				return;
+			
+			var struts = new ulong [Struts.N_VALUES];
+			
+			// if (controller.prefs.HideMode == HideType.NONE)
+			// controller.position_manager.get_struts (ref struts);
+			
+			var first_struts = new ulong [Struts.BOTTOM + 1];
+			for (var i = 0; i < first_struts.length; i++)
+				first_struts [i] = struts [i];
+			
+			unowned X.Display display = X11Display.get_xdisplay (get_display ());
+			var xid = X11Window.get_xid (get_window ());
+			
+			Gdk.error_trap_push ();
+			display.change_property (xid, display.intern_atom ("_NET_WM_STRUT_PARTIAL", false), X.XA_CARDINAL,
+			                      32, X.PropMode.Replace, (uchar[]) struts, struts.length);
+			display.change_property (xid, display.intern_atom ("_NET_WM_STRUT", false), X.XA_CARDINAL,
+			                      32, X.PropMode.Replace, (uchar[]) first_struts, first_struts.length);
+			Gdk.error_trap_pop ();
 		}
 	}
 }

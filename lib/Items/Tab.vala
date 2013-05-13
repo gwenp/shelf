@@ -28,18 +28,19 @@ namespace Shelf.Items
 	{
 		public TabRenderer tab_renderer;
 		public bool hovered;
-
+		
 		/**
 		 * The tab manager.
 		 */
 		public TabManager tab_manager { public get; construct; }
+		public string icon_path { public get; construct; }
 		
 		/**
 		 * Creates a new item manager.
 		 */
-		public Tab (TabManager manager)
+		public Tab (TabManager manager, string tab_icon_path)
 		{
-			GLib.Object (tab_manager: manager);
+			GLib.Object (tab_manager: manager, icon_path: tab_icon_path);
 		}
 
 		construct
@@ -66,9 +67,7 @@ namespace Shelf.Items
 			int tab_y = (tab_manager.tab_icon_size + tab_manager.tab_margin * 3) * tab_manager.get_tab_position(this);
 			int next_tab_y = (tab_manager.tab_icon_size + tab_manager.tab_margin * 3) * (tab_manager.get_tab_position(this) + 1);
 
-			stdout.printf("tab %d. mouse : %lf,%lf. tab_y=%d. next_tab_y=%d\n", tab_manager.get_tab_position(this), event.x, event.y, tab_y, next_tab_y);
-
-			if(event.x < 48)
+			if(event.x < 48 + 12)
 			{
 				if(event.y < next_tab_y && event.y > tab_y)
 				{

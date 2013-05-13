@@ -39,9 +39,9 @@ namespace Shelf.Widgets
 		{			
 			app_paintable = true;
 			decorated = false;
-			// resizable = false;
-			double_buffered = false;
-			
+			resizable = false;
+			double_buffered = true;
+
 			unowned Screen screen = get_screen ();
 			set_visual (screen.get_rgba_visual () ?? screen.get_system_visual ());
 		}

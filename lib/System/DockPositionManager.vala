@@ -15,6 +15,9 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
+using Gdk;
+using Gtk;
+
 namespace Shelf.System
 {
 	/**
@@ -22,6 +25,30 @@ namespace Shelf.System
 	 */
 	public class DockPositionManager : GLib.Object
 	{
+		Gdk.Rectangle monitor_geo;
+		
+		bool screen_is_composited;
+
+		/**
+		 * Cached x position of the dock window.
+		 */
+		public int win_x { get; protected set; }
+		
+		/**
+		 * Cached y position of the dock window.
+		 */
+		public int win_y { get; protected set; }
+
+		/**
+		 * Cached width position of the dock window.
+		 */
+		public int win_width { get; protected set; }
+		
+		/**
+		 * Cached height of the dock window.
+		 */
+		public int win_height { get; protected set; }
+
 		/**
 		 * The controller for this dock.
 		 */
@@ -44,8 +71,43 @@ namespace Shelf.System
 		}
 
 		public void initialize()
+			requires (controller.window != null)
 		{
-			controller.window.move(100,100);
+			controller.window.move(0,0);
+			unowned Screen screen = controller.window.get_screen ();
+			
+			screen.monitors_changed.connect (update_monitor_geo);
+			screen.size_changed.connect (update_monitor_geo);
+			
+			// NOTE don't call update_monitor_geo to avoid a double-call of dockwindow.set_size on startup
+			screen.get_monitor_geometry (Screen.get_default ().get_primary_monitor (), out monitor_geo); //TODO change Screen.get_default ().get_primary_monitor () and store it to the prefs
+			
+			screen_is_composited = screen.is_composited ();
+			update_monitor_geo();
+		}
+
+		void update_dimensions ()
+		{
+			// if (prefs.is_horizontal_dock ())
+			// {
+				// width = monitor_geo.width;
+			// }
+			// else
+			// {
+				win_width = 200;
+				win_height = monitor_geo.height;
+			// }
+		}
+
+		void update_monitor_geo ()
+		{
+			stdout.printf("update_monitor_geo");
+			controller.window.get_screen ().get_monitor_geometry (Screen.get_default ().get_primary_monitor (), out monitor_geo);
+			update_dimensions ();
+			// update_dock_position ();
+			// update_regions ();
+			
+			controller.window.update_size_and_position ();
 		}
 	}
 }

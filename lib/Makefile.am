@@ -71,6 +71,7 @@ libshelf_la_VALASOURCES = \
 	DockController.vala \
 	Drawing/Color.vala \
 	Drawing/DockRenderer.vala \
+	Drawing/DockSurface.vala \
 	Drawing/TabRenderer.vala \
 	Drawing/DrawingService.vala \
 	Widgets/DockWindow.vala \

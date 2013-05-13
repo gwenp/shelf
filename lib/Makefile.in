@@ -101,9 +101,9 @@ libshelf_la_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 am__objects_3 = shelf-resources.lo $(am__objects_1)
 am__objects_4 = AbstractMain.lo Factory.lo ItemFactory.lo Tab.lo \
 	TabManager.lo Logger.lo DockPositionManager.lo \
-	DockController.lo Color.lo DockRenderer.lo TabRenderer.lo \
-	DrawingService.lo DockWindow.lo CompositedWindow.lo \
-	$(am__objects_1)
+	DockController.lo Color.lo DockRenderer.lo DockSurface.lo \
+	TabRenderer.lo DrawingService.lo DockWindow.lo \
+	CompositedWindow.lo $(am__objects_1)
 nodist_libshelf_la_OBJECTS = $(am__objects_3) $(am__objects_4) \
 	$(am__objects_1)
 libshelf_la_OBJECTS = $(nodist_libshelf_la_OBJECTS)
@@ -387,6 +387,7 @@ libshelf_la_VALASOURCES = \
 	DockController.vala \
 	Drawing/Color.vala \
 	Drawing/DockRenderer.vala \
+	Drawing/DockSurface.vala \
 	Drawing/TabRenderer.vala \
 	Drawing/DrawingService.vala \
 	Widgets/DockWindow.vala \
@@ -541,6 +542,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DockController.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DockPositionManager.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DockRenderer.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DockSurface.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DockWindow.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DrawingService.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Factory.Plo@am__quote@
@@ -634,6 +636,13 @@ DockRenderer.lo: Drawing/DockRenderer.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='Drawing/DockRenderer.c' object='DockRenderer.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o DockRenderer.lo `test -f 'Drawing/DockRenderer.c' || echo '$(srcdir)/'`Drawing/DockRenderer.c
+
+DockSurface.lo: Drawing/DockSurface.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT DockSurface.lo -MD -MP -MF $(DEPDIR)/DockSurface.Tpo -c -o DockSurface.lo `test -f 'Drawing/DockSurface.c' || echo '$(srcdir)/'`Drawing/DockSurface.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/DockSurface.Tpo $(DEPDIR)/DockSurface.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='Drawing/DockSurface.c' object='DockSurface.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o DockSurface.lo `test -f 'Drawing/DockSurface.c' || echo '$(srcdir)/'`Drawing/DockSurface.c
 
 TabRenderer.lo: Drawing/TabRenderer.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT TabRenderer.lo -MD -MP -MF $(DEPDIR)/TabRenderer.Tpo -c -o TabRenderer.lo `test -f 'Drawing/TabRenderer.c' || echo '$(srcdir)/'`Drawing/TabRenderer.c

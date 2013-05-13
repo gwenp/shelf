@@ -46,7 +46,8 @@ namespace Shelf
 			// renderer.initialize ();
 			// drag_manager.initialize ();
 			// hide_manager.initialize ();
-
+			position_manager.initialize();
+			
 			window.show_all ();
 		}
 	}
