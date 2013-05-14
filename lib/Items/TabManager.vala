@@ -29,13 +29,10 @@ namespace Shelf.Items
 		private ArrayList<Tab> tabs;
 		private Gee.Map<Tab, int> saved_tabs_positions;
 
-
-		public int tab_icon_size = 48;
-		public int tab_margin = 8;
 		/**
 		 * The controller for this dock.
 		 */
-		public DockController controller { private get; construct; }
+		public DockController controller { public get; construct; }
 		
 		/**
 		 * Creates a new item manager.

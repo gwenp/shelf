@@ -67,6 +67,7 @@ libshelf_la_VALASOURCES = \
 	Items/Tab.vala \
 	Items/TabManager.vala \
 	System/Logger.vala \
+	System/Theme.vala \
 	System/DockPositionManager.vala \
 	DockController.vala \
 	Drawing/Color.vala \

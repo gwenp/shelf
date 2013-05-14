@@ -34,7 +34,8 @@ namespace Shelf
 		public DockRenderer renderer;
 		public DockPositionManager position_manager;
 		public TabManager tab_manager;
-		
+		public Theme theme_manager;
+
 		public DockController ()
 		{
 	
@@ -42,12 +43,10 @@ namespace Shelf
 			window = new DockWindow (this);
 			renderer = new DockRenderer (this);
 			tab_manager = new TabManager(this);
+			theme_manager = new Theme(this);
 			
-			// renderer.initialize ();
-			// drag_manager.initialize ();
-			// hide_manager.initialize ();
 			position_manager.initialize();
-			
+
 			window.show_all ();
 		}
 	}

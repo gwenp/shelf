@@ -18,6 +18,7 @@ using Cairo;
 using Gdk;
 
 using Shelf.Items;
+using Shelf.System;
 
 namespace Shelf.Drawing
 {
@@ -52,12 +53,16 @@ namespace Shelf.Drawing
 		 */
 		public void draw (Context cr, int position)
 		{
-			Pixbuf pixbuf = pixbuf_get_from_surface (surface_icon, 0, 0, 48, 48);
+			unowned Theme theme = tab.tab_manager.controller.theme_manager;
+			int icon_size = theme.tab_icon_size;
+			int padding = theme.tab_padding;
+			
+			Pixbuf pixbuf = pixbuf_get_from_surface (surface_icon, 0, 0, icon_size, icon_size);
 			Drawing.Color c = DrawingService.average_color(pixbuf);
 
-			int icon_size = tab.tab_manager.tab_icon_size;
-			int margin = tab.tab_manager.tab_margin;
-			int vertical_offset = ( icon_size + margin * 3 ) * position;
+			int vertical_offset = ( icon_size + padding * 3 ) * position;
+
+			cr.set_operator (Operator.OVER);
 
 			if(tab.hovered)
 				cr.set_source_rgb (c.R + 0.1, c.G + 0.1, c.B + 0.1);
@@ -66,20 +71,20 @@ namespace Shelf.Drawing
 
 			cr.move_to (0, vertical_offset);
 			cr.rel_line_to (icon_size, 0);
-			cr.rel_curve_to (margin, 0, margin, margin, margin, margin);
+			cr.rel_curve_to (padding, 0, padding, padding, padding, padding);
 			
 			cr.rel_line_to (0, icon_size);
 
-			cr.rel_line_to (- icon_size - margin, margin * 8);
+			cr.rel_line_to (- icon_size - padding, padding * 8);
 			
 			cr.fill();
 			cr.stroke();
 
-			vertical_offset = ( icon_size + margin * 3 ) * position;
+			vertical_offset = ( icon_size + padding * 3 ) * position;
 
-			cr.set_source_surface(surface_icon, margin / 4, vertical_offset + margin / 2);
+			cr.set_source_surface(surface_icon, padding / 4, vertical_offset + padding / 2);
 
-			cr.move_to (margin / 4, vertical_offset + margin / 2);
+			cr.move_to (padding / 4, vertical_offset + padding / 2);
 			cr.rel_line_to (icon_size, 0);
 			cr.rel_line_to (0, icon_size);
 			cr.rel_line_to (-icon_size, 0);

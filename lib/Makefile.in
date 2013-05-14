@@ -100,7 +100,7 @@ libshelf_la_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	$(builddir)/libshelf-internal.la $(am__DEPENDENCIES_1)
 am__objects_3 = shelf-resources.lo $(am__objects_1)
 am__objects_4 = AbstractMain.lo Factory.lo ItemFactory.lo Tab.lo \
-	TabManager.lo Logger.lo DockPositionManager.lo \
+	TabManager.lo Logger.lo Theme.lo DockPositionManager.lo \
 	DockController.lo Color.lo DockRenderer.lo DockSurface.lo \
 	TabRenderer.lo DrawingService.lo DockWindow.lo \
 	CompositedWindow.lo $(am__objects_1)
@@ -383,6 +383,7 @@ libshelf_la_VALASOURCES = \
 	Items/Tab.vala \
 	Items/TabManager.vala \
 	System/Logger.vala \
+	System/Theme.vala \
 	System/DockPositionManager.vala \
 	DockController.vala \
 	Drawing/Color.vala \
@@ -551,6 +552,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Tab.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TabManager.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TabRenderer.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Theme.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/shelf-resources.Plo@am__quote@
 
 .c.o:
@@ -615,6 +617,13 @@ Logger.lo: System/Logger.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='System/Logger.c' object='Logger.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o Logger.lo `test -f 'System/Logger.c' || echo '$(srcdir)/'`System/Logger.c
+
+Theme.lo: System/Theme.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT Theme.lo -MD -MP -MF $(DEPDIR)/Theme.Tpo -c -o Theme.lo `test -f 'System/Theme.c' || echo '$(srcdir)/'`System/Theme.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/Theme.Tpo $(DEPDIR)/Theme.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='System/Theme.c' object='Theme.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o Theme.lo `test -f 'System/Theme.c' || echo '$(srcdir)/'`System/Theme.c
 
 DockPositionManager.lo: System/DockPositionManager.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT DockPositionManager.lo -MD -MP -MF $(DEPDIR)/DockPositionManager.Tpo -c -o DockPositionManager.lo `test -f 'System/DockPositionManager.c' || echo '$(srcdir)/'`System/DockPositionManager.c

@@ -21,6 +21,7 @@ using Gee;
 using Gtk;
 
 using Shelf.Items;
+using Shelf.System;
 
 namespace Shelf.Drawing
 {
@@ -32,6 +33,7 @@ namespace Shelf.Drawing
 	{
 		DockSurface? main_buffer;
 		DockSurface? background_buffer;
+		DockSurface? shadow_buffer;
 
 
 		/**
@@ -60,16 +62,62 @@ namespace Shelf.Drawing
 		 */
 		public bool draw (Context cr)
 		{
-			// controller.renderer.draw_dock (cr);
-			cr.set_source_rgb (0, 0, 0);
-
-			cr.set_line_width (10 / 4);
-			cr.set_tolerance (0.1);
-
-			cr.set_line_join (LineJoin.ROUND);
-
+			draw_background(cr);
 			controller.tab_manager.draw(cr);
+			
 			return true;
+		}
+
+		private void draw_background(Context cr)
+		{
+			unowned DockPositionManager position_manager = controller.position_manager;
+			
+			var x = position_manager.win_x;
+			var y = position_manager.win_y;
+			var width = position_manager.win_width;
+			var height = position_manager.win_height;
+			
+			if (main_buffer == null) {
+				main_buffer = new DockSurface.with_surface (width, height, cr.get_target ());
+			}
+			
+			if (shadow_buffer == null) {
+				shadow_buffer = new DockSurface.with_surface (width, height, cr.get_target ());
+			}
+			
+			if (background_buffer == null || background_buffer.Width != width
+				|| background_buffer.Height != height)
+				background_buffer = create_background (width, height,
+					0, main_buffer);
+			
+			cr.set_source_surface (background_buffer.Internal, x, y);
+			// calculate drawing offset
+			var x_offset = 0, y_offset = 0;
+			
+			// draw the dock on the window
+			cr.set_operator (Operator.SOURCE);
+			cr.set_source_surface (shadow_buffer.Internal, x_offset, y_offset);
+			cr.paint ();
+		}
+
+		private DockSurface create_background (int width, int height, Gtk.PositionType position, DockSurface model)
+		{
+			var surface = new DockSurface.with_dock_surface (width, height, model);
+			surface.clear ();
+			
+			DockSurface temp;
+			temp = new DockSurface.with_dock_surface (height, width, surface);
+			
+			unowned Context cr = surface.Context;
+			
+			var x_offset = 0.0, y_offset = 0.0;
+			
+			cr.save ();
+			cr.set_source_surface (temp.Internal, x_offset, y_offset);
+			cr.paint ();
+			cr.restore ();
+			
+			return surface;
 		}
 
 		private void stroke_shapes (Context ctx, int x, int y) {

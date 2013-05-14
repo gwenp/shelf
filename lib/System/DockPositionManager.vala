@@ -73,7 +73,7 @@ namespace Shelf.System
 		public void initialize()
 			requires (controller.window != null)
 		{
-			controller.window.move(0,0);
+			controller.window.move(0,30);
 			unowned Screen screen = controller.window.get_screen ();
 			
 			screen.monitors_changed.connect (update_monitor_geo);

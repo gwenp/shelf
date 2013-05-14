@@ -1,4 +1,0 @@
-	../data/plank.desktop.in \
-	../lib/Items/ApplicationDockItem.vala \
-	../lib/Items/FileDockItem.vala \
-	../lib/Items/PlankDockItem.vala

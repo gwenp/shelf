@@ -18,6 +18,7 @@ using Gdk;
 using Cairo;
 
 using Shelf.Drawing;
+using Shelf.System;
 
 namespace Shelf.Items
 {
@@ -63,9 +64,13 @@ namespace Shelf.Items
 
 		public bool is_mouse_inside_tab(EventMotion event)
 		{
+			unowned Theme theme = tab_manager.controller.theme_manager;
+			int icon_size = theme.tab_icon_size;
+			int padding = theme.tab_padding;
+
 			int tab_x = 0;
-			int tab_y = (tab_manager.tab_icon_size + tab_manager.tab_margin * 3) * tab_manager.get_tab_position(this);
-			int next_tab_y = (tab_manager.tab_icon_size + tab_manager.tab_margin * 3) * (tab_manager.get_tab_position(this) + 1);
+			int tab_y = (icon_size + padding * 3) * tab_manager.get_tab_position(this);
+			int next_tab_y = (icon_size + padding * 3) * (tab_manager.get_tab_position(this) + 1);
 
 			if(event.x < 48 + 12)
 			{
