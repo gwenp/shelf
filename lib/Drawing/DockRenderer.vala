@@ -35,6 +35,13 @@ namespace Shelf.Drawing
 		DockSurface? background_buffer;
 		DockSurface? shadow_buffer;
 
+		bool screen_is_composited;
+
+		DateTime last_hide = new DateTime.from_unix_utc (0);
+
+		DateTime frame_time = new DateTime.from_unix_utc (0);
+
+		public bool Hidden { get; private set; default = true; }
 
 		/**
 		 * The controller for this dock.
@@ -57,6 +64,42 @@ namespace Shelf.Drawing
 		{
 		}
 		
+		public void initialize ()
+			requires (controller.window != null)
+		{
+			// set_widget (controller.window);
+			
+			unowned Screen screen = controller.window.get_screen ();
+			screen_is_composited = screen.is_composited ();
+			// screen.composited_changed.connect (composited_changed);
+			
+			// controller.position_manager.reset_caches (theme);
+			// controller.position_manager.update_regions ();
+			
+			//TODO replace the hover management with something like that
+			// controller.window.notify["HoveredItem"].connect (animated_draw);
+		}
+		
+		/**
+		 * The dock should be shown.
+		 */
+		public void show ()
+		{
+			if (!Hidden)
+				return;
+			Hidden = false;
+		}
+		
+		/**
+		 * The dock should be hidden.
+		 */
+		public void hide ()
+		{
+			if (Hidden)
+				return;
+			Hidden = true;
+		}
+
 		/**
 		 * {@inheritDoc}
 		 */
@@ -64,7 +107,7 @@ namespace Shelf.Drawing
 		{
 			draw_background(cr);
 			controller.tab_manager.draw(cr);
-			
+
 			return true;
 		}
 
@@ -187,6 +230,17 @@ namespace Shelf.Drawing
 			ctx.rel_curve_to (0, 10, -10, 10, -2 * 10, 0);
 			ctx.rel_curve_to (-10, -10, -2 * 10, -10, -2 * 10, 0);
 			ctx.close_path ();
+		}
+
+		public double get_hide_offset ()
+		{
+			if (!screen_is_composited)
+				return 0;
+			
+			//var time = 1.0 ? theme.HideTime : theme.FadeTime;
+			var time = 100;
+			var diff = double.min (1, frame_time.difference (last_hide) / (double) (time * 1000));
+			return Hidden ? diff : 1 - diff;
 		}
 	}
 }

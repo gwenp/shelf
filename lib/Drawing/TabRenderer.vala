@@ -54,7 +54,8 @@ namespace Shelf.Drawing
 		public void draw (Context cr, int position)
 		{
 			unowned Theme theme = tab.tab_manager.controller.theme_manager;
-			int icon_size = theme.tab_icon_size;
+			unowned DockPreferences prefs = tab.tab_manager.controller.prefs;
+			int icon_size = prefs.IconSize;
 			int padding = theme.tab_padding;
 			
 			Pixbuf pixbuf = pixbuf_get_from_surface (surface_icon, 0, 0, icon_size, icon_size);

@@ -26,6 +26,8 @@ namespace Shelf.System
 	public class DockPositionManager : GLib.Object
 	{
 		Gdk.Rectangle monitor_geo;
+		Gdk.Rectangle static_dock_region;
+		Gdk.Rectangle cursor_region;
 		
 		bool screen_is_composited;
 
@@ -50,6 +52,11 @@ namespace Shelf.System
 		public int win_height { get; protected set; }
 
 		/**
+		 * The currently visible height of the dock.
+		 */
+		public int VisibleDockHeight { get; private set; }
+
+		/**
 		 * The controller for this dock.
 		 */
 		public DockController controller { private get; construct; }
@@ -64,6 +71,7 @@ namespace Shelf.System
 
 		construct
 		{
+			cursor_region = Gdk.Rectangle ();
 		}
 		
 		~DockPositionManager ()
@@ -83,20 +91,15 @@ namespace Shelf.System
 			screen.get_monitor_geometry (Screen.get_default ().get_primary_monitor (), out monitor_geo); //TODO change Screen.get_default ().get_primary_monitor () and store it to the prefs
 			
 			screen_is_composited = screen.is_composited ();
+
+			// NOTE I actually call it to make it work :/
 			update_monitor_geo();
 		}
 
 		void update_dimensions ()
 		{
-			// if (prefs.is_horizontal_dock ())
-			// {
-				// width = monitor_geo.width;
-			// }
-			// else
-			// {
-				win_width = 200;
-				win_height = monitor_geo.height;
-			// }
+			win_width = 200;
+			win_height = monitor_geo.height;
 		}
 
 		void update_monitor_geo ()
@@ -109,5 +112,34 @@ namespace Shelf.System
 			
 			controller.window.update_size_and_position ();
 		}
+
+		public Gdk.Rectangle get_cursor_region ()
+		{
+			cursor_region.height = int.max (1, (int) ((1 - controller.renderer.get_hide_offset ()) * VisibleDockHeight));
+			cursor_region.y = win_height - cursor_region.height;
+			
+			return cursor_region;
+		}
+
+		/**
+		 * Returns the static dock region for the dock.
+		 * This is the region that the dock occupies when not hidden.
+		 *
+		 * @return the static dock region for the dock
+		 */
+		public Gdk.Rectangle get_static_dock_region ()
+		{
+			var dock_region = static_dock_region;
+			dock_region.x += win_width;
+			dock_region.y += win_height;
+			
+			// Revert adjustments made by update_dock_position () for non-compositing mode
+			if (!screen_is_composited && controller.renderer.Hidden) {
+				dock_region.x += win_width - 1;
+			}
+			
+			return dock_region;
+		}
+
 	}
 }

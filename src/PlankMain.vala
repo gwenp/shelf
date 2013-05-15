@@ -30,6 +30,8 @@ namespace PlankMain
 		
 		public PlankMain ()
 		{
+			build_pkg_data_dir = Build.PKGDATADIR;
+			
 			program_name = "Shelf";
 			exec_name = "shelf";
 		}

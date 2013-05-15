@@ -33,18 +33,24 @@ namespace Shelf
 		public DockWindow window;
 		public DockRenderer renderer;
 		public DockPositionManager position_manager;
+		public DockPreferences prefs;
 		public TabManager tab_manager;
+		public HideManager hide_manager;
 		public Theme theme_manager;
 
 		public DockController ()
 		{
+			prefs = new DockPreferences.with_filename (Factories.AbstractMain.dock_path + "/settings");
 	
 			position_manager = new DockPositionManager (this);
 			window = new DockWindow (this);
 			renderer = new DockRenderer (this);
 			tab_manager = new TabManager(this);
+			hide_manager = new HideManager(this);
 			theme_manager = new Theme(this);
 			
+			renderer.initialize();
+			hide_manager.initialize();
 			position_manager.initialize();
 
 			window.show_all ();

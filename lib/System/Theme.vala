@@ -22,10 +22,6 @@ namespace Shelf.System
 	 */
 	public class Theme : GLib.Object
 	{
-		/**
-		 * Width and height of tab icons
-		 */
-		public int tab_icon_size { get; protected set; }
 		
 		/**
 		 * padding between the icons and the tab border.
@@ -38,11 +34,11 @@ namespace Shelf.System
 		public DockController controller { private get; construct; }
 		
 		/**
-		 * Creates a new theme class, to store properties of the current theme.
+		 * Creates a new position manager.
 		 */
 		public Theme (DockController controller)
 		{
-			GLib.Object (controller: controller, tab_icon_size : 48, tab_padding: 8);
+			GLib.Object (controller: controller, tab_padding: 8);
 		}
 
 		construct

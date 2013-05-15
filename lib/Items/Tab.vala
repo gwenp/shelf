@@ -65,7 +65,8 @@ namespace Shelf.Items
 		public bool is_mouse_inside_tab(EventMotion event)
 		{
 			unowned Theme theme = tab_manager.controller.theme_manager;
-			int icon_size = theme.tab_icon_size;
+			unowned DockPreferences prefs = tab_manager.controller.prefs;
+			int icon_size = prefs.IconSize;
 			int padding = theme.tab_padding;
 
 			int tab_x = 0;

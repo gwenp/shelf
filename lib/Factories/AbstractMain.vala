@@ -40,6 +40,16 @@ namespace Shelf.Factories
 		protected signal void initialized ();
 
 		/**
+		 * The name of the path containing the dock's preferences.
+		 */
+		public static string dock_path = "dock1";
+		
+		/**
+		 * Should be Build.PKGDATADIR
+		 */
+		protected string build_pkg_data_dir = "";
+
+		/**
 		 * The displayed name of the program.
 		 */
 		protected string program_name = "";
@@ -59,6 +69,8 @@ namespace Shelf.Factories
 				return Posix.EXIT_FAILURE;
 
 			set_options ();
+
+			initialize_services ();
 
 			initialized ();
 			
@@ -125,7 +137,15 @@ namespace Shelf.Factories
 			// warning ("Exiting because another instance of this application is already running with the name '%s'.", dock_path);
 			return false;
 		}
-	
+		
+		/**
+		 * Initializes the Shelf services.
+		 */
+		protected virtual void initialize_services ()
+		{
+			Paths.initialize (exec_name, build_pkg_data_dir);
+			Paths.ensure_directory_exists (Paths.AppConfigFolder.get_child (dock_path));
+		}
 		static void sig_handler (int sig)
 		{
 			warning ("Caught signal (%d), exiting", sig);
