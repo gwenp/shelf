@@ -119,7 +119,6 @@ namespace Shelf.System
 			
 			// set the program-specific directories to use
 			AppConfigFolder = ConfigHomeFolder.get_child (app_name);
-			stdout.printf(AppConfigFolder.get_path() + "\n");
 			AppDataFolder   = DataHomeFolder.get_child (app_name);
 			AppThemeFolder  = AppDataFolder.get_child ("themes");
 			AppCacheFolder  = CacheHomeFolder.get_child (app_name);

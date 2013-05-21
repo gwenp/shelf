@@ -51,9 +51,9 @@ namespace Shelf.Drawing
 		/**
 		 * Draws a tab.
 		 */
-		public void draw (Context cr, int position)
+		public void draw (Context cr, int position, int x_offset, int y_offset)
 		{
-			unowned Theme theme = tab.tab_manager.controller.theme_manager;
+			unowned Theme theme = tab.tab_manager.controller.theme;
 			unowned DockPreferences prefs = tab.tab_manager.controller.prefs;
 			int icon_size = prefs.IconSize;
 			int padding = theme.tab_padding;
@@ -70,7 +70,7 @@ namespace Shelf.Drawing
 			else
 				cr.set_source_rgb (c.R, c.G, c.B);
 
-			cr.move_to (0, vertical_offset);
+			cr.move_to (x_offset, vertical_offset + y_offset);
 			cr.rel_line_to (icon_size, 0);
 			cr.rel_curve_to (padding, 0, padding, padding, padding, padding);
 			
@@ -85,7 +85,7 @@ namespace Shelf.Drawing
 
 			cr.set_source_surface(surface_icon, padding / 4, vertical_offset + padding / 2);
 
-			cr.move_to (padding / 4, vertical_offset + padding / 2);
+			cr.move_to ((padding / 4) + x_offset, (vertical_offset + padding / 2) + y_offset);
 			cr.rel_line_to (icon_size, 0);
 			cr.rel_line_to (0, icon_size);
 			cr.rel_line_to (-icon_size, 0);

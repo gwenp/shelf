@@ -20,6 +20,7 @@ using Gdk;
 using Gee;
 using Gtk;
 
+using Shelf.Drawing;
 using Shelf.Items;
 using Shelf.System;
 
@@ -29,8 +30,10 @@ namespace Shelf.Drawing
 	/**
 	 * The main renderer for the dock.
 	 */
-	public class DockRenderer : GLib.Object
+	public class DockRenderer : AnimatedRenderer
 	{
+		Gdk.Rectangle background_rect;
+
 		DockSurface? main_buffer;
 		DockSurface? background_buffer;
 		DockSurface? shadow_buffer;
@@ -58,26 +61,41 @@ namespace Shelf.Drawing
 
 		construct
 		{
+			notify["Hidden"].connect (hidden_changed);
 		}
 		
 		~DockRenderer ()
 		{
+			// controller.prefs.notify.disconnect (prefs_changed);
+			// theme.changed.disconnect (theme_changed);
+			
+			// controller.items.item_state_changed.disconnect (item_state_changed);
+			// controller.items.item_position_changed.disconnect (item_position_changed);
+			// controller.items.items_changed.disconnect (items_changed);
+			
+			// controller.window.get_screen ().composited_changed.disconnect (composited_changed);
+
+			notify["Hidden"].disconnect (hidden_changed);
+			
+			// controller.prefs.notify["Position"].disconnect (dock_position_changed);
+			// controller.prefs.notify["Theme"].disconnect (load_theme);
+			controller.window.notify["HoveredItem"].disconnect (animated_draw);
 		}
 		
 		public void initialize ()
 			requires (controller.window != null)
 		{
-			// set_widget (controller.window);
+			set_widget (controller.window);
 			
 			unowned Screen screen = controller.window.get_screen ();
 			screen_is_composited = screen.is_composited ();
 			// screen.composited_changed.connect (composited_changed);
 			
 			// controller.position_manager.reset_caches (theme);
-			// controller.position_manager.update_regions ();
+			controller.position_manager.update_regions ();
 			
 			//TODO replace the hover management with something like that
-			// controller.window.notify["HoveredItem"].connect (animated_draw);
+			controller.window.notify["HoveredItem"].connect (animated_draw);
 		}
 		
 		/**
@@ -105,18 +123,24 @@ namespace Shelf.Drawing
 		 */
 		public bool draw (Context cr)
 		{
-			draw_background(cr);
-			controller.tab_manager.draw(cr);
+			frame_time = new DateTime.now_utc ();
+
+			// calculate drawing offset
+			var x_offset = 0, y_offset = 0;
+			
+			unowned DockPositionManager position_manager = controller.position_manager;
+			position_manager.get_dock_draw_position (out x_offset, out y_offset);
+
+			draw_background(cr, x_offset, y_offset);
+			controller.tab_manager.draw(cr, x_offset, y_offset);
 
 			return true;
 		}
 
-		private void draw_background(Context cr)
+		private void draw_background(Context cr, int x_offset, int y_offset)
 		{
 			unowned DockPositionManager position_manager = controller.position_manager;
 			
-			var x = position_manager.win_x;
-			var y = position_manager.win_y;
 			var width = position_manager.win_width;
 			var height = position_manager.win_height;
 			
@@ -128,15 +152,15 @@ namespace Shelf.Drawing
 				shadow_buffer = new DockSurface.with_surface (width, height, cr.get_target ());
 			}
 			
+			background_rect = controller.position_manager.get_background_region ();
+
 			if (background_buffer == null || background_buffer.Width != width
 				|| background_buffer.Height != height)
 				background_buffer = create_background (width, height,
 					0, main_buffer);
 			
-			cr.set_source_surface (background_buffer.Internal, x, y);
-			// calculate drawing offset
-			var x_offset = 0, y_offset = 0;
-			
+			cr.set_source_surface (background_buffer.Internal, x_offset, y_offset);
+
 			// draw the dock on the window
 			cr.set_operator (Operator.SOURCE);
 			cr.set_source_surface (shadow_buffer.Internal, x_offset, y_offset);
@@ -163,84 +187,62 @@ namespace Shelf.Drawing
 			return surface;
 		}
 
-		private void stroke_shapes (Context ctx, int x, int y) {
-			this.draw_shapes (ctx, x, y, ctx.stroke);
-		}
-
-		private void fill_shapes (Context ctx, int x, int y) {
-			this.draw_shapes (ctx, x, y, ctx.fill);
-		}
-
 		private delegate void DrawMethod ();
-
-		private void draw_shapes (Context ctx, int x, int y, DrawMethod draw_method) {
-
-			ctx.save ();
-
-			ctx.new_path ();
-			ctx.translate (x + 10, y + 10);
-			bowtie (ctx);
-			draw_method ();
-
-			ctx.new_path ();
-			ctx.translate (3 * 10, 0);
-			square (ctx);
-			draw_method ();
-
-			ctx.new_path ();
-			ctx.translate (3 * 10, 0);
-			triangle (ctx);
-			draw_method ();
-
-			ctx.new_path ();
-			ctx.translate (3 * 10, 0);
-			inf (ctx);
-			draw_method ();
-
-			ctx.restore();
-		}
-
-		private void triangle (Context ctx) {
-			ctx.move_to (10, 0);
-			ctx.rel_line_to (10, 2 * 10);
-			ctx.rel_line_to (-2 * 10, 0);
-			ctx.close_path ();
-		}
-
-		private void square (Context ctx) {
-			ctx.move_to (0, 0);
-			ctx.rel_line_to (2 * 10, 0);
-			ctx.rel_line_to (0, 2 * 10);
-			ctx.rel_line_to (-2 * 10, 0);
-			ctx.close_path ();
-		}
-
-		private void bowtie (Context ctx) {
-			ctx.move_to (0, 0);
-			ctx.rel_line_to (2 * 10, 2 * 10);
-			ctx.rel_line_to (-2 * 10, 0);
-			ctx.rel_line_to (2 * 10, -2 * 10);
-			ctx.close_path ();
-		}
-
-		private void inf (Context ctx) {
-			ctx.move_to (0, 10);
-			ctx.rel_curve_to (0, 10, 10, 10, 2 * 10, 0);
-			ctx.rel_curve_to (10, -10, 2 * 10, -10, 2 * 10, 0);
-			ctx.rel_curve_to (0, 10, -10, 10, -2 * 10, 0);
-			ctx.rel_curve_to (-10, -10, -2 * 10, -10, -2 * 10, 0);
-			ctx.close_path ();
-		}
 
 		public double get_hide_offset ()
 		{
 			if (!screen_is_composited)
 				return 0;
 			
-			//var time = 1.0 ? theme.HideTime : theme.FadeTime;
-			var time = 100;
+			var time = controller.theme.FadeOpacity == 1.0 ? controller.theme.HideTime : controller.theme.FadeTime;
 			var diff = double.min (1, frame_time.difference (last_hide) / (double) (time * 1000));
+
 			return Hidden ? diff : 1 - diff;
+		}
+
+		void hidden_changed ()
+		{
+			var now = new DateTime.now_utc ();
+			var diff = now.difference (last_hide);
+			
+			if (diff < controller.theme.HideTime * 1000)
+				last_hide = now.add_seconds ((diff - controller.theme.HideTime * 1000) / 1000000.0);
+			else
+				last_hide = now;
+			
+			if (!screen_is_composited) {
+				controller.window.update_size_and_position ();
+				return;
+			}
+			
+			// controller.window.update_icon_regions ();
+			
+			animated_draw ();
+		}
+
+		/**
+		 * {@inheritDoc}
+		 */
+		protected override bool animation_needed (DateTime render_time)
+		{
+			if (controller.theme.FadeOpacity == 1.0) {
+				if (render_time.difference (last_hide) <= controller.theme.HideTime * 1000)
+					return true;
+			} else {
+				if (render_time.difference (last_hide) <= controller.theme.FadeTime * 1000)
+					return true;
+			}
+			
+			foreach (var tab in controller.tab_manager.tabs) {
+				if (render_time.difference (tab.LastClicked) <= controller.theme.ClickTime * 1000)
+					return true;
+				if (render_time.difference (tab.LastActive) <= controller.theme.ActiveTime * 1000)
+					return true;
+				if (render_time.difference (tab.LastUrgent) <= (get_hide_offset () == 1.0 ? controller.theme.GlowTime : controller.theme.UrgentBounceTime) * 1000)
+					return true;
+			}
+				
+			return false;
 		}
 	}
 }

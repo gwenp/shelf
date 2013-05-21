@@ -37,6 +37,21 @@ namespace Shelf.Items
 		public string icon_path { public get; construct; }
 		
 		/**
+		 * The last time the item changed its urgent status.
+		 */
+		public DateTime LastUrgent { get; protected set; default = new DateTime.from_unix_utc (0); }
+		
+		/**
+		 * The last time the item changed its active status.
+		 */
+		public DateTime LastActive { get; protected set; default = new DateTime.from_unix_utc (0); }		
+
+		/**
+		 * The last time the item was clicked.
+		 */
+		public DateTime LastClicked { get; protected set; default = new DateTime.from_unix_utc (0); }
+
+		/**
 		 * Creates a new item manager.
 		 */
 		public Tab (TabManager manager, string tab_icon_path)
@@ -57,19 +72,18 @@ namespace Shelf.Items
 		/**
 		 * Draws a tab.
 		 */
-		public void draw (Context cr, int position)
+		public void draw (Context cr, int position, int x_offset, int y_offset)
 		{
-			tab_renderer.draw(cr, position);
+			tab_renderer.draw(cr, position, x_offset, y_offset);
 		}
 
 		public bool is_mouse_inside_tab(EventMotion event)
 		{
-			unowned Theme theme = tab_manager.controller.theme_manager;
+			unowned Theme theme = tab_manager.controller.theme;
 			unowned DockPreferences prefs = tab_manager.controller.prefs;
 			int icon_size = prefs.IconSize;
 			int padding = theme.tab_padding;
 
-			int tab_x = 0;
 			int tab_y = (icon_size + padding * 3) * tab_manager.get_tab_position(this);
 			int next_tab_y = (icon_size + padding * 3) * (tab_manager.get_tab_position(this) + 1);
 

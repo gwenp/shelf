@@ -39,6 +39,9 @@ namespace Shelf.System
 		
 		[Description(nick = "unhide-delay", blurb = "Time (in ms) to wait before unhiding the dock.")]
 		public uint UnhideDelay { get; set; }
+				
+		[Description(nick = "offset", blurb = "The dock's position offset from center (in percent).")]
+		public int Offset { get; set; }
 		
 		/**
 		 * {@inheritDoc}

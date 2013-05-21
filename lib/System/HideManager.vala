@@ -164,20 +164,6 @@ namespace Shelf.System
 		
 		uint timer_prefs_changed = 0;
 		
-		void prefs_changed ()
-		{
-			if (timer_prefs_changed > 0) {
-				GLib.Source.remove (timer_prefs_changed);
-				timer_prefs_changed = 0;
-			}
-			
-			timer_prefs_changed = GLib.Timeout.add (UPDATE_TIMEOUT, () => {
-				update_window_intersect ();
-				timer_prefs_changed = 0;
-				return false;
-			});
-		}
-		
 		void update_hidden ()
 		{
 			if (Disabled) {
@@ -210,8 +196,6 @@ namespace Shelf.System
 		
 		void hide ()
 		{
-			//TODO not working because not fully implemented
-			stdout.printf("## HM hide\n"); 
 			if (timer_unhide > 0) {
 				GLib.Source.remove (timer_unhide);
 				timer_unhide = 0;
@@ -221,9 +205,6 @@ namespace Shelf.System
 
 		void show ()
 		{
-			//TODO not working because not fully implemented
-			stdout.printf("## HM show\n");
-
 			if (!pointer_update || controller.prefs.UnhideDelay == 0) {
 				controller.renderer.show ();
 				return;
@@ -315,11 +296,6 @@ namespace Shelf.System
 				windows_intersect = intersect;
 			
 			pointer_update = false;
-
-			if(windows_intersect)
-				stdout.printf("update_window_intersect  true\n");
-			else
-				stdout.printf("update_window_intersect  false\n");
 
 			update_hidden ();
 		}

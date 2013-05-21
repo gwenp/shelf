@@ -26,7 +26,7 @@ namespace Shelf.Items
 	 */
 	public class TabManager : GLib.Object
 	{
-		private ArrayList<Tab> tabs;
+		public ArrayList<Tab> tabs { public get; private set; }
 		private Gee.Map<Tab, int> saved_tabs_positions;
 
 		/**
@@ -75,11 +75,11 @@ namespace Shelf.Items
 		/**
 		 * Draws the list of tabs.
 		 */
-		public void draw (Context cr)
+		public void draw (Context cr, int x_offset, int y_offset)
 		{
 			int i = 0;
 			foreach (Tab t in tabs) {
-				t.draw (cr, i);
+				t.draw (cr, i, x_offset, y_offset);
 				i++;
 			}
 		}

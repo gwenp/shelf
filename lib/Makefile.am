@@ -71,6 +71,7 @@ libshelf_la_VALASOURCES = \
 	System/DockPreferences.vala \
 	System/Paths.vala \
 	System/Preferences.vala \
+	System/DockTheme.vala \
 	System/Theme.vala \
 	System/HideManager.vala \
 	System/DockPositionManager.vala \
@@ -78,6 +79,7 @@ libshelf_la_VALASOURCES = \
 	Drawing/Color.vala \
 	Drawing/DockRenderer.vala \
 	Drawing/DockSurface.vala \
+	Drawing/AnimatedRenderer.vala \
 	Drawing/TabRenderer.vala \
 	Drawing/DrawingService.vala \
 	Widgets/DockWindow.vala \

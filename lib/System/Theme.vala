@@ -15,12 +15,14 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
+using Shelf.System;
+
 namespace Shelf.System
 {
 	/**
 	 * The main position manager for the dock.
 	 */
-	public class Theme : GLib.Object
+	public class Theme : Preferences
 	{
 		
 		/**
@@ -34,7 +36,7 @@ namespace Shelf.System
 		public DockController controller { private get; construct; }
 		
 		/**
-		 * Creates a new position manager.
+		 * Creates a new theme manager.
 		 */
 		public Theme (DockController controller)
 		{
@@ -46,6 +48,13 @@ namespace Shelf.System
 		}
 		
 		~Theme ()
+		{
+		}
+
+		/**
+		 * {@inheritDoc}
+		 */
+		protected override void reset_properties ()
 		{
 		}
 	}

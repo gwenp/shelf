@@ -36,7 +36,7 @@ namespace Shelf
 		public DockPreferences prefs;
 		public TabManager tab_manager;
 		public HideManager hide_manager;
-		public Theme theme_manager;
+		public DockTheme theme;
 
 		public DockController ()
 		{
@@ -47,7 +47,7 @@ namespace Shelf
 			renderer = new DockRenderer (this);
 			tab_manager = new TabManager(this);
 			hide_manager = new HideManager(this);
-			theme_manager = new Theme(this);
+			theme = new DockTheme(this);
 			
 			renderer.initialize();
 			hide_manager.initialize();

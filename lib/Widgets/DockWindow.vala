@@ -23,6 +23,7 @@ using Gtk;
 using Shelf.Factories;
 using Shelf.Drawing;
 using Shelf.System;
+using Shelf.Items;
 
 namespace Shelf.Widgets
 {
@@ -49,13 +50,22 @@ namespace Shelf.Widgets
 	public class DockWindow : CompositedWindow
 	{
 
-		bool firstDraw = true;
+		uint reposition_timer = 0;
+
+		bool dock_is_starting = true;
+
+		Cairo.RectangleInt input_rect;
 
 		/**
 		 * The controller for this dock.
 		 */
 		public DockController controller { private get; construct; }
 		
+		/**
+		 * The currently hovered item (if any).
+		 */
+		public Tab? HoveredTab { get; protected set; }
+
 		/**
 		 * Creates a new dock window.
 		 */
@@ -144,23 +154,137 @@ namespace Shelf.Widgets
 		 */
 		public override bool draw (Context cr)
 		{
-			if(firstDraw)
-			{
-				firstDraw = false;
-				controller.position_manager.initialize();
+			if (dock_is_starting) {
+				debug ("dock window loaded");
+				dock_is_starting = false;
+				
+				// slide the dock in, if it shouldnt start hidden
+				GLib.Timeout.add (400, () => {
+					controller.hide_manager.update_dock_hovered ();
+					return false;
+				});
 			}
 
-			controller.renderer.draw(cr);
+			set_input_mask ();
+			controller.renderer.draw (cr);
 			return true;
 		}
-
+	
+		/**
+		 * Sets the currently hovered item for this dock.
+		 *
+		 * @param item the hovered item (if any) for this dock
+		 */
+		protected void set_hovered (Tab? tab)
+		{
+			if (HoveredTab == tab)
+				return;
+			
+			HoveredTab = tab;
+			
+			// if (HoveredTab == null || controller.drag_manager.InternalDragActive) {
+				// controller.hover.hide ();
+				return;
+			// }
+			
+			// if (hover_reposition_timer > 0)
+				// return;
+			
+			// hover_reposition_timer = GLib.Timeout.add (1000 / 60, () => {
+				// hover_reposition_timer = 0;
+				
+				// unowned HoverWindow hover = controller.hover;
+				// if (hover.get_visible ())
+					// hover.hide ();
+				
+				// if (HoveredTab == null)
+					// return false;
+				
+				// hover.Text = HoveredTab.Text;
+				// position_hover ();
+				
+				// if (!menu_is_visible () && !hover.get_visible ())
+					// hover.show ();
+				
+				// return false;
+			// });
+		}
+		
 		public void update_size_and_position()
 		{
-			stdout.printf("update_size_and_position");
 			unowned DockPositionManager position_manager = controller.position_manager;
-
-			set_size_request (position_manager.win_width, position_manager.win_height);
+			position_manager.update_dock_position ();
+			
+			var x = position_manager.win_x;
+			var y = position_manager.win_y;
+			
+			var width = position_manager.win_width;
+			var height = position_manager.win_height;
+			
+			int width_current, height_current;
+			get_size_request (out width_current, out height_current);
+			var needs_resize = (width != width_current || height != height_current);
+			
+			var needs_reposition = true;
+			if (get_realized ()) {
+				int x_current, y_current;
+				get_position (out x_current, out y_current);
+				needs_reposition = (x != x_current || y != y_current);
+			}
+			
+			if (needs_resize) {
+				Logger.verbose ("DockWindow.set_size_request (width = %i, height = %i)", width, height);
+				set_size_request (width, height);
+				// controller.renderer.reset_buffers ();
+				
+				if (!needs_reposition) {
+					// update_icon_regions ();
+					set_struts ();
+					set_hovered (null);
+				}
+			}
+			
+			if (needs_reposition) {
+				if (dock_is_starting) {
+					position (x, y);
+				} else {
+					schedule_position ();
+				}
+			}
 		}
+
+		void schedule_position ()
+		{
+			if (reposition_timer != 0) {
+				GLib.Source.remove (reposition_timer);
+				reposition_timer = 0;
+			}
+			
+			reposition_timer = GLib.Timeout.add (50, () => {
+				reposition_timer = 0;
+				
+				unowned DockPositionManager position_manager = controller.position_manager;
+				position_manager.update_dock_position ();
+				
+				var x = position_manager.win_x;
+				var y = position_manager.win_y;
+				
+				position (x, y);
+				
+				return false;
+			});
+		}
+		
+		void position (int x, int y)
+		{
+			Logger.verbose ("DockWindow.move (x = %i, y = %i)", x, y);
+			move (x, y);
+			
+			// update_icon_regions ();
+			set_struts ();
+			set_hovered (null);
+		}
+		
 
 		/**
 		 * {@inheritDoc}
@@ -171,6 +295,24 @@ namespace Shelf.Widgets
 			
 			return base.map_event (event);
 		}
+		
+		void set_input_mask ()
+		{
+			if (!get_realized ())
+				return;
+			
+			var cursor = controller.position_manager.get_cursor_region ();
+			// FIXME bug 768722 - this fixes the crash, but not WHY this happens
+			return_if_fail (cursor.width > 0);
+			return_if_fail (cursor.height > 0);
+			
+			RectangleInt rect = {cursor.x, cursor.y, cursor.width, cursor.height};
+			if (rect != input_rect) {
+				input_rect = rect;
+				get_window ().input_shape_combine_region (new Region.rectangle (rect), 0, 0);
+			}
+		}
+
 
 		void set_struts ()
 		{
