@@ -91,6 +91,10 @@ namespace Shelf.Drawing
 			screen_is_composited = screen.is_composited ();
 			// screen.composited_changed.connect (composited_changed);
 			
+			if(screen_is_composited)
+				stdout.printf("screen_is_composited ok\n");
+			controller.position_manager.initialize();
+			
 			// controller.position_manager.reset_caches (theme);
 			controller.position_manager.update_regions ();
 			

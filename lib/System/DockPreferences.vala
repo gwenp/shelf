@@ -73,6 +73,7 @@ namespace Shelf.System
 			IconSize = 48;
 			HideMode = HideType.INTELLIGENT;
 			UnhideDelay = 0;
+			Offset = 20;
 		}
 		
 		/**

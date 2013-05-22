@@ -99,7 +99,7 @@ namespace Shelf.System
 		public void initialize()
 			requires (controller.window != null)
 		{
-			controller.window.move(0,30);
+			// controller.window.move(0,300);
 			unowned Screen screen = controller.window.get_screen ();
 			
 			screen.monitors_changed.connect (update_monitor_geo);
@@ -116,7 +116,7 @@ namespace Shelf.System
 
 		void update_dimensions ()
 		{
-			win_width = 200;
+			win_width = controller.prefs.IconSize + controller.theme.tab_padding;
 			win_height = monitor_geo.height;
 			VisibleDockWidth = win_width;
 			VisibleDockHeight = win_height;
@@ -130,7 +130,7 @@ namespace Shelf.System
 			update_dock_position ();
 			update_regions ();
 			
-			controller.window.update_size_and_position ();
+			controller.window.update_size_and_position ();			
 		}
 
 		public Gdk.Rectangle get_cursor_region ()
@@ -171,10 +171,11 @@ namespace Shelf.System
 			var xoffset = 0;
 			var yoffset = 0;
 			
-			if (!screen_is_composited) {
+			// if (!screen_is_composited) {
 				var offset = prefs.Offset;
 				xoffset = (int) ((1 + offset / 100.0) * (monitor_geo.width - win_width) / 2);
-				yoffset = (int) ((1 + offset / 100.0) * (monitor_geo.height - win_height) / 2);
+				// yoffset = (int) ((1 + offset / 100.0) * (monitor_geo.height - win_height) / 2);
+				yoffset = (int) ((offset / 100.0) * (monitor_geo.height) / 2);
 				
 				// switch (prefs.Alignment) {
 				// default:
@@ -190,12 +191,13 @@ namespace Shelf.System
 				// 	yoffset = 0;
 				// 	break;
 				// }
-			}
+			// }
 			
 			//TODO put this in a switch, dependant on dock position (a preference)
 			win_y = monitor_geo.y + yoffset;
 			win_x = monitor_geo.x;
 			
+			stdout.printf("win_y = %i %i %i\n", win_y, monitor_geo.height, yoffset);
 			// Actually change the window position while hidden for non-compositing mode
 			if (!screen_is_composited && controller.renderer.Hidden) {
 				//TODO put this in a switch, dependant on dock position (a preference)
