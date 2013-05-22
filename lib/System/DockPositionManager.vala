@@ -197,7 +197,6 @@ namespace Shelf.System
 			win_y = monitor_geo.y + yoffset;
 			win_x = monitor_geo.x;
 			
-			stdout.printf("win_y = %i %i %i\n", win_y, monitor_geo.height, yoffset);
 			// Actually change the window position while hidden for non-compositing mode
 			if (!screen_is_composited && controller.renderer.Hidden) {
 				//TODO put this in a switch, dependant on dock position (a preference)
